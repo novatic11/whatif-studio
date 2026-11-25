@@ -62,8 +62,7 @@ animals, human body, technology, physics, history-of-science.
   should be spoken when ambiguous.
 - Banned phrases: delve, tapestry, testament, buckle up, mind-blowing, let's dive in,
   in conclusion, fascinating (more than once), journey, realm, "it's important to note".
-- End with a satisfying final image or twist, not a summary. One short subscribe line at
-  most, and never mid-video.
+- End with a satisfying final image or twist, not a summary.
 
 ## Scene plan (plan.json)
 Copy the structure of `episodes/0001-sun-black-hole/plan.json`. Rules:
@@ -99,6 +98,18 @@ Copy the structure of `episodes/0001-sun-black-hole/plan.json`. Rules:
 - `"meta"`: title under 70 chars (a question or claim the Short answers), 1-2 sentence
   summary, 6-10 tags, playlist by theme. No thumbnail spec is needed for Shorts.
 
+## Call to action (required in every video)
+- Every Short and long-form video includes **one** spoken call to action, under ~10 words,
+  e.g. "But before we see what happens, hit that like button." or "Subscribe so you don't
+  miss the next one."
+- Shorts: place it right after the hook (around 5-12 s), framed as a quick pause before the
+  payoff, so it holds attention instead of ending the video. Long-form: after the first big
+  question is set up (around 30-60 s), plus at most one short closing line.
+- Vary the wording between videos (like / subscribe / comment-your-guess prompts) so it
+  never sounds templated. Optionally pair it with a small `"style": "label"` overlay.
+- Never offer anything in exchange, never imply consequences ("like or..."), never fake
+  urgency or mislead: that is engagement bait under YouTube's spam policies.
+
 ## Metadata and thumbnail (in plan.json)
 - `"meta": {"title", "summary", "tags", "playlist"}`. Title: a curiosity-driven question or
   claim that the video actually answers, no all-caps, no clickbait, under 70 characters.
@@ -111,5 +122,5 @@ Copy the structure of `episodes/0001-sun-black-hole/plan.json`. Rules:
 
 ## Never
 Fabricate facts or sources; imitate a real person's voice or likeness; use other people's
-footage, music or art; mislead in titles or thumbnails; post engagement bait; change
+footage, music or art; mislead in titles or thumbnails; use deceptive or incentivised engagement prompts; change
 `state/config.json` publish settings (only the owner does that); use paid services.

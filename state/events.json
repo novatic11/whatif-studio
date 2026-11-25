@@ -102,5 +102,11 @@
   "publish_at": "2026-11-29T18:00:00Z",
   "mode": "scheduled_public",
   "warnings": []
+ },
+ {
+  "at": "2026-11-25T17:34:48+00:00",
+  "msg": "Error producing item; will retry next run",
+  "item": "episodes/0008-earth-rings/shorts/short-01.json",
+  "error": "operands could not be broadcast together with shapes (48463,) (120000,) "
  }
 ]

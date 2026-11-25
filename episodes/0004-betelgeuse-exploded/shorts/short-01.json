@@ -1,0 +1,363 @@
+{
+ "slug": "0004-betelgeuse-exploded-short-01",
+ "title": "What If Betelgeuse Exploded Tonight?",
+ "palette": "ember",
+ "music_mood": "awe",
+ "seed": 63,
+ "sources": [
+  {
+   "title": "Astronomy: When Betelgeuse goes supernova, what will it look like from Earth?",
+   "url": "https://www.astronomy.com/science/when-betelgeuse-goes-supernova-what-will-it-look-like-from-earth/"
+  },
+  {
+   "title": "Discover: What will a Betelgeuse supernova look like from Earth?",
+   "url": "https://www.discovermagazine.com/what-will-a-betelgeuse-supernova-look-like-from-earth-41296"
+  },
+  {
+   "title": "ANU: Supergiant star Betelgeuse smaller, closer than first thought",
+   "url": "https://science.anu.edu.au/news-events/news/supergiant-star-betelgeuse-smaller-closer-first-thought"
+  },
+  {
+   "title": "NASA: 2012: Fear No Supernova",
+   "url": "https://www.nasa.gov/universe/2012-fear-no-supernova/"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "hook",
+   "type": "cosmos",
+   "music_intensity": 0.6,
+   "narration": "Tonight, light from Betelgeuse exploding finally reaches Earth. It's the red supergiant on Orion's shoulder, about seven hundred and fifty times wider than the Sun.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -200,
+       0.9
+      ]
+     ],
+     [
+      4,
+      [
+       0,
+       -200,
+       1.15
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "star",
+      "x": 0,
+      "y": -250,
+      "r": 170,
+      "seed": 9,
+      "light": [
+       [
+        0,
+        0.8
+       ],
+       [
+        "@exploding",
+        0.8
+       ],
+       [
+        "@exploding+0.8",
+        2.2,
+        "in_out"
+       ]
+      ]
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": "@exploding-0.8",
+     "name": "riser",
+     "gain": -8
+    },
+    {
+     "at": "@exploding+0.2",
+     "name": "impact",
+     "gain": -3
+    }
+   ],
+   "tail": 0.4
+  },
+  {
+   "id": "cta",
+   "type": "statement",
+   "music_intensity": 0.45,
+   "transition": "cut",
+   "narration": "Comment your guess: how bright does it get?",
+   "params": {
+    "lines": [
+     "HOW BRIGHT?"
+    ],
+    "accent_line": 0,
+    "kicker": "YOUR GUESS",
+    "backdrop": "stars"
+   }
+  },
+  {
+   "id": "past",
+   "type": "statement",
+   "music_intensity": 0.5,
+   "narration": "The blast really happened centuries ago. One recent study puts Betelgeuse about five hundred and fifty light years away.",
+   "params": {
+    "lines": [
+     "~550",
+     "LIGHT YEARS"
+    ],
+    "accent_line": 0,
+    "kicker": "ONE 2020 ESTIMATE",
+    "backdrop": "stars"
+   }
+  },
+  {
+   "id": "bright",
+   "type": "cosmos",
+   "music_intensity": 0.75,
+   "narration": "Within days, it outshines every star and planet. Astronomers estimate it could rival the half Moon, maybe even the full Moon.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -200,
+       0.8
+      ]
+     ],
+     [
+      6,
+      [
+       0,
+       -200,
+       0.9
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "star",
+      "x": 0,
+      "y": -300,
+      "r": 120,
+      "seed": 9,
+      "light": 2.0
+     },
+     {
+      "kind": "planet",
+      "planet": "moon",
+      "x": 320,
+      "y": 250,
+      "r": 110,
+      "light_dir": [
+       -0.9,
+       -0.2,
+       0.4
+      ]
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@half",
+     "dur": 2.4,
+     "text": "≈ HALF MOON",
+     "kicker": "ESTIMATED PEAK",
+     "style": "stat",
+     "y": 280,
+     "size": 96,
+     "color": "accent"
+    }
+   ]
+  },
+  {
+   "id": "day",
+   "type": "statement",
+   "music_intensity": 0.7,
+   "narration": "You could see it in broad daylight, for months. And at night, it would be by far the brightest star you've ever seen.",
+   "params": {
+    "lines": [
+     "VISIBLE",
+     "IN DAYLIGHT"
+    ],
+    "accent_line": 1,
+    "kicker": "FOR MONTHS",
+    "backdrop": "pulse"
+   },
+   "sfx": [
+    {
+     "at": "@daylight",
+     "name": "shimmer",
+     "gain": -8
+    }
+   ]
+  },
+  {
+   "id": "fade",
+   "type": "cosmos",
+   "music_intensity": 0.45,
+   "narration": "Then, over the following months, it slowly fades, until Orion is missing a shoulder for good.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -200,
+       1.0
+      ]
+     ],
+     [
+      4,
+      [
+       0,
+       -200,
+       0.9
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "star",
+      "x": 0,
+      "y": -250,
+      "r": 120,
+      "seed": 9,
+      "light": [
+       [
+        0,
+        1.2
+       ],
+       [
+        "@fades+1.5",
+        0.15,
+        "in_out"
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "safe",
+   "type": "compare",
+   "music_intensity": 0.55,
+   "narration": "Are we in danger? No. A supernova would need to be within about fifty light years to harm our ozone layer. Betelgeuse is ten times farther.",
+   "params": {
+    "title": "DISTANCE FROM EARTH",
+    "mode": "bars",
+    "items": [
+     {
+      "label": "Danger zone",
+      "value": 50,
+      "display": "~50 LY",
+      "color": "warn"
+     },
+     {
+      "label": "Betelgeuse",
+      "value": 548,
+      "display": "~550 LY",
+      "color": "good"
+     }
+    ],
+    "source": "NASA; ANU 2020"
+   }
+  },
+  {
+   "id": "when",
+   "type": "timeline",
+   "music_intensity": 0.5,
+   "narration": "So when will it really blow? That same study says it's still burning helium, and might not explode for around a hundred thousand years.",
+   "params": {
+    "title": "WHEN?",
+    "spacing": 420,
+    "span": [
+     "TODAY",
+     "~100,000 YEARS"
+    ],
+    "events": [
+     {
+      "at": 1.0,
+      "label": "Burning helium",
+      "when": "now",
+      "color": "cool"
+     },
+     {
+      "at": 2.5,
+      "label": "Possible supernova",
+      "when": "~100,000 yrs",
+      "color": "accent"
+     }
+    ]
+   }
+  },
+  {
+   "id": "end",
+   "type": "title_card",
+   "transition": "dip",
+   "music_intensity": 0.8,
+   "tail": 0.7,
+   "narration": "So probably not in our lifetime. But someday, people will see a star in the daytime sky.",
+   "params": {
+    "lines": [
+     "WHAT IF",
+     "BETELGEUSE",
+     "EXPLODED?"
+    ],
+    "accent_line": 1,
+    "backdrop": "none",
+    "size": 92
+   }
+  }
+ ],
+ "claims": [
+  {
+   "claim": "Betelgeuse is a red supergiant about 750 times the Sun's radius",
+   "source": 2
+  },
+  {
+   "claim": "Betelgeuse is about 548 light years away (2020 estimate, +88/-49)",
+   "source": 2
+  },
+  {
+   "claim": "A Betelgeuse supernova could be about as bright as the half Moon, possibly as bright as the full Moon",
+   "source": 0
+  },
+  {
+   "claim": "It would be visible in daylight for months",
+   "source": 1
+  },
+  {
+   "claim": "A supernova must be within about 50 light years to damage Earth's ozone",
+   "source": 3
+  },
+  {
+   "claim": "Betelgeuse is still burning helium and may not explode for around 100,000 years",
+   "source": 2
+  }
+ ],
+ "meta": {
+  "title": "What If Betelgeuse Exploded Tonight?",
+  "summary": "Betelgeuse will one day go supernova. Here's how bright it could get, how long it would last, and why it can't hurt us.",
+  "tags": [
+   "what if",
+   "betelgeuse",
+   "supernova",
+   "orion",
+   "stars",
+   "astronomy",
+   "space",
+   "shorts"
+  ],
+  "playlist": "What If: Space"
+ },
+ "format": "vertical",
+ "pace": "fast",
+ "status": "ready"
+}

@@ -1,0 +1,391 @@
+{
+ "slug": "0003-earth-stopped-spinning-short-01",
+ "title": "What If Earth Stopped Spinning?",
+ "palette": "abyss",
+ "music_mood": "tense",
+ "seed": 41,
+ "sources": [
+  {
+   "title": "Esri ArcUser: What would happen if Earth stopped spinning?",
+   "url": "https://www.esri.com/news/arcuser/0610/nospin.html"
+  },
+  {
+   "title": "Live Science: What If the World Stopped Turning?",
+   "url": "https://www.livescience.com/33944-world-stopped-turning.html"
+  },
+  {
+   "title": "UCSB Geography: What Would Happen If the Earth Stopped Spinning?",
+   "url": "https://legacy.geog.ucsb.edu/what-would-happen-if-the-earth-stopped-spinning/"
+  },
+  {
+   "title": "Universe Today: What Would Happen if the Earth Stopped Turning?",
+   "url": "https://www.universetoday.com/26623/what-would-happen-if-the-earth-stopped-spinning/"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "hook",
+   "type": "cosmos",
+   "music_intensity": 0.7,
+   "narration": "Right now, Earth stops spinning. But everything on it keeps moving.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -150,
+       0.95
+      ]
+     ],
+     [
+      4,
+      [
+       0,
+       -150,
+       1.05
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "planet",
+      "planet": "earth",
+      "x": 0,
+      "y": -250,
+      "r": 400,
+      "spin": 0.15,
+      "rot0": 1.0,
+      "light_dir": [
+       -0.7,
+       -0.3,
+       0.55
+      ]
+     }
+    ],
+    "shake": [
+     [
+      0,
+      0
+     ],
+     [
+      "@moving",
+      0
+     ],
+     [
+      "@moving+0.2",
+      1.5
+     ],
+     [
+      "@moving+1.4",
+      0
+     ]
+    ]
+   },
+   "sfx": [
+    {
+     "at": "@stops",
+     "name": "impact",
+     "gain": -3
+    }
+   ],
+   "tail": 0.3
+  },
+  {
+   "id": "speed",
+   "type": "statement",
+   "music_intensity": 0.65,
+   "narration": "At the equator, the ground was carrying you east at about a thousand miles an hour. Near the poles, you were barely moving at all.",
+   "params": {
+    "lines": [
+     "1,000",
+     "MPH"
+    ],
+    "accent_line": 0,
+    "kicker": "EQUATOR, HEADING EAST",
+    "backdrop": "grid"
+   },
+   "sfx": [
+    {
+     "at": "@thousand",
+     "name": "whoosh",
+     "gain": -6
+    }
+   ]
+  },
+  {
+   "id": "cta",
+   "type": "statement",
+   "music_intensity": 0.45,
+   "transition": "cut",
+   "narration": "Quick pause: subscribe so you catch the next one.",
+   "params": {
+    "lines": [
+     "SUBSCRIBE"
+    ],
+    "accent_line": 0,
+    "kicker": "QUICK PAUSE",
+    "backdrop": "stars"
+   }
+  },
+  {
+   "id": "wind",
+   "type": "statement",
+   "music_intensity": 0.85,
+   "narration": "The air doesn't stop either. Winds far faster than any hurricane scour the planet, and the oceans surge across the coasts.",
+   "params": {
+    "lines": [
+     "FASTER THAN",
+     "ANY HURRICANE"
+    ],
+    "accent_line": 1,
+    "kicker": "THE AIR KEEPS GOING",
+    "backdrop": "pulse"
+   }
+  },
+  {
+   "id": "year",
+   "type": "cosmos",
+   "music_intensity": 0.5,
+   "narration": "Then things get strange. One day would last a whole year: about six months of daylight, then six months of night. The Sun would crawl across the sky, rising and setting just once a year.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -200,
+       0.8
+      ]
+     ],
+     [
+      6,
+      [
+       0,
+       -200,
+       0.85
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "star",
+      "x": 0,
+      "y": -200,
+      "r": 110
+     },
+     {
+      "kind": "planet",
+      "planet": "earth",
+      "r": 60,
+      "spin": 0.0,
+      "rot0": 0.0,
+      "orbit": {
+       "cx": 0,
+       "cy": -200,
+       "r": 420,
+       "period": 10,
+       "phase": 0.3
+      },
+      "trail": true,
+      "ghost_orbit": true
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@year",
+     "dur": 2.4,
+     "text": "1 DAY = 1 YEAR",
+     "kicker": "NO SPIN",
+     "style": "stat",
+     "y": 260,
+     "size": 96,
+     "color": "accent"
+    }
+   ]
+  },
+  {
+   "id": "drain",
+   "type": "cosmos",
+   "music_intensity": 0.55,
+   "narration": "Today, spin makes the planet and its oceans bulge outward at the equator. Without it, that water slowly drains toward the poles.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -150,
+       1.0
+      ]
+     ],
+     [
+      5,
+      [
+       0,
+       -150,
+       1.12
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "planet",
+      "planet": "earth",
+      "x": 0,
+      "y": -250,
+      "r": 400,
+      "spin": 0.0,
+      "rot0": 4.2,
+      "light_dir": [
+       -0.4,
+       -0.5,
+       0.75
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "continent",
+   "type": "statement",
+   "music_intensity": 0.65,
+   "narration": "One computer model shows a single giant continent wrapped around the middle of the planet, with two huge polar oceans. Today's tropical seafloor would become dry land.",
+   "params": {
+    "lines": [
+     "ONE BELT OF LAND",
+     "TWO POLAR OCEANS"
+    ],
+    "accent_line": 0,
+    "kicker": "ESRI MODEL",
+    "backdrop": "grid"
+   }
+  },
+  {
+   "id": "field",
+   "type": "cosmos",
+   "music_intensity": 0.5,
+   "narration": "And our magnetic shield might weaken too, since Earth's rotation helps power it.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -150,
+       0.9
+      ]
+     ],
+     [
+      5,
+      [
+       0,
+       -150,
+       0.95
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "planet",
+      "planet": "earth",
+      "x": 0,
+      "y": -250,
+      "r": 300,
+      "spin": 0.0,
+      "rot0": 5.0,
+      "light_dir": [
+       -0.7,
+       -0.3,
+       0.55
+      ],
+      "light": 0.6
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@weaken",
+     "dur": 2.4,
+     "text": "SHIELD?",
+     "kicker": "MAGNETIC FIELD",
+     "style": "stat",
+     "y": 260,
+     "size": 130,
+     "color": "warn"
+    }
+   ]
+  },
+  {
+   "id": "end",
+   "type": "title_card",
+   "transition": "dip",
+   "music_intensity": 0.8,
+   "tail": 0.7,
+   "narration": "Luckily, nothing we know of could stop Earth that suddenly. So next time a day feels long, remember: it could last a year.",
+   "params": {
+    "lines": [
+     "WHAT IF",
+     "EARTH STOPPED",
+     "SPINNING?"
+    ],
+    "accent_line": 1,
+    "backdrop": "none",
+    "size": 90
+   }
+  }
+ ],
+ "claims": [
+  {
+   "claim": "The equator moves east at roughly 1,000 mph (about 1,036 mph x cos latitude)",
+   "source": 0
+  },
+  {
+   "claim": "In a sudden stop, the atmosphere and oceans would keep moving east at close to their original speed",
+   "source": 1
+  },
+  {
+   "claim": "With no rotation relative to the stars, one solar day would last a year, with about six months of day and six of night",
+   "source": 0
+  },
+  {
+   "claim": "Without rotation the oceans would migrate toward the poles",
+   "source": 0
+  },
+  {
+   "claim": "Esri's model shows a huge equatorial megacontinent and two large polar oceans",
+   "source": 2
+  },
+  {
+   "claim": "Rotation speed falls with latitude (speed = 1,036 mph x cos latitude), near zero at the poles",
+   "source": 0
+  },
+  {
+   "claim": "Earth's magnetic field could weaken because rotation helps drive the dynamo (speculative)",
+   "source": 3
+  },
+  {
+   "claim": "An abrupt stop of Earth's rotation is virtually impossible",
+   "source": 1
+  }
+ ],
+ "meta": {
+  "title": "What If Earth Stopped Spinning?",
+  "summary": "If Earth stopped rotating, the ground would stop but the air and oceans wouldn't. Here's what scientists and one global model say would follow.",
+  "tags": [
+   "what if",
+   "earth",
+   "rotation",
+   "oceans",
+   "geography",
+   "science",
+   "planet",
+   "shorts"
+  ],
+  "playlist": "What If: Earth"
+ },
+ "format": "vertical",
+ "pace": "fast",
+ "status": "ready"
+}

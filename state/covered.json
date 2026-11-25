@@ -1,1 +1,20 @@
-[]
+[
+ {
+  "slug": "0002-moon-vanished-short-01",
+  "title": "What If the Moon Vanished Tonight?",
+  "premise": "The Moon disappears instantly; nights darken, tides shrink to a third, Earth's tilt starts to wander.",
+  "date": "2026-11-25"
+ },
+ {
+  "slug": "0003-earth-stopped-spinning-short-01",
+  "title": "What If Earth Stopped Spinning?",
+  "premise": "Earth's rotation stops; air and oceans keep moving, days last a year, oceans drain to the poles.",
+  "date": "2026-11-25"
+ },
+ {
+  "slug": "0004-betelgeuse-exploded-short-01",
+  "title": "What If Betelgeuse Exploded Tonight?",
+  "premise": "Betelgeuse's supernova light reaches Earth; daylight-visible star, no danger, likely ~100,000 years off.",
+  "date": "2026-11-25"
+ }
+]

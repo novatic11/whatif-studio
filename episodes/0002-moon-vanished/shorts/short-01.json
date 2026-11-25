@@ -1,0 +1,442 @@
+{
+ "slug": "0002-moon-vanished-short-01",
+ "title": "What If the Moon Vanished Tonight?",
+ "palette": "deep_space",
+ "music_mood": "mystery",
+ "seed": 27,
+ "sources": [
+  {
+   "title": "Popular Science: What would happen if the moon suddenly disappeared?",
+   "url": "https://www.popsci.com/what-would-happen-if-moon-suddenly-disappeared"
+  },
+  {
+   "title": "Astronomy: What if the Moon disappeared tomorrow?",
+   "url": "https://www.astronomy.com/science/what-if-the-moon-disappeared-tomorrow/"
+  },
+  {
+   "title": "Live Science: What would happen if the moon disappeared tomorrow?",
+   "url": "https://www.livescience.com/55477-what-if-the-moon-disappeared.html"
+  },
+  {
+   "title": "Universe Today: We Owe Our Lives to the Moon",
+   "url": "https://www.universetoday.com/164878/we-owe-our-lives-to-the-moon/"
+  },
+  {
+   "title": "Phys.org (Astrobiology Magazine): Is the Moon critical for life on Earth?",
+   "url": "https://phys.org/news/2015-01-earth-moon-critical-life.html"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "hook",
+   "type": "cosmos",
+   "music_intensity": 0.6,
+   "narration": "Tonight, the Moon simply vanishes. No explosion. No warning. It's just gone. Earth keeps orbiting the Sun as before. The changes are quieter, and stranger.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -150,
+       0.9
+      ]
+     ],
+     [
+      5,
+      [
+       0,
+       -150,
+       1.0
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "planet",
+      "planet": "earth",
+      "x": -120,
+      "y": -120,
+      "r": 260,
+      "spin": 0.05,
+      "rot0": 1.4,
+      "light_dir": [
+       -0.7,
+       -0.3,
+       0.55
+      ]
+     },
+     {
+      "kind": "planet",
+      "planet": "moon",
+      "x": 280,
+      "y": -560,
+      "r": [
+       [
+        0,
+        90
+       ],
+       [
+        "@gone",
+        90
+       ],
+       [
+        "@gone+0.5",
+        2,
+        "in_out"
+       ]
+      ],
+      "spin": 0.02,
+      "light_dir": [
+       -0.7,
+       -0.3,
+       0.55
+      ]
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": "@gone",
+     "name": "drone_drop",
+     "gain": -6
+    }
+   ],
+   "tail": 0.3
+  },
+  {
+   "id": "cta",
+   "type": "statement",
+   "music_intensity": 0.45,
+   "transition": "cut",
+   "narration": "Quick pause: tap like if you'd miss it.",
+   "params": {
+    "lines": [
+     "WOULD YOU",
+     "MISS IT?"
+    ],
+    "accent_line": 1,
+    "backdrop": "stars"
+   }
+  },
+  {
+   "id": "dark",
+   "type": "cosmos",
+   "music_intensity": 0.4,
+   "narration": "First, nights get darker. The full Moon is by far the brightest thing in our night sky. Now there's only starlight.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -150,
+       1.0
+      ]
+     ],
+     [
+      5,
+      [
+       0,
+       -150,
+       1.08
+      ]
+     ]
+    ],
+    "star_alpha": 1.0,
+    "bodies": [
+     {
+      "kind": "planet",
+      "planet": "earth",
+      "x": 0,
+      "y": -250,
+      "r": 400,
+      "spin": 0.05,
+      "rot0": 3.0,
+      "light_dir": [
+       -0.7,
+       -0.3,
+       0.55
+      ],
+      "light": [
+       [
+        0,
+        0.5
+       ],
+       [
+        4,
+        0.08,
+        "in_out"
+       ]
+      ]
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@starlight",
+     "dur": 2.4,
+     "text": "STARLIGHT",
+     "kicker": "ALL THAT'S LEFT",
+     "style": "stat",
+     "y": 260,
+     "size": 130,
+     "color": "cool"
+    }
+   ]
+  },
+  {
+   "id": "tides",
+   "type": "compare",
+   "music_intensity": 0.55,
+   "narration": "Next, the tides shrink. The Moon drives most of them, so with only the Sun pulling, tides would be roughly a third as big.",
+   "params": {
+    "title": "TIDAL RANGE",
+    "mode": "bars",
+    "items": [
+     {
+      "label": "With Moon",
+      "value": 3,
+      "display": "TODAY",
+      "color": "cool"
+     },
+     {
+      "label": "Sun only",
+      "value": 1,
+      "display": "~1/3",
+      "color": "accent"
+     }
+    ],
+    "source": "Popular Science / NASA JPL"
+   }
+  },
+  {
+   "id": "coast",
+   "type": "statement",
+   "music_intensity": 0.45,
+   "narration": "Tide pools, mudflats and coastal ecosystems built around that rhythm would suffer. Some scientists even think tides helped early life move from sea to land.",
+   "params": {
+    "lines": [
+     "TIDE POOLS",
+     "MUDFLATS",
+     "COASTS"
+    ],
+    "accent_line": 2,
+    "kicker": "BUILT ON THE TIDES",
+    "backdrop": "pulse"
+   }
+  },
+  {
+   "id": "day",
+   "type": "cosmos",
+   "music_intensity": 0.4,
+   "narration": "Our day would still last twenty-four hours, for now. The Moon's slow braking on Earth's spin simply stops.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -150,
+       1.0
+      ]
+     ],
+     [
+      5,
+      [
+       0,
+       -150,
+       1.1
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "planet",
+      "planet": "earth",
+      "x": 0,
+      "y": -250,
+      "r": 400,
+      "spin": 0.25,
+      "rot0": 0.5,
+      "light_dir": [
+       -0.7,
+       -0.3,
+       0.55
+      ]
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@hours",
+     "dur": 2.4,
+     "text": "24 H",
+     "kicker": "DAY LENGTH, FOR NOW",
+     "style": "stat",
+     "y": 260,
+     "size": 130,
+     "color": "accent"
+    }
+   ]
+  },
+  {
+   "id": "tilt",
+   "type": "cosmos",
+   "music_intensity": 0.6,
+   "narration": "The real danger is slower. The Moon helps hold Earth's tilt steady. Without it, that tilt could wander over hundreds of thousands of years.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -200,
+       0.75
+      ]
+     ],
+     [
+      7,
+      [
+       0,
+       -200,
+       0.85
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "star",
+      "x": 0,
+      "y": -200,
+      "r": 90
+     },
+     {
+      "kind": "planet",
+      "planet": "earth",
+      "r": 70,
+      "orbit": {
+       "cx": 0,
+       "cy": -200,
+       "r": 420,
+       "period": 14,
+       "phase": 0.6
+      },
+      "trail": true,
+      "ghost_orbit": true,
+      "spin": 0.3
+     }
+    ]
+   }
+  },
+  {
+   "id": "mars",
+   "type": "compare",
+   "music_intensity": 0.6,
+   "narration": "Mars has no big moon, and its tilt swings by twenty-five degrees or more over the ages. That's about ten times Earth's range.",
+   "params": {
+    "title": "TILT SWING OVER THE AGES",
+    "mode": "bars",
+    "items": [
+     {
+      "label": "Earth",
+      "value": 2.5,
+      "display": "~2.5°",
+      "color": "cool"
+     },
+     {
+      "label": "Mars",
+      "value": 25,
+      "display": "25°+",
+      "color": "warn"
+     }
+    ],
+    "source": "Universe Today"
+   }
+  },
+  {
+   "id": "seasons",
+   "type": "statement",
+   "music_intensity": 0.7,
+   "narration": "That could mean seasons swinging between almost none and brutally extreme.",
+   "params": {
+    "lines": [
+     "NO SEASONS",
+     "OR EXTREME ONES"
+    ],
+    "accent_line": 1,
+    "backdrop": "grid"
+   }
+  },
+  {
+   "id": "end",
+   "type": "title_card",
+   "transition": "dip",
+   "music_intensity": 0.8,
+   "tail": 0.7,
+   "narration": "Some scientists think life would cope. But every night, you'd look up at an empty sky.",
+   "params": {
+    "lines": [
+     "WHAT IF",
+     "THE MOON",
+     "VANISHED?"
+    ],
+    "accent_line": 1,
+    "backdrop": "none",
+    "size": 96
+   }
+  }
+ ],
+ "claims": [
+  {
+   "claim": "The full Moon is the brightest object in the night sky; without it nights would be darker",
+   "source": 2
+  },
+  {
+   "claim": "Without the Moon, tides would be roughly one third of their current size, driven only by the Sun",
+   "source": 0
+  },
+  {
+   "claim": "Coastal ecosystems that depend on tides would suffer",
+   "source": 1
+  },
+  {
+   "claim": "Some scientists think tides helped early life move from the sea onto land (hypothesis)",
+   "source": 3
+  },
+  {
+   "claim": "Day length would stay as it is for now; the Moon's braking of Earth's rotation would stop",
+   "source": 1
+  },
+  {
+   "claim": "The Moon helps stabilize Earth's axial tilt; without it the tilt could drift over hundreds of thousands of years",
+   "source": 0
+  },
+  {
+   "claim": "Mars, lacking a big moon, has tilt swings of 25 degrees or more, about ten times Earth's range",
+   "source": 3
+  },
+  {
+   "claim": "Some research suggests Earth might keep a relatively stable climate even without the Moon",
+   "source": 4
+  }
+ ],
+ "meta": {
+  "title": "What If the Moon Vanished Tonight?",
+  "summary": "If the Moon disappeared, Earth wouldn't explode or fly away. Here's what would actually change: darker nights, smaller tides, and a slowly wandering tilt.",
+  "tags": [
+   "what if",
+   "moon",
+   "tides",
+   "earth",
+   "space",
+   "astronomy",
+   "science",
+   "shorts"
+  ],
+  "playlist": "What If: Space"
+ },
+ "format": "vertical",
+ "pace": "fast",
+ "status": "ready"
+}

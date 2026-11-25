@@ -1,7 +1,8 @@
 """Channel-wide look and sound. Episodes may pick a palette variant so videos
 stay recognisably on-brand without looking identical."""
 
-CHANNEL_NAME = "HYPOTHETICA"  # working name; change here once the channel name is final
+CHANNEL_NAME = "HYPOTHETICA"
+CHANNEL_HANDLE = "@HypotheticaXYZ"
 W, H = 1920, 1080
 FPS = 30
 

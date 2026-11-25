@@ -1,0 +1,5 @@
+:root{--bg:#060914;--fg:#eef1fb;--muted:#9aa6c7;--accent:#ffad42}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+main{max-width:720px;margin:0 auto;padding:48px 16px}
+a{color:var(--accent)}h1{line-height:1.2}.muted{color:var(--muted)}
+img.logo{width:96px;height:96px;border-radius:50%}

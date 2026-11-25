@@ -1,0 +1,621 @@
+{
+ "slug": "0001-sun-black-hole-short-01",
+ "title": "What If the Sun Became a Black Hole?",
+ "format": "vertical",
+ "pace": "fast",
+ "palette": "deep_space",
+ "music_mood": "tense",
+ "seed": 12,
+ "sources": [
+  "https://www.popsci.com/science/article/2013-07/if-sun-went-out-how-long-could-life-earth-survive/",
+  "https://experts.caltech.edu/news/caltech-question-month-if-sun-ceased-exist-right-now-how-long-would-mankind-survive-would",
+  "https://www.livescience.com/planet-earth/what-would-happen-to-earth-if-the-sun-suddenly-vanished"
+ ],
+ "scenes": [
+  {
+   "id": "hook",
+   "type": "cosmos",
+   "music_intensity": 0.7,
+   "narration": "Right now, the Sun collapses into a black hole.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -150,
+       0.95
+      ]
+     ],
+     [
+      4,
+      [
+       0,
+       -150,
+       1.05
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "star",
+      "x": 0,
+      "y": -200,
+      "r": 300,
+      "seed": 5,
+      "collapse": {
+       "at": "@black-0.5",
+       "dur": 0.7,
+       "bh_r": 70
+      }
+     },
+     {
+      "kind": "planet",
+      "planet": "earth",
+      "x": 300,
+      "y": 330,
+      "r": 60,
+      "spin": 0.06,
+      "rot0": 1.3
+     }
+    ],
+    "shake": [
+     [
+      0,
+      0
+     ],
+     [
+      "@black+0.1",
+      0
+     ],
+     [
+      "@black+0.3",
+      1.6
+     ],
+     [
+      "@black+1.5",
+      0
+     ]
+    ]
+   },
+   "sfx": [
+    {
+     "at": "@black-1.0",
+     "name": "riser",
+     "gain": -10
+    },
+    {
+     "at": "@black+0.2",
+     "name": "impact",
+     "gain": -3
+    }
+   ],
+   "tail": 0.5
+  },
+  {
+   "id": "mass",
+   "type": "cosmos",
+   "music_intensity": 0.7,
+   "narration": "Same mass. Crushed into a ball just six kilometers wide.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -150,
+       1.0
+      ]
+     ],
+     [
+      5,
+      [
+       0,
+       -150,
+       1.2
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "black_hole",
+      "x": 0,
+      "y": -200,
+      "r": 120
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@six-0.1",
+     "dur": 2.0,
+     "text": "6 KM",
+     "kicker": "DIAMETER",
+     "style": "stat",
+     "y": 330,
+     "size": 140,
+     "color": "accent"
+    }
+   ]
+  },
+  {
+   "id": "notice",
+   "type": "cosmos",
+   "music_intensity": 0.55,
+   "narration": "So what happens to us? For eight minutes and twenty seconds... nothing.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -150,
+       1.0
+      ]
+     ],
+     [
+      5,
+      [
+       0,
+       -150,
+       1.1
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "planet",
+      "planet": "earth",
+      "x": 0,
+      "y": -250,
+      "r": 400,
+      "spin": 0.04,
+      "rot0": 2.2,
+      "light_dir": [
+       -0.85,
+       -0.25,
+       0.45
+      ]
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@eight",
+     "dur": 2.6,
+     "text": "8:20",
+     "kicker": "UNTIL ANYTHING CHANGES",
+     "style": "stat",
+     "y": 260,
+     "size": 140,
+     "color": "accent"
+    }
+   ]
+  },
+  {
+   "id": "why",
+   "type": "cosmos",
+   "music_intensity": 0.55,
+   "narration": "That's how long the Sun's last light takes to reach Earth. Until then, the sky looks totally normal.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       -200,
+       0,
+       0.62
+      ]
+     ],
+     [
+      6,
+      [
+       -120,
+       0,
+       0.7
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "black_hole",
+      "x": -520,
+      "y": -420,
+      "r": 50
+     },
+     {
+      "kind": "planet",
+      "planet": "earth",
+      "x": 320,
+      "y": 380,
+      "r": 110,
+      "spin": 0.05,
+      "rot0": 2.6,
+      "light_dir": [
+       -0.7,
+       -0.55,
+       0.45
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "orbit",
+   "type": "cosmos",
+   "music_intensity": 0.5,
+   "narration": "And we don't get pulled in. Gravity cares about mass, not size, so Earth keeps orbiting exactly as before.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -200,
+       1.1
+      ]
+     ],
+     [
+      6,
+      [
+       0,
+       -200,
+       1.0
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "black_hole",
+      "x": 0,
+      "y": -200,
+      "r": 34
+     },
+     {
+      "kind": "planet",
+      "planet": "earth",
+      "r": 30,
+      "orbit": {
+       "cx": 0,
+       "cy": -200,
+       "r": 400,
+       "period": 9,
+       "phase": 0.8
+      },
+      "trail": true,
+      "ghost_orbit": true,
+      "light_dir": [
+       -0.6,
+       -0.3,
+       0.5
+      ],
+      "light": 0.6,
+      "spin": 0.3
+     }
+    ]
+   }
+  },
+  {
+   "id": "dark",
+   "type": "cosmos",
+   "music_intensity": 0.2,
+   "narration": "Then the last sunlight arrives... and the lights go out.",
+   "tail": 0.6,
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -150,
+       1.0
+      ]
+     ],
+     [
+      5,
+      [
+       0,
+       -150,
+       1.06
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "planet",
+      "planet": "earth",
+      "x": 0,
+      "y": -250,
+      "r": 420,
+      "spin": 0.05,
+      "rot0": 3.4,
+      "light_dir": [
+       -0.7,
+       -0.2,
+       0.6
+      ],
+      "light": [
+       [
+        0,
+        1.0
+       ],
+       [
+        "@out",
+        1.0
+       ],
+       [
+        "@out+1.2",
+        0.02,
+        "in_out"
+       ]
+      ]
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": "@out",
+     "name": "drone_drop",
+     "gain": -6
+    }
+   ]
+  },
+  {
+   "id": "week",
+   "type": "cosmos",
+   "music_intensity": 0.35,
+   "narration": "Within about a week, the average temperature drops below zero Fahrenheit.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -150,
+       1.0
+      ]
+     ],
+     [
+      5,
+      [
+       0,
+       -150,
+       1.1
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "planet",
+      "planet": "earth",
+      "x": 0,
+      "y": -250,
+      "r": 420,
+      "spin": 0.05,
+      "rot0": 4.0,
+      "light_dir": [
+       -0.7,
+       -0.2,
+       0.6
+      ],
+      "light": 0.06,
+      "frozen": [
+       [
+        0,
+        0.0
+       ],
+       [
+        5,
+        0.35
+       ]
+      ]
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@below",
+     "dur": 2.5,
+     "text": "< 0°F",
+     "kicker": "AFTER ONE WEEK",
+     "style": "stat",
+     "y": 260,
+     "size": 140,
+     "color": "cool"
+    }
+   ]
+  },
+  {
+   "id": "plants",
+   "type": "cosmos",
+   "music_intensity": 0.3,
+   "narration": "Without sunlight, photosynthesis stops. Most plants die within a few weeks, though some big trees could hang on for decades.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -150,
+       1.1
+      ]
+     ],
+     [
+      7,
+      [
+       0,
+       -150,
+       1.2
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "planet",
+      "planet": "earth",
+      "x": 0,
+      "y": -250,
+      "r": 420,
+      "spin": 0.05,
+      "rot0": 4.3,
+      "light_dir": [
+       -0.7,
+       -0.2,
+       0.6
+      ],
+      "light": 0.08,
+      "frozen": 0.35
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@weeks",
+     "dur": 2.4,
+     "text": "WEEKS",
+     "kicker": "MOST PLANTS",
+     "style": "stat",
+     "y": 260,
+     "size": 130,
+     "color": "good"
+    },
+    {
+     "at": "@decades",
+     "dur": 2.2,
+     "text": "DECADES",
+     "kicker": "SOME BIG TREES",
+     "style": "stat",
+     "y": 260,
+     "size": 130,
+     "color": "good"
+    }
+   ]
+  },
+  {
+   "id": "year",
+   "type": "cosmos",
+   "music_intensity": 0.35,
+   "narration": "Within a year, it's colder than minus one hundred, and the top of the ocean freezes solid.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -150,
+       1.05
+      ]
+     ],
+     [
+      6,
+      [
+       0,
+       -150,
+       1.15
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "planet",
+      "planet": "earth",
+      "x": 0,
+      "y": -250,
+      "r": 420,
+      "spin": 0.05,
+      "rot0": 4.6,
+      "light_dir": [
+       -0.7,
+       -0.2,
+       0.6
+      ],
+      "light": 0.1,
+      "frozen": [
+       [
+        0,
+        0.35
+       ],
+       [
+        "@freezes+0.5",
+        1.0
+       ]
+      ]
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@minus",
+     "dur": 2.5,
+     "text": "−100°F",
+     "kicker": "AFTER ONE YEAR",
+     "style": "stat",
+     "y": 260,
+     "size": 140,
+     "color": "cool"
+    }
+   ]
+  },
+  {
+   "id": "deep",
+   "type": "cosmos",
+   "music_intensity": 0.6,
+   "narration": "But that ice acts like a blanket. Deep below it, the water stays liquid for a long time. And microbes around deep-sea vents, living off chemicals instead of sunlight, could keep going.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -150,
+       1.15
+      ]
+     ],
+     [
+      6,
+      [
+       0,
+       -150,
+       1.3
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "planet",
+      "planet": "earth",
+      "x": 0,
+      "y": -250,
+      "r": 420,
+      "spin": 0.05,
+      "rot0": 5.0,
+      "light_dir": [
+       -0.7,
+       -0.2,
+       0.6
+      ],
+      "light": 0.12,
+      "frozen": 1.0
+     }
+    ]
+   }
+  },
+  {
+   "id": "end",
+   "type": "title_card",
+   "transition": "dip",
+   "music_intensity": 0.8,
+   "narration": "So the black hole wouldn't swallow us. It would just leave us in the dark.",
+   "tail": 0.7,
+   "params": {
+    "lines": [
+     "WHAT IF",
+     "THE SUN BECAME",
+     "A BLACK HOLE?"
+    ],
+    "accent_line": 2,
+    "size": 92
+   }
+  }
+ ]
+}

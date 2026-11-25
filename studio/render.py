@@ -13,7 +13,7 @@ import time
 import cairo
 import numpy as np
 
-from . import audio, brand, scenes, tts
+from . import audio, brand, captions, scenes, tts
 from .ease import smooth, window
 
 TRANSITION = 0.5  # seconds
@@ -42,17 +42,21 @@ def _resolve(obj, words):
 def build(plan, work):
     os.makedirs(work, exist_ok=True)
     voice = plan.get("voice", brand.VOICE)
-    speed = plan.get("speed", brand.VOICE_SPEED)
+    fast = plan.get("pace") == "fast"
+    speed = plan.get("speed", 1.12 if fast else brand.VOICE_SPEED)
+    pause_scale = 0.5 if fast else 1.0
+    d_lead, d_tail = (0.12, 0.15) if fast else (0.35, 0.45)
+    _G["transition"] = 0.3 if fast else TRANSITION
     timeline, voice_parts, cursor, all_words = [], [], 0.0, []
     for i, sc in enumerate(plan["scenes"]):
-        lead = sc.get("lead", 0.35 if i else 0.8)
+        lead = sc.get("lead", d_lead if i else (0.3 if fast else 0.8))
         narr = sc.get("narration", "").strip()
         if narr:
-            a, words = tts.synthesize(narr, voice, speed)
+            a, words = tts.synthesize(narr, voice, speed, pause_scale)
         else:
             a, words = np.zeros(0, np.float32), []
         words = [(w, s + lead, e + lead) for w, s, e in words]
-        dur = max(sc.get("min_dur", 0), lead + len(a) / tts.SR + sc.get("tail", 0.45))
+        dur = max(sc.get("min_dur", 0), lead + len(a) / tts.SR + sc.get("tail", d_tail))
         entry = copy.deepcopy(sc)
         entry["params"] = _resolve(sc.get("params", {}), words)
         entry["overlays"] = _resolve(sc.get("overlays", []), words)
@@ -91,10 +95,11 @@ def render_frame(fi):
     nxt = tl[idx + 1] if idx + 1 < len(tl) else None
     prv = tl[idx - 1] if idx > 0 else None
     # transition window straddles boundaries
-    if prv is not None and t - cur["start"] < TRANSITION / 2 and cur.get("transition", "crossfade") != "cut":
-        a, b, u = prv, cur, 0.5 + (t - cur["start"]) / TRANSITION
-    elif nxt is not None and cur["start"] + cur["dur"] - t < TRANSITION / 2 and nxt.get("transition", "crossfade") != "cut":
-        a, b, u = cur, nxt, 0.5 - (cur["start"] + cur["dur"] - t) / TRANSITION
+    TR = _G.get("transition", TRANSITION)
+    if prv is not None and t - cur["start"] < TR / 2 and cur.get("transition", "crossfade") != "cut":
+        a, b, u = prv, cur, 0.5 + (t - cur["start"]) / TR
+    elif nxt is not None and cur["start"] + cur["dur"] - t < TR / 2 and nxt.get("transition", "crossfade") != "cut":
+        a, b, u = cur, nxt, 0.5 - (cur["start"] + cur["dur"] - t) / TR
     else:
         a, b, u = cur, None, 0
     _render_scene(ctx, a, t)
@@ -118,6 +123,8 @@ def render_frame(fi):
         else:
             ctx.set_source_surface(layer)
             ctx.paint_with_alpha(smooth(u))
+    if _G.get("captions"):
+        captions.draw(ctx, t, _G["captions"], _G["env"].pal, _G["caption_style"])
     # global fade in/out
     total = _G["total"]
     f = min(window(t, 0, 0.6), 1 - window(t, total - 0.8, 0.8))
@@ -141,9 +148,11 @@ def _encode_chunk(args):
     return path
 
 
-def render_video(timeline, total, work, workers=None, seed=1, palette="deep_space", frames=None):
+def render_video(timeline, total, work, workers=None, seed=1, palette="deep_space", frames=None,
+                 words=None, caption_style="longform"):
     from . import bodies
-    _G.update(timeline=timeline, total=total, env=scenes.Env(palette, seed))
+    groups = captions.group_words(words, caption_style) if words and caption_style != "none" else None
+    _G.update(timeline=timeline, total=total, env=scenes.Env(palette, seed), captions=groups, caption_style=caption_style)
     # warm texture caches before forking so workers share them
     for k, s in (("earth", 3), ("star", 5)):
         bodies.planet_texture(k, s)
@@ -202,31 +211,23 @@ def build_audio(plan, timeline, total, vtrack, work):
 
 
 # ------------------------------------------------------------ captions
-def srt(words, path, max_chars=42, max_dur=3.0):
+def srt(words, path, style="longform"):
     def ts(x):
-        h, r = divmod(x, 3600)
-        m, s = divmod(r, 60)
-        return f"{int(h):02d}:{int(m):02d}:{int(s):02d},{int(round((s % 1) * 1000)):03d}".replace(",1000", ",999")
-    cues, cur = [], []
-    for w in words:
-        line = " ".join(x[0] for x in cur + [w])
-        if cur and (len(line) > max_chars or w[2] - cur[0][1] > max_dur or w[1] - cur[-1][2] > 0.6):
-            cues.append(cur)
-            cur = []
-        cur.append(w)
-    if cur:
-        cues.append(cur)
+        ms = int(round(x * 1000))
+        h, ms = divmod(ms, 3600000)
+        m, ms = divmod(ms, 60000)
+        sec, ms = divmod(ms, 1000)
+        return f"{h:02d}:{m:02d}:{sec:02d},{ms:03d}"
     with open(path, "w") as f:
-        for i, c in enumerate(cues, 1):
-            text = " ".join(x[0] for x in c)
-            text = re.sub(r"\s+([,.;:!?])", r"\1", text)
-            f.write(f"{i}\n{ts(c[0][1])} --> {ts(c[-1][2] + 0.15)}\n{text}\n\n")
+        for i, (a, b, g) in enumerate(captions.group_words(words, style), 1):
+            f.write(f"{i}\n{ts(a)} --> {ts(b)}\n{' '.join(w[0] for w in g)}\n\n")
 
 
 # ------------------------------------------------------------ main
 def render_episode(plan_path, out_dir, workers=None):
     t0 = time.time()
     plan = json.load(open(plan_path))
+    brand.set_format(plan.get("format", "landscape"))
     work = os.path.join(out_dir, "work")
     os.makedirs(work, exist_ok=True)
     timeline, total, vtrack, words = build(plan, work)
@@ -234,12 +235,15 @@ def render_episode(plan_path, out_dir, workers=None):
     json.dump([{k: v for k, v in e.items() if k != "words"} for e in timeline], open(os.path.join(out_dir, "timeline.json"), "w"), indent=1)
     mix, stats = build_audio(plan, timeline, total, vtrack, work)
     print(f"[audio] mixed ({time.time() - t0:.0f}s)", flush=True)
-    video = render_video(timeline, total, work, workers, plan.get("seed", 1), plan.get("palette", "deep_space"))
+    video = render_video(timeline, total, work, workers, plan.get("seed", 1), plan.get("palette", "deep_space"),
+                         words=words, caption_style=plan.get("captions", "shorts" if plan.get("format") == "vertical" else "longform"))
     print(f"[video] rendered ({time.time() - t0:.0f}s)", flush=True)
     final = os.path.join(out_dir, "final.mp4")
     subprocess.run(["ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-i", video, "-i", mix, "-map", "0:v", "-map", "1:a",
                     "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", final], check=True)
     srt(words, os.path.join(out_dir, "captions.srt"))
+    if len(words) and plan.get("format") == "vertical" and total < 60:
+        print(f"[warn] Short is {total:.1f}s; target is >= 60s", flush=True)
     json.dump({"duration": total, "loudness_in": stats, "render_seconds": time.time() - t0},
               open(os.path.join(out_dir, "render_report.json"), "w"), indent=1)
     print(f"[done] {final} ({time.time() - t0:.0f}s)", flush=True)

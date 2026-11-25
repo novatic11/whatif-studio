@@ -39,7 +39,7 @@ def pause_after(sentence):
     return 0.34
 
 
-def synthesize(text, voice=None, speed=None):
+def synthesize(text, voice=None, speed=None, pause_scale=1.0):
     """Returns (audio float32 @24k, words [(word, start_s, end_s)])."""
     voice = voice or brand.VOICE
     speed = speed or brand.VOICE_SPEED
@@ -51,12 +51,17 @@ def synthesize(text, voice=None, speed=None):
             audio = res.audio.numpy() if hasattr(res.audio, "numpy") else np.asarray(res.audio)
             audio = _trim(audio)
             for tok in (res.tokens or []):
-                if tok.start_ts is None or not re.search(r"\w", tok.text):
+                if not re.search(r"\w", tok.text):
+                    if words and tok.text.strip() and not tok.text.strip().startswith(("—", "(", "\"")):
+                        w0 = words[-1]
+                        words[-1] = (w0[0] + tok.text.strip(), w0[1], w0[2])
+                    continue
+                if tok.start_ts is None:
                     continue
                 words.append((tok.text, cursor + tok.start_ts - _trim.lead, cursor + tok.end_ts - _trim.lead))
             chunks.append(audio)
             cursor += len(audio) / SR
-        gap = np.zeros(int(pause_after(sent) * SR), dtype=np.float32)
+        gap = np.zeros(int(pause_after(sent) * pause_scale * SR), dtype=np.float32)
         chunks.append(gap)
         cursor += len(gap) / SR
     audio = np.concatenate(chunks).astype(np.float32) if chunks else np.zeros(1, np.float32)

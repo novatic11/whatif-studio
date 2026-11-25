@@ -5,6 +5,13 @@ CHANNEL_NAME = "HYPOTHETICA"  # working name; change here once the channel name 
 W, H = 1920, 1080
 FPS = 30
 
+
+def set_format(fmt):
+    """'landscape' (1920x1080) or 'vertical' (1080x1920, Shorts)."""
+    global W, H
+    W, H = (1080, 1920) if fmt == "vertical" else (1920, 1080)
+
+
 FONT = "Inter"
 FONT_HEAVY = "Inter Black"
 FONT_DISPLAY = "Inter Display"

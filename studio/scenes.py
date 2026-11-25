@@ -299,7 +299,7 @@ def overlay(ctx, t, items, env):
         if alpha <= 0:
             continue
         style = it.get("style", "pop")
-        x, y = it.get("x", brand.W / 2), it.get("y", brand.H * 0.82)
+        x, y = it.get("x", brand.W / 2), it.get("y", brand.H * 0.78)
         col = env.pal.get(it.get("color", "text"), env.pal["text"])
         size = it.get("size", 72)
         if style == "pop":
@@ -316,9 +316,9 @@ def overlay(ctx, t, items, env):
             draw.text(ctx, it["text"], x, y, size, brand.FONT_HEAVY, col, alpha)
         elif style == "lower":
             ctx.set_source_rgba(0, 0, 0, 0.45 * alpha)
-            draw.rounded_rect(ctx, 80, brand.H - 200, 760, 110, 14)
+            draw.rounded_rect(ctx, 80, brand.H - 300, 760, 110, 14)
             ctx.fill()
             ctx.set_source_rgba(*env.pal["accent"], alpha)
-            ctx.rectangle(80, brand.H - 200, 8, 110)
+            ctx.rectangle(80, brand.H - 300, 8, 110)
             ctx.fill()
-            draw.text(ctx, it["text"], 116, brand.H - 132, 40, brand.FONT_HEAVY, env.pal["text"], alpha, align="left")
+            draw.text(ctx, it["text"], 116, brand.H - 232, 40, brand.FONT_HEAVY, env.pal["text"], alpha, align="left")

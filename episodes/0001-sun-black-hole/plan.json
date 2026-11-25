@@ -32,7 +32,7 @@
         "bodies": [{"kind": "black_hole", "x": 0, "y": 0, "r": 140}]
       },
       "overlays": [
-        {"at": "@same", "dur": 2.2, "text": "SAME MASS", "style": "pop", "y": 930, "size": 84, "color": "accent"},
+        {"at": "@same", "dur": 2.2, "text": "SAME MASS", "style": "pop", "y": 850, "size": 84, "color": "accent"},
         {"at": "@six-0.1", "dur": 3.2, "text": "≈ 6 KM", "kicker": "DIAMETER", "style": "stat", "x": 1560, "y": 300, "size": 92},
         {"at": "@six+0.4", "dur": 2.8, "text": "NOT TO SCALE", "style": "label", "x": 1560, "y": 360, "size": 22, "color": "muted"}
       ]
@@ -46,7 +46,7 @@
         "camera": [[0, [0, 0, 1.0]], [10, [40, 0, 1.12]]],
         "bodies": [{"kind": "planet", "planet": "earth", "x": 120, "y": 40, "r": 330, "spin": 0.035, "rot0": 2.2, "light_dir": [-0.85, -0.25, 0.45]}]
       },
-      "overlays": [{"at": "@eight", "dur": 3.0, "text": "8 MIN 20 SEC", "style": "pop", "x": 560, "y": 980, "size": 80, "color": "accent"}]
+      "overlays": [{"at": "@eight", "dur": 3.0, "text": "8 MIN 20 SEC", "style": "pop", "x": 560, "y": 860, "size": 80, "color": "accent"}]
     },
     {
       "id": "last-light",

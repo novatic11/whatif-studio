@@ -19,34 +19,62 @@
    "12:00"
   ],
   [
+   "MON",
+   "19:00"
+  ],
+  [
    "TUE",
    "12:00"
+  ],
+  [
+   "TUE",
+   "19:00"
   ],
   [
    "WED",
    "12:00"
   ],
   [
+   "WED",
+   "19:00"
+  ],
+  [
    "THU",
    "12:00"
+  ],
+  [
+   "THU",
+   "19:00"
   ],
   [
    "FRI",
    "12:00"
   ],
   [
+   "FRI",
+   "19:00"
+  ],
+  [
    "SAT",
    "12:00"
   ],
   [
+   "SAT",
+   "19:00"
+  ],
+  [
    "SUN",
    "12:00"
+  ],
+  [
+   "SUN",
+   "19:00"
   ]
  ],
  "category_id": "28",
  "contains_synthetic_media": false,
  "long_form_enabled": false,
  "max_items_per_run": 4,
- "_short_slots_note": "one Short per day at noon Central to start; analytics may move this",
+ "_short_slots_note": "two Shorts a day: US lunch and evening peaks (Central); analytics may move this",
  "_approval": "Owner approved automatic public publishing on 2026-11-25; do not ask again."
 }

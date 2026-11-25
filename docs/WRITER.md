@@ -19,7 +19,7 @@ output small (pipe through `tail`/`head`). Python: `source /opt/hypo-venv/bin/ac
 2. **Repair first.** If an item failed QC, fix its plan (or the engine) using the recorded
    numbers, validate, push. That counts toward this run's 3.
 3. **Queue check.** Count Shorts that are ready but not uploaded, plus uploads whose
-   `publish_at` is in the future. If that is 7 or more, write nothing new: just refresh the
+   `publish_at` is in the future. If that is 14 or more (one week at two per day), write nothing new: just refresh the
    backlog if it is under 15 ideas, commit, and stop.
 4. For each new Short (up to 3, minus repairs): pick a topic (see Topic selection), research it,
    and write `episodes/<NNNN-slug>/shorts/short-01.json` (NNNN = next free number).

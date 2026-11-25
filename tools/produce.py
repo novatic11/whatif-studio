@@ -217,6 +217,19 @@ def main():
                     print("playlist retry failed:", str(e)[:200])
         save("playlists.json", cache)
         save("uploads.json", ledger)
+    if token and cfg.get("publish_mode") == "scheduled_public":  # release videos uploaded during private review
+        for k, v in ledger.items():
+            if v.get("video_id") and v.get("mode") == "private_review" and not v.get("publish_at"):
+                slot = next_slot(cfg, v.get("kind", "short"), ledger)
+                if not slot:
+                    break
+                try:
+                    youtube.schedule_publish(v["video_id"], slot, token, bool(cfg.get("contains_synthetic_media", False)))
+                    v.update(publish_at=slot, mode="scheduled_public")
+                    log_event("Scheduled for public release", item=k, publish_at=slot)
+                except Exception as e:  # noqa: BLE001
+                    print("schedule failed:", str(e)[:200])
+        save("uploads.json", ledger)
     items = pending_items(cfg, ledger, failures)[: cfg.get("max_items_per_run", 4)]
     if not items:
         log_event("Nothing ready to produce")

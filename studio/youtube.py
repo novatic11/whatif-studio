@@ -148,3 +148,10 @@ def recent_upload_titles(token, n=50):
     pl = ch["items"][0]["contentDetails"]["relatedPlaylists"]["uploads"]
     items = get("playlistItems", {"part": "snippet", "playlistId": pl, "maxResults": n}, token).get("items", [])
     return {it["snippet"]["title"]: it["snippet"]["resourceId"]["videoId"] for it in items}
+
+
+def schedule_publish(video_id, publish_at, token, synthetic=False):
+    """Turn an uploaded private video into a scheduled public release."""
+    return _request("PUT", f"{API}/videos?part=status", token, body={"id": video_id, "status": {
+        "privacyStatus": "private", "publishAt": publish_at, "selfDeclaredMadeForKids": False,
+        "embeddable": True, "license": "youtube", "containsSyntheticMedia": synthetic}})

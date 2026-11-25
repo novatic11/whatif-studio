@@ -1,0 +1,27 @@
+name: Analytics
+on:
+  schedule:
+    - cron: "41 11 * * *"   # daily, 05:41 CT
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency: { group: analytics, cancel-in-progress: false }
+jobs:
+  pull:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pull metrics
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+        run: python3 tools/analytics.py
+      - name: Save
+        run: |
+          git config user.name "hypothetica-bot"
+          git config user.email "hypothetica-bot@users.noreply.github.com"
+          git add state/analytics.json state/insights.json
+          git commit -qm "Analytics $(date -u +%F)" || exit 0
+          for i in 1 2 3 4; do git pull --rebase -q && git push -q && break; sleep $((i*5)); done

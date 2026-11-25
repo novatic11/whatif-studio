@@ -154,7 +154,7 @@ def produce_item(kind, path, cfg, ledger, failures, token, long_ids, upload):
     res = youtube.upload_video(final, snippet, status, token)
     vid = res["id"]
     entry = {"video_id": vid, "title": meta["title"], "kind": kind, "status": "uploaded", "privacy": "private",
-             "publish_at": publish_at, "mode": mode, "duration": report["checks"]["duration"]["value"],
+             "publish_at": publish_at, "mode": mode, "playlist": meta.get("playlist"), "duration": report["checks"]["duration"]["value"],
              "uploaded_at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"), "plan_hash": plan_hash(path)}
     ledger[key] = entry
     save("uploads.json", ledger)

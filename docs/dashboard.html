@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hypothetica Dashboard</title>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--fg:#141826;--muted:#5d6782;--line:#e3e6ef;--ok:#1b8a4b;--bad:#c0392b;--warn:#b7791f;--accent:#d9822b}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#070a14;--card:#0f1424;--fg:#eef1fb;--muted:#9aa6c7;--line:#1e2640;--ok:#4ade80;--bad:#f87171;--warn:#fbbf24;--accent:#ffad42}}
+:root[data-theme="dark"]{--bg:#070a14;--card:#0f1424;--fg:#eef1fb;--muted:#9aa6c7;--line:#1e2640;--ok:#4ade80;--bad:#f87171;--warn:#fbbf24;--accent:#ffad42}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+main{max-width:1000px;margin:0 auto;padding:24px 16px 48px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:20px}header img{width:44px;height:44px;border-radius:50%}
+h1{font-size:22px;margin:0}h2{font-size:15px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:28px 0 10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.k{color:var(--muted);font-size:13px}.v{font-size:24px;font-weight:700;margin-top:2px}
+.ok{color:var(--ok)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+.tbl{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;min-width:560px}th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);font-size:14px}
+th{color:var(--muted);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.05em}tr:last-child td{border-bottom:0}
+a{color:var(--accent)}.muted{color:var(--muted);font-size:13px}ul{margin:0;padding-left:18px}
+</style></head><body><main>
+<header><img src="logo.png" alt=""><div><h1>Hypothetica: Studio Dashboard</h1><div class="muted" id="updated">Loading…</div></div></header>
+<div class="grid" id="kpis"></div>
+<h2>Uploads</h2><div class="tbl"><table><thead><tr><th>Title</th><th>Status</th><th>Publishes</th><th>Views</th><th>Avg % viewed</th></tr></thead><tbody id="uploads"></tbody></table></div>
+<h2>Needs attention</h2><div class="card" id="attention"></div>
+<h2>What the analytics say</h2><div class="card" id="insights"></div>
+<h2>Recent activity</h2><div class="tbl"><table><thead><tr><th>When</th><th>Event</th></tr></thead><tbody id="events"></tbody></table></div>
+<p class="muted">Data comes from this repository's <code>state/</code> folder and refreshes whenever the pipeline runs.</p>
+</main>
+<script>
+const RAW="https://raw.githubusercontent.com/novatic11/whatif-studio/main/state/";
+const get=n=>fetch(RAW+n+"?t="+Date.now()).then(r=>r.ok?r.json():null).catch(()=>null);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const when=s=>s?new Date(s).toLocaleString([], {month:"short",day:"numeric",hour:"numeric",minute:"2-digit"}):"";
+Promise.all(["uploads.json","health.json","events.json","analytics.json","insights.json","qc_failures.json","config.json"].map(get)).then(([up,health,ev,an,ins,fails,cfg])=>{
+  up=up||{};ev=ev||[];an=an||{videos:{}};fails=fails||{};health=health||{};
+  const vids=Object.values(up), byId=an.videos||{};
+  const views=vids.reduce((a,v)=>a+((byId[v.video_id]||{}).views||0),0);
+  const authOk=(health.auth||{}).ok!==false;
+  const kpis=[["Pipeline",authOk?"Running":"Paused",authOk?"ok":"bad"],["Uploaded",vids.length,""],["Total views",views.toLocaleString(),""],
+    ["Mode",(cfg||{}).publish_mode==="scheduled_public"?"Auto-publish":"Private review",(cfg||{}).publish_mode==="scheduled_public"?"ok":"warn"],
+    ["QC failures",Object.keys(fails).length,Object.keys(fails).length?"warn":"ok"]];
+  document.getElementById("kpis").innerHTML=kpis.map(([k,v,c])=>`<div class="card"><div class="k">${k}</div><div class="v ${c}">${esc(v)}</div></div>`).join("");
+  document.getElementById("uploads").innerHTML=vids.slice().reverse().map(v=>{const a=byId[v.video_id]||{};const an2=a.analytics||{};
+    return `<tr><td><a href="https://youtu.be/${esc(v.video_id)}">${esc(v.title)}</a></td><td>${esc(a.privacy||v.privacy||v.status)}</td><td>${v.publish_at?when(v.publish_at):"—"}</td><td>${(a.views??"—").toLocaleString()}</td><td>${an2.averageViewPercentage!=null?an2.averageViewPercentage.toFixed(0)+"%":"—"}</td></tr>`}).join("")||`<tr><td colspan="5" class="muted">No uploads yet</td></tr>`;
+  const att=[];if(!authOk)att.push(`<span class="bad">YouTube credentials rejected.</span> Redo setup step 5 and replace <code>YT_REFRESH_TOKEN</code>.`);
+  for(const [k,f] of Object.entries(fails))att.push(`<b>${esc(k)}</b>: ${esc((f.issues||f.failed||[]).join("; "))} <span class="muted">(the writer repairs this on its next run)</span>`);
+  for(const v of vids)for(const w of (v.warnings||[]))att.push(`${esc(v.title)}: <span class="warn">${esc(w.slice(0,140))}</span>`);
+  document.getElementById("attention").innerHTML=att.length?"<ul>"+att.map(x=>`<li>${x}</li>`).join("")+"</ul>":`<span class="ok">Nothing. All clear.</span>`;
+  document.getElementById("insights").innerHTML=ins?`<div class="muted">Sample: ${ins.sample_size} public videos</div><ul>${(ins.lessons||[]).map(l=>`<li>${esc(l)}</li>`).join("")}</ul>`:`<span class="muted">No analytics yet.</span>`;
+  document.getElementById("events").innerHTML=ev.slice(-15).reverse().map(e=>`<tr><td>${when(e.at)}</td><td>${esc(e.msg)}${e.item?` <span class="muted">${esc(e.item)}</span>`:""}</td></tr>`).join("");
+  document.getElementById("updated").textContent="Last pipeline run: "+(health.last_run?when(health.last_run):"—")+(an.updated?" · analytics "+when(an.updated):"");
+});
+</script></body></html>

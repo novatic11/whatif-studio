@@ -51,5 +51,32 @@
   "publish_at": "2026-11-28T18:00:00Z",
   "mode": "scheduled_public",
   "warnings": []
+ },
+ {
+  "at": "2026-11-25T17:12:38+00:00",
+  "msg": "Uploaded",
+  "item": "episodes/0005-insects-vanished/shorts/short-01.json",
+  "video_id": "5JvPHps963I",
+  "publish_at": "2026-11-26T01:00:00Z",
+  "mode": "scheduled_public",
+  "warnings": []
+ },
+ {
+  "at": "2026-11-25T17:13:47+00:00",
+  "msg": "Uploaded",
+  "item": "episodes/0006-human-photosynthesis/shorts/short-01.json",
+  "video_id": "ttWUJ90nyoI",
+  "publish_at": "2026-11-27T01:00:00Z",
+  "mode": "scheduled_public",
+  "warnings": []
+ },
+ {
+  "at": "2026-11-25T17:14:55+00:00",
+  "msg": "Uploaded",
+  "item": "episodes/0007-never-slept/shorts/short-01.json",
+  "video_id": "O_EF_40E3BQ",
+  "publish_at": "2026-11-28T01:00:00Z",
+  "mode": "scheduled_public",
+  "warnings": []
  }
 ]

@@ -55,5 +55,47 @@
   "uploaded_at": "2026-11-25T09:56:48+00:00",
   "plan_hash": "9c788d9cbdfe9a41",
   "warnings": []
+ },
+ "episodes/0005-insects-vanished/shorts/short-01.json": {
+  "video_id": "5JvPHps963I",
+  "title": "What If Every Insect Vanished Overnight?",
+  "kind": "short",
+  "status": "uploaded",
+  "privacy": "private",
+  "publish_at": "2026-11-26T01:00:00Z",
+  "mode": "scheduled_public",
+  "playlist": "What If: Life",
+  "duration": 61.6,
+  "uploaded_at": "2026-11-25T17:12:31+00:00",
+  "plan_hash": "3af0e313b9b5de5f",
+  "warnings": []
+ },
+ "episodes/0006-human-photosynthesis/shorts/short-01.json": {
+  "video_id": "ttWUJ90nyoI",
+  "title": "What If Humans Could Photosynthesize?",
+  "kind": "short",
+  "status": "uploaded",
+  "privacy": "private",
+  "publish_at": "2026-11-27T01:00:00Z",
+  "mode": "scheduled_public",
+  "playlist": "What If: Humans",
+  "duration": 61.9,
+  "uploaded_at": "2026-11-25T17:13:46+00:00",
+  "plan_hash": "53afb0867aa61306",
+  "warnings": []
+ },
+ "episodes/0007-never-slept/shorts/short-01.json": {
+  "video_id": "O_EF_40E3BQ",
+  "title": "What If You Never Slept Again?",
+  "kind": "short",
+  "status": "uploaded",
+  "privacy": "private",
+  "publish_at": "2026-11-28T01:00:00Z",
+  "mode": "scheduled_public",
+  "playlist": "What If: Humans",
+  "duration": 61.9,
+  "uploaded_at": "2026-11-25T17:14:54+00:00",
+  "plan_hash": "66004053d9614ee3",
+  "warnings": []
  }
 }

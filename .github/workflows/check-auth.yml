@@ -1,0 +1,29 @@
+name: Check YouTube connection
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [".github/workflows/check-auth.yml", "tools/check_auth.py"]
+permissions:
+  contents: write
+concurrency: { group: state-writer, cancel-in-progress: false }
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Read channel (no uploads)
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+        run: python3 tools/check_auth.py || echo "FAILED=1" >> $GITHUB_ENV
+      - name: Save result
+        run: |
+          git config user.name "hypothetica-bot"
+          git config user.email "hypothetica-bot@users.noreply.github.com"
+          git add state/auth_check.json
+          git commit -m "Connection check result" || true
+          git pull --rebase -q && git push
+          [ -z "$FAILED" ]

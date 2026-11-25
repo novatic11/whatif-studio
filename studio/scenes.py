@@ -81,6 +81,79 @@ def _draw_planet(ctx, b, sx, sy, rpx, t, light_pos, light):
     draw.paint_array(ctx, rgb, a, sx, sy, rpx / rq)
 
 
+def _draw_rings(ctx, sx, sy, rpx, rg, t, env, back):
+    """Planetary ring system as one numpy-shaded annulus seen in perspective.
+    rg: {inner, outer (planet radii), squash (0 = edge-on .. 1 = face-on), angle (deg),
+         alpha, grow (0..1 radial reveal), color [r,g,b], seed}. All numeric keys accept keyframes.
+    The far half (back=True) is drawn before the planet, the near half after it."""
+    alpha = kf(rg.get("alpha", 1.0), t)
+    grow = kf(rg.get("grow", 1.0), t)
+    if alpha <= 0.01 or grow <= 0.01:
+        return
+    if not back and rg.get("shadow"):
+        _draw_ring_shadow(ctx, sx, sy, rpx, rg, t, alpha * grow)
+    inner, outer = rg.get("inner", 1.5), rg.get("outer", 2.6)
+    outer_now = inner + (outer - inner) * grow
+    sq = max(0.012, kf(rg.get("squash", 0.25), t))
+    ang = math.radians(kf(rg.get("angle", -12), t))
+    a, bb = outer_now * rpx, outer_now * rpx * sq
+    ca, sa = math.cos(ang), math.sin(ang)
+    hw = math.sqrt((a * ca) ** 2 + (bb * sa) ** 2) + 3
+    hh = math.sqrt((a * sa) ** 2 + (bb * ca) ** 2) + 3
+    x0, x1 = int(max(0, sx - hw)), int(min(brand.W, sx + hw))
+    y0, y1 = int(max(0, sy - hh)), int(min(brand.H, sy + hh))
+    if x1 - x0 < 2 or y1 - y0 < 2:
+        return
+    ys, xs = np.mgrid[y0:y1, x0:x1].astype(float) + 0.5
+    dx, dy = xs - sx, ys - sy
+    u = dx * ca + dy * sa
+    v = -dx * sa + dy * ca
+    half = (v < 0) if back else (v >= 0)
+    rr = np.sqrt(u * u + (v / sq) ** 2) / rpx
+    span = outer - inner
+    x = (rr - inner) / span  # 0..1 across the ring
+    rng = np.random.default_rng(rg.get("seed", 7))
+    dens = 0.55 + 0.25 * np.sin(x * 9.0 + 0.6)
+    for f, amp in ((23.0, 0.18), (61.0, 0.12), (140.0, 0.08)):
+        dens += amp * np.sin(x * f + rng.uniform(0, 6.28))
+    dens *= 1.0 - 0.85 * np.exp(-((x - 0.62) / 0.035) ** 2)  # one clear gap
+    edge = np.clip(x * 25, 0, 1) * np.clip((1 - x) * 25, 0, 1) * (rr * rpx <= outer_now * rpx + 0.5)
+    a_img = np.clip(dens, 0, 1) * edge * (x >= 0) * (x <= 1) * half * alpha
+    # thin edge-on rings still need a visible line
+    if sq < 0.05:
+        a_img = np.maximum(a_img, half * np.clip(1.4 - np.abs(v), 0, 1) * (np.abs(u) / rpx >= inner) * (np.abs(u) / rpx <= outer_now) * alpha * 0.9)
+    base = np.array(rg.get("color", (0.80, 0.74, 0.64)), float)
+    shade = 0.75 + 0.25 * np.clip(dens, 0, 1)
+    rgb = base[None, None, :] * shade[..., None]
+    if not back:  # planet's shadow falls across the near side of the ring
+        shadow = np.clip((np.abs(u) - rpx * 0.92) / (rpx * 0.12), 0, 1)
+        rgb = rgb * (0.35 + 0.65 * np.where(u > 0, shadow, 1.0))[..., None]
+    surf = draw.rgba_to_surface(rgb, a_img)
+    ctx.set_source_surface(surf, x0, y0)
+    ctx.paint()
+
+
+def _draw_ring_shadow(ctx, sx, sy, rpx, rg, t, alpha):
+    """Dark curved band the ring casts on the planet's day side.
+    rg.shadow: {offset (planet radii along the ring's minor axis, + = below), width, alpha} (kf)."""
+    sh = rg["shadow"]
+    off = kf(sh.get("offset", 0.35), t)
+    sq = max(0.05, kf(rg.get("squash", 0.25), t))
+    ang = math.radians(kf(rg.get("angle", -12), t))
+    R = int(math.ceil(rpx)) + 1
+    ys, xs = np.mgrid[-R:R, -R:R].astype(float) + 0.5
+    ca, sa = math.cos(ang), math.sin(ang)
+    u = xs * ca + ys * sa
+    v = -xs * sa + ys * ca
+    disc = np.clip(rpx - np.sqrt(xs * xs + ys * ys) + 0.5, 0, 1)
+    rr = np.sqrt(u * u + ((v - off * rpx) / sq) ** 2) / rpx
+    w = sh.get("width", 0.35)
+    band = np.clip((rr - (1.0 - w)) * 12, 0, 1) * np.clip((1.12 - rr) * 12, 0, 1)
+    a = band * disc * kf(sh.get("alpha", 0.6), t) * alpha
+    rgb = np.zeros(a.shape + (3,))
+    draw.paint_array(ctx, rgb, a, sx, sy, 1.0)
+
+
 def _body_pos(b, t):
     if "orbit" in b:
         o = b["orbit"]
@@ -92,7 +165,8 @@ def _body_pos(b, t):
 @scene("cosmos")
 def cosmos(ctx, t, dur, p, env):
     """Free camera over a 2D world of stars, planets and black holes.
-    bodies: [{kind: star|planet|black_hole, x, y, r, ...}]"""
+    bodies: [{kind: star|planet|black_hole, x, y, r, ...}]
+    planets may add rings: {inner, outer, squash, angle, alpha, grow, color, shadow} (see _draw_rings)."""
     cam = _camera(p, t)
     draw.background(ctx, env.pal)
     env.stars.draw(ctx, (cam.x, cam.y, cam.zoom), t, kf(p.get("star_alpha", 1.0), t))
@@ -142,10 +216,14 @@ def cosmos(ctx, t, dur, p, env):
             light_pos = light_pos or None
         elif kind == "planet":
             light = kf(b.get("light", 1.0), t)
+            if b.get("rings"):
+                _draw_rings(ctx, sx, sy, r, b["rings"], t, env, back=True)
             if b.get("light_dir"):
                 _draw_planet(ctx, b, sx, sy, r, t, None, light)
             else:
                 _draw_planet(ctx, b, sx, sy, r, t, light_pos or cam.to_screen(*b.get("light_from", (-5000, 0))), light)
+            if b.get("rings"):
+                _draw_rings(ctx, sx, sy, r, b["rings"], t, env, back=False)
         if b.get("label"):
             la = kf(b.get("label_alpha", 1.0), t)
             if la > 0.01:
@@ -630,4 +708,131 @@ def figures(ctx, t, dur, p, env):
         if f.get("label"):
             draw.text(ctx, f["label"], x, y + size * 0.62, f.get("label_size", 34), brand.FONT_HEAVY,
                       _color(env, f.get("label_color"), "text"), a, tracking=0.08)
+
+
+# ------------------------------------------------------------ planet cutaway
+_CUT_COLORS = {
+    "crust": (0.55, 0.42, 0.30), "mantle": (0.86, 0.36, 0.12), "outer_core": (1.0, 0.62, 0.18),
+    "inner_core": (1.0, 0.90, 0.62), "gas": (0.86, 0.74, 0.56), "liquid_h": (0.55, 0.45, 0.55),
+    "metallic_h": (0.40, 0.48, 0.70), "core": (0.95, 0.70, 0.40),
+}
+
+
+def _cut_col(c):
+    return _CUT_COLORS.get(c, (0.6, 0.6, 0.6)) if isinstance(c, str) else tuple(c)
+
+
+@scene("cutaway")
+def cutaway(ctx, t, dur, p, env):
+    """Planet cross-section: a shaded sphere with a wedge removed to show internal layers.
+    params: planet (sphere texture: earth|gas|rocky|moon), x, y (world), r, camera [x,y,zoom] kf,
+      wedge [a0, a1] degrees (0 = right, 90 = down; [0, 360] = full slice), wedge_open (0..1 kf),
+      layers [{r: fraction of radius (outer first), color: name|[r,g,b], label, label_at, label_dur, label_angle}],
+      label_angle (deg, where layer labels sit), glow_core (0..1),
+      tunnel {angle, alpha} (straight shaft through the centre),
+      marker {angle, s (kf: 1 = surface, 0 = centre, -1 = far side), label, alpha},
+      readout {kicker, value (kf), fmt, color, at}"""
+    cam = _camera(p, t)
+    draw.background(ctx, env.pal)
+    env.stars.draw(ctx, (cam.x, cam.y, cam.zoom), t, 0.8)
+    sx, sy = cam.to_screen(kf(p.get("x", 0), t), kf(p.get("y", 0), t))
+    R = kf(p.get("r", 380), t) * cam.zoom
+    planet = p.get("planet", "earth")
+    b = {"planet": planet, "spin": p.get("spin", 0.03), "rot0": p.get("rot0", 1.0),
+         "atmo": 0.9 if planet == "earth" else 0.35, "seed": p.get("seed", 3)}
+    _draw_planet(ctx, b, sx, sy, R, t, None, 1.0)
+    # cross-section inside the wedge
+    a0, a1 = p.get("wedge", [-90, 0])
+    op = kf(p.get("wedge_open", 1.0), t)
+    a1 = a0 + (a1 - a0) * op
+    layers = p.get("layers", [])
+    if op > 0.001 and layers:
+        Ri = int(math.ceil(R)) + 2
+        x0, y0 = int(sx - Ri), int(sy - Ri)
+        ys, xs = np.mgrid[0:2 * Ri, 0:2 * Ri].astype(float) + 0.5
+        dx, dy = xs - Ri, ys - Ri
+        d = np.sqrt(dx * dx + dy * dy) / R
+        th = (np.degrees(np.arctan2(dy, dx)) - a0) % 360
+        inw = (th <= (a1 - a0)) if (a1 - a0) < 359.9 else np.ones_like(d, bool)
+        rgb = np.zeros(d.shape + (3,))
+        for i, L in enumerate(layers):
+            r_out = L["r"]
+            r_in = layers[i + 1]["r"] if i + 1 < len(layers) else 0.0
+            c = np.array(_cut_col(L.get("color", "crust")))
+            # inside each layer: a little brighter towards its inner edge (hotter, deeper)
+            f = np.clip((r_out - d) / max(r_out - r_in, 1e-6), 0, 1)
+            m = ((d <= r_out) & (d > r_in))[..., None]
+            rgb = np.where(m, c * (0.78 + 0.30 * f[..., None]), rgb)
+        # subtle swirl texture so faces don't look flat
+        tex = 1.0 + 0.03 * np.sin(d * 60 + np.sin(np.arctan2(dy, dx) * 7) * 2)
+        rgb = rgb * tex[..., None]
+        edge = np.clip((1 - d) * R + 0.5, 0, 1)
+        # soft boundaries between layers
+        for L in layers[1:]:
+            rgb *= (1 - 0.35 * np.exp(-((d - L["r"]) * R / 2.2) ** 2))[..., None]
+        alpha = edge * inw * np.clip(op * 3, 0, 1)
+        draw.paint_array(ctx, rgb, alpha, sx, sy, 1.0)
+        if p.get("glow_core"):
+            ctx.set_operator(cairo.OPERATOR_ADD)
+            draw.glow(ctx, sx, sy, R * layers[-1]["r"] * 1.6, _cut_col(layers[-1].get("color", "core")), 0.35 * p["glow_core"] * op)
+            ctx.set_operator(cairo.OPERATOR_OVER)
+        # crisp cut edges
+        ctx.set_source_rgba(1, 1, 1, 0.25 * op)
+        ctx.set_line_width(2)
+        if (a1 - a0) < 359.9:
+            for aa in (a0, a1):
+                ctx.move_to(sx, sy)
+                ctx.line_to(sx + R * math.cos(math.radians(aa)), sy + R * math.sin(math.radians(aa)))
+                ctx.stroke()
+        # layer labels
+        la = math.radians(p.get("label_angle", (a0 + a1) / 2))
+        for i, L in enumerate(layers):
+            if not L.get("label"):
+                continue
+            lat0 = L.get("label_at", 0.3 + i * 0.4)
+            u = out_cubic(window(t, lat0, 0.5))
+            if L.get("label_dur"):
+                u = min(u, 1 - window(t, lat0 + L["label_dur"], 0.4))
+            if u <= 0:
+                continue
+            r_in = layers[i + 1]["r"] if i + 1 < len(layers) else 0.0
+            rm = (L["r"] + r_in) / 2 * R
+            lai = math.radians(L["label_angle"]) if "label_angle" in L else la
+            px, py = sx + rm * math.cos(lai), sy + rm * math.sin(lai)
+            ctx.set_source_rgba(*env.pal["text"], u)
+            ctx.new_path(); ctx.arc(px, py, 6, 0, 2 * math.pi); ctx.fill()
+            draw.text(ctx, L["label"], px + 18, py + 10, p.get("label_size", 30), brand.FONT_HEAVY, env.pal["text"], u, align="left")
+    tun = p.get("tunnel")
+    if tun:
+        ta = kf(tun.get("alpha", 1.0), t)
+        an = math.radians(tun.get("angle", 90))
+        ex, ey = math.cos(an) * R, math.sin(an) * R
+        grow = kf(tun.get("grow", 1.0), t)
+        ctx.set_line_cap(cairo.LINE_CAP_ROUND)
+        ctx.set_source_rgba(0.02, 0.02, 0.04, 0.92 * ta)
+        ctx.set_line_width(tun.get("width", 16))
+        ctx.move_to(sx + ex, sy + ey); ctx.line_to(sx + ex - 2 * ex * grow, sy + ey - 2 * ey * grow); ctx.stroke()
+        ctx.set_source_rgba(*env.pal["cool"], 0.5 * ta)
+        ctx.set_line_width(2)
+        ctx.move_to(sx + ex, sy + ey); ctx.line_to(sx + ex - 2 * ex * grow, sy + ey - 2 * ey * grow); ctx.stroke()
+    mk = p.get("marker")
+    if mk:
+        ma = kf(mk.get("alpha", 1.0), t)
+        an = math.radians(mk.get("angle", -90))
+        s_now = kf(mk["s"], t)
+        mx, my = sx + math.cos(an) * R * s_now, sy + math.sin(an) * R * s_now
+        col = env.pal.get(mk.get("color", "accent"), env.pal["accent"])
+        ctx.set_operator(cairo.OPERATOR_ADD)
+        draw.glow(ctx, mx, my, 46, col, 0.8 * ma)
+        ctx.set_operator(cairo.OPERATOR_OVER)
+        ctx.set_source_rgba(1, 1, 1, ma); ctx.new_path(); ctx.arc(mx, my, 9, 0, 2 * math.pi); ctx.fill()
+        if mk.get("label"):
+            draw.text(ctx, mk["label"], mx + 30, my + 10, 30, brand.FONT, env.pal["text"], ma, align="left")
+    ro = p.get("readout")
+    if ro:
+        u = out_cubic(window(t, ro.get("at", 0.2), 0.5))
+        val = kf(ro["value"], t)
+        draw.text(ctx, ro.get("kicker", ""), brand.W / 2, ro.get("y", 210) - 100, 30, brand.FONT, env.pal["muted"], u, tracking=0.2)
+        draw.text(ctx, ro.get("fmt", "{:,.0f}").format(val), brand.W / 2, ro.get("y", 210), 92, brand.FONT_MONO,
+                  env.pal.get(ro.get("color", "accent"), env.pal["accent"]), u)
     draw.vignette(ctx)

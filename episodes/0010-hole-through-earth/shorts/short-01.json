@@ -1,0 +1,695 @@
+{
+ "format": "vertical",
+ "pace": "fast",
+ "status": "ready",
+ "slug": "0010-hole-through-earth-short-01",
+ "title": "What If You Fell Through a Hole in the Earth?",
+ "palette": "deep_space",
+ "music_mood": "mystery",
+ "seed": 103,
+ "sources": [
+  {
+   "title": "Klotz, The gravity tunnel in a non-uniform Earth, Am. J. Phys. 83, 231 (2015) (arXiv:1308.1342)",
+   "url": "https://arxiv.org/abs/1308.1342"
+  },
+  {
+   "title": "Live Science: How long would it take to fall through the Earth?",
+   "url": "https://www.livescience.com/50312-how-long-to-fall-through-earth.html"
+  },
+  {
+   "title": "Phys.org: New way to calculate how long it would take to fall through a hole in the Earth",
+   "url": "https://phys.org/news/2015-03-fall-hole-earth.html"
+  },
+  {
+   "title": "Scientific American: Would you fall all the way through a hole through the Earth?",
+   "url": "https://www.scientificamerican.com/article/would-you-fall-all-the-wa/"
+  },
+  {
+   "title": "Big Think: Could we create a bottomless pit on Earth?",
+   "url": "https://bigthink.com/starts-with-a-bang/could-we-create-a-bottomless-pit-on-earth/"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "hook",
+   "type": "cutaway",
+   "music_intensity": 0.6,
+   "narration": "Imagine a tunnel drilled straight through the Earth, from one side to the other. And you jump in.",
+   "params": {
+    "planet": "earth",
+    "x": 0,
+    "y": -260,
+    "r": 400,
+    "camera": [
+     0,
+     -150,
+     1.0
+    ],
+    "wedge": [
+     -90,
+     90
+    ],
+    "glow_core": 0.8,
+    "layers": [
+     {
+      "r": 1.0,
+      "color": "crust",
+      "label_at": 99
+     },
+     {
+      "r": 0.985,
+      "color": "mantle",
+      "label": "MANTLE",
+      "label_angle": -40,
+      "label_at": 99
+     },
+     {
+      "r": 0.55,
+      "color": "outer_core",
+      "label": "OUTER CORE",
+      "label_angle": -30,
+      "label_at": 99
+     },
+     {
+      "r": 0.19,
+      "color": "inner_core",
+      "label_at": 99
+     }
+    ],
+    "tunnel": {
+     "angle": 90,
+     "grow": [
+      [
+       0,
+       0.0
+      ],
+      [
+       "@drilled",
+       0.0
+      ],
+      [
+       "@other+0.3",
+       1.0
+      ]
+     ]
+    },
+    "marker": {
+     "angle": -90,
+     "s": [
+      [
+       0,
+       1.0
+      ],
+      [
+       "@jump",
+       1.0
+      ],
+      [
+       "@jump+1.2",
+       0.9
+      ]
+     ],
+     "alpha": [
+      [
+       0,
+       0
+      ],
+      [
+       "@jump-0.2",
+       0
+      ],
+      [
+       "@jump",
+       1
+      ]
+     ]
+    }
+   },
+   "sfx": [
+    {
+     "at": "@jump",
+     "name": "whoosh",
+     "gain": -6
+    }
+   ]
+  },
+  {
+   "id": "cta",
+   "type": "statement",
+   "music_intensity": 0.5,
+   "transition": "cut",
+   "narration": "How long until you pop out? Comment your guess.",
+   "params": {
+    "lines": [
+     "HOW LONG",
+     "UNTIL YOU",
+     "POP OUT?"
+    ],
+    "accent_line": 2,
+    "backdrop": "grid"
+   }
+  },
+  {
+   "id": "rules",
+   "type": "statement",
+   "music_intensity": 0.5,
+   "narration": "Let's pretend the tunnel survives the heat and crushing pressure, and all the air is pumped out. Just you and gravity.",
+   "params": {
+    "kicker": "THOUGHT EXPERIMENT",
+    "lines": [
+     "NO HEAT.",
+     "NO AIR.",
+     "JUST FALLING."
+    ],
+    "accent_line": 2,
+    "backdrop": "stars"
+   }
+  },
+  {
+   "id": "accel",
+   "type": "cutaway",
+   "music_intensity": 0.7,
+   "narration": "You fall faster and faster. By the center, you're moving about eight kilometers per second, as fast as a satellite in orbit.",
+   "params": {
+    "planet": "earth",
+    "x": 0,
+    "y": -260,
+    "r": 400,
+    "camera": [
+     0,
+     -150,
+     1.0
+    ],
+    "wedge": [
+     -90,
+     90
+    ],
+    "glow_core": 0.8,
+    "layers": [
+     {
+      "r": 1.0,
+      "color": "crust",
+      "label_at": "@faster"
+     },
+     {
+      "r": 0.985,
+      "color": "mantle",
+      "label": "MANTLE",
+      "label_angle": -40,
+      "label_at": "@faster"
+     },
+     {
+      "r": 0.55,
+      "color": "outer_core",
+      "label": "OUTER CORE",
+      "label_angle": -30,
+      "label_at": "@faster"
+     },
+     {
+      "r": 0.19,
+      "color": "inner_core",
+      "label_at": "@faster"
+     }
+    ],
+    "tunnel": {
+     "angle": 90,
+     "grow": 1.0
+    },
+    "marker": {
+     "angle": -90,
+     "s": [
+      [
+       0,
+       0.9
+      ],
+      [
+       "@center",
+       0.0,
+       "in"
+      ]
+     ]
+    },
+    "readout": {
+     "y": 1430,
+     "kicker": "YOUR SPEED",
+     "value": [
+      [
+       0,
+       0.3
+      ],
+      [
+       "@center",
+       7.9,
+       "in"
+      ]
+     ],
+     "fmt": "{:.1f} KM/S"
+    }
+   }
+  },
+  {
+   "id": "flip",
+   "type": "cutaway",
+   "music_intensity": 0.6,
+   "narration": "Then gravity flips. It now pulls you backward, and you slow down the whole way up.",
+   "params": {
+    "planet": "earth",
+    "x": 0,
+    "y": -260,
+    "r": 400,
+    "camera": [
+     0,
+     -150,
+     1.0
+    ],
+    "wedge": [
+     -90,
+     90
+    ],
+    "glow_core": 0.8,
+    "layers": [
+     {
+      "r": 1.0,
+      "color": "crust",
+      "label_at": 99
+     },
+     {
+      "r": 0.985,
+      "color": "mantle",
+      "label": "MANTLE",
+      "label_angle": -40,
+      "label_at": 99
+     },
+     {
+      "r": 0.55,
+      "color": "outer_core",
+      "label": "OUTER CORE",
+      "label_angle": -30,
+      "label_at": 99
+     },
+     {
+      "r": 0.19,
+      "color": "inner_core",
+      "label_at": 99
+     }
+    ],
+    "tunnel": {
+     "angle": 90,
+     "grow": 1.0
+    },
+    "marker": {
+     "angle": -90,
+     "s": [
+      [
+       0,
+       0.0
+      ],
+      [
+       5.0,
+       -0.85,
+       "out"
+      ]
+     ]
+    },
+    "readout": {
+     "y": 1430,
+     "kicker": "YOUR SPEED",
+     "value": [
+      [
+       0,
+       7.9
+      ],
+      [
+       5.0,
+       3.0,
+       "out"
+      ]
+     ],
+     "fmt": "{:.1f} KM/S"
+    }
+   }
+  },
+  {
+   "id": "arrive",
+   "type": "cutaway",
+   "music_intensity": 0.7,
+   "narration": "You reach the far side, stopping right at the surface, about thirty-eight minutes after you jumped.",
+   "params": {
+    "planet": "earth",
+    "x": 0,
+    "y": -260,
+    "r": 400,
+    "camera": [
+     0,
+     -150,
+     1.0
+    ],
+    "wedge": [
+     -90,
+     90
+    ],
+    "glow_core": 0.8,
+    "layers": [
+     {
+      "r": 1.0,
+      "color": "crust",
+      "label_at": 99
+     },
+     {
+      "r": 0.985,
+      "color": "mantle",
+      "label": "MANTLE",
+      "label_angle": -40,
+      "label_at": 99
+     },
+     {
+      "r": 0.55,
+      "color": "outer_core",
+      "label": "OUTER CORE",
+      "label_angle": -30,
+      "label_at": 99
+     },
+     {
+      "r": 0.19,
+      "color": "inner_core",
+      "label_at": 99
+     }
+    ],
+    "tunnel": {
+     "angle": 90,
+     "grow": 1.0
+    },
+    "marker": {
+     "angle": -90,
+     "s": [
+      [
+       0,
+       -0.85
+      ],
+      [
+       "@surface",
+       -1.0,
+       "out"
+      ]
+     ]
+    }
+   },
+   "overlays": [
+    {
+     "at": "@thirtyeight",
+     "dur": 2.6,
+     "text": "38 MIN",
+     "kicker": "ONE WAY",
+     "style": "stat",
+     "y": 1440,
+     "size": 130,
+     "color": "accent"
+    }
+   ],
+   "sfx": [
+    {
+     "at": "@thirtyeight",
+     "name": "tick",
+     "gain": -6
+    }
+   ]
+  },
+  {
+   "id": "why",
+   "type": "compare",
+   "music_intensity": 0.55,
+   "narration": "The old textbook answer was forty-two minutes, but that treats Earth as evenly dense. Its heavy core pulls you down faster, saving about four minutes.",
+   "params": {
+    "title": "TRIP THROUGH EARTH",
+    "mode": "bars",
+    "items": [
+     {
+      "label": "EVEN DENSITY",
+      "value": 42,
+      "display": "42 min",
+      "color": "muted",
+      "at": "@fortytwo"
+     },
+     {
+      "label": "REAL EARTH",
+      "value": 38,
+      "display": "38 min",
+      "color": "accent",
+      "at": "@heavy"
+     }
+    ],
+    "source": "Klotz, Am. J. Phys. 2015"
+   }
+  },
+  {
+   "id": "swing",
+   "type": "cutaway",
+   "music_intensity": 0.6,
+   "narration": "If nobody catches you, you fall back in, and swing back and forth forever, one round trip about every seventy-six minutes.",
+   "params": {
+    "planet": "earth",
+    "x": 0,
+    "y": -260,
+    "r": 400,
+    "camera": [
+     0,
+     -150,
+     1.0
+    ],
+    "wedge": [
+     -90,
+     90
+    ],
+    "glow_core": 0.8,
+    "layers": [
+     {
+      "r": 1.0,
+      "color": "crust",
+      "label_at": 99
+     },
+     {
+      "r": 0.985,
+      "color": "mantle",
+      "label": "MANTLE",
+      "label_angle": -40,
+      "label_at": 99
+     },
+     {
+      "r": 0.55,
+      "color": "outer_core",
+      "label": "OUTER CORE",
+      "label_angle": -30,
+      "label_at": 99
+     },
+     {
+      "r": 0.19,
+      "color": "inner_core",
+      "label_at": 99
+     }
+    ],
+    "tunnel": {
+     "angle": 90,
+     "grow": 1.0
+    },
+    "marker": {
+     "angle": -90,
+     "s": [
+      [
+       0,
+       -1.0
+      ],
+      [
+       0.9,
+       1.0
+      ],
+      [
+       1.8,
+       -1.0
+      ],
+      [
+       2.7,
+       1.0
+      ],
+      [
+       3.6,
+       -1.0
+      ],
+      [
+       4.5,
+       1.0
+      ],
+      [
+       5.4,
+       -1.0
+      ],
+      [
+       6.3,
+       1.0
+      ],
+      [
+       7.2,
+       -1.0
+      ],
+      [
+       8.1,
+       1.0
+      ],
+      [
+       9.0,
+       -1.0
+      ],
+      [
+       9.9,
+       1.0
+      ]
+     ]
+    }
+   }
+  },
+  {
+   "id": "air",
+   "type": "cutaway",
+   "music_intensity": 0.5,
+   "narration": "Leave the air in, though, and drag steals speed every trip, until you end up floating at the very center of the Earth.",
+   "params": {
+    "planet": "earth",
+    "x": 0,
+    "y": -260,
+    "r": 400,
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -150,
+       1.0
+      ]
+     ],
+     [
+      8,
+      [
+       0,
+       -240,
+       1.5
+      ]
+     ]
+    ],
+    "wedge": [
+     -90,
+     90
+    ],
+    "glow_core": 0.8,
+    "layers": [
+     {
+      "r": 1.0,
+      "color": "crust",
+      "label_at": 99
+     },
+     {
+      "r": 0.985,
+      "color": "mantle",
+      "label": "MANTLE",
+      "label_angle": -40,
+      "label_at": 99
+     },
+     {
+      "r": 0.55,
+      "color": "outer_core",
+      "label": "OUTER CORE",
+      "label_angle": -30,
+      "label_at": 99
+     },
+     {
+      "r": 0.19,
+      "color": "inner_core",
+      "label_at": 99
+     }
+    ],
+    "tunnel": {
+     "angle": 90,
+     "grow": 1.0
+    },
+    "marker": {
+     "angle": -90,
+     "s": [
+      [
+       0,
+       -0.6
+      ],
+      [
+       1.6,
+       0.4
+      ],
+      [
+       3.0,
+       -0.2
+      ],
+      [
+       4.2,
+       0.08
+      ],
+      [
+       5.2,
+       0.0
+      ]
+     ]
+    }
+   }
+  },
+  {
+   "id": "end",
+   "type": "title_card",
+   "transition": "dip",
+   "music_intensity": 0.8,
+   "tail": 0.7,
+   "narration": "So the quickest way to the other side of the world might be... straight down.",
+   "params": {
+    "lines": [
+     "WHAT IF",
+     "YOU FELL THROUGH",
+     "THE EARTH?"
+    ],
+    "accent_line": 2,
+    "size": 88
+   }
+  }
+ ],
+ "claims": [
+  {
+   "claim": "In an airless tunnel, speed at the center is about 7.9 km/s, equal to low orbital speed",
+   "source": 3
+  },
+  {
+   "claim": "Fall through Earth's center takes about 38 minutes with realistic density",
+   "source": 0
+  },
+  {
+   "claim": "The classic 42-minute figure assumes uniform density",
+   "source": 2
+  },
+  {
+   "claim": "Without friction you would oscillate back and forth indefinitely",
+   "source": 1
+  },
+  {
+   "claim": "With air in the shaft, drag slows the fall dramatically; you'd come to rest at the centre",
+   "source": 4
+  }
+ ],
+ "meta": {
+  "title": "What If You Fell Through a Hole in the Earth?",
+  "summary": "Jump into a tunnel straight through the planet and gravity does the rest. Here's how fast you'd go, how long the trip takes, and why air would leave you stuck at the center.",
+  "tags": [
+   "what if",
+   "earth",
+   "gravity",
+   "gravity train",
+   "physics",
+   "core",
+   "science",
+   "hypothetical",
+   "shorts"
+  ],
+  "playlist": "What If: Earth"
+ }
+}

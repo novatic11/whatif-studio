@@ -1,0 +1,594 @@
+{
+ "format": "vertical",
+ "pace": "fast",
+ "status": "ready",
+ "slug": "0009-fall-into-jupiter-short-01",
+ "title": "What If You Fell Into Jupiter?",
+ "palette": "ember",
+ "music_mood": "tense",
+ "seed": 92,
+ "sources": [
+  {
+   "title": "NASA: Galileo Jupiter Atmospheric Probe",
+   "url": "https://science.nasa.gov/mission/galileo-jupiter-atmospheric-probe"
+  },
+  {
+   "title": "NASA: Sixty-five amazing Galileo facts",
+   "url": "https://science.nasa.gov/solar-system/sixty-five-amazing-galileo-facts/"
+  },
+  {
+   "title": "SwRI / NASA Juno: Inside the giant (Jupiter's interior)",
+   "url": "https://www.missionjuno.swri.edu/jupiter/the-interior/"
+  },
+  {
+   "title": "NASA: Jupiter facts",
+   "url": "https://science.nasa.gov/jupiter/facts/"
+  },
+  {
+   "title": "Astronomy: Do gas giant planets have solid surfaces?",
+   "url": "https://www.astronomy.com/science/do-gas-giant-planets-like-jupiter-hand-saturn-have-solid-surfaces/"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "hook",
+   "type": "cosmos",
+   "music_intensity": 0.6,
+   "narration": "You jump out of a spaceship above Jupiter. There's no ground down there, just gas that gets thicker and hotter all the way down.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -150,
+       0.9
+      ]
+     ],
+     [
+      8,
+      [
+       0,
+       -150,
+       1.15
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "planet",
+      "planet": "gas",
+      "x": 0,
+      "y": -200,
+      "r": 330,
+      "spin": 0.03,
+      "rot0": 0.5,
+      "light_dir": [
+       -0.75,
+       -0.3,
+       0.55
+      ],
+      "seed": 4
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": "@jump",
+     "name": "whoosh",
+     "gain": -8
+    }
+   ]
+  },
+  {
+   "id": "cta",
+   "type": "statement",
+   "music_intensity": 0.5,
+   "transition": "cut",
+   "narration": "Subscribe if you like these. Now, let's start falling.",
+   "params": {
+    "lines": [
+     "LET'S START",
+     "FALLING"
+    ],
+    "accent_line": 1,
+    "backdrop": "grid"
+   }
+  },
+  {
+   "id": "speed",
+   "type": "cosmos",
+   "music_intensity": 0.65,
+   "narration": "Jupiter's gravity pulls hard. When NASA dropped its Galileo probe in 1995, it hit the atmosphere at about a hundred and six thousand miles an hour.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -150,
+       1.0
+      ]
+     ],
+     [
+      8,
+      [
+       0,
+       -380,
+       1.6
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "planet",
+      "planet": "gas",
+      "x": 0,
+      "y": -200,
+      "r": 330,
+      "spin": 0.03,
+      "rot0": 0.5,
+      "light_dir": [
+       -0.75,
+       -0.3,
+       0.55
+      ],
+      "seed": 4
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@hundred",
+     "dur": 2.6,
+     "text": "106,000 MPH",
+     "kicker": "GALILEO PROBE, 1995",
+     "style": "stat",
+     "y": 1250,
+     "size": 110,
+     "color": "accent"
+    }
+   ]
+  },
+  {
+   "id": "clouds",
+   "type": "cosmos",
+   "music_intensity": 0.6,
+   "narration": "You plunge through the colorful cloud tops, made largely of ammonia ice.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -400,
+       1.6
+      ]
+     ],
+     [
+      5,
+      [
+       0,
+       -410,
+       1.85
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "planet",
+      "planet": "gas",
+      "x": 0,
+      "y": -200,
+      "r": 330,
+      "spin": 0.03,
+      "rot0": 0.9,
+      "light_dir": [
+       -0.75,
+       -0.3,
+       0.55
+      ],
+      "seed": 4
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@ammonia",
+     "dur": 2.4,
+     "text": "AMMONIA CLOUDS",
+     "style": "label",
+     "y": 1300,
+     "size": 40,
+     "color": "accent"
+    }
+   ]
+  },
+  {
+   "id": "probe",
+   "type": "cutaway",
+   "music_intensity": 0.65,
+   "narration": "The Galileo probe lasted about an hour. Around a hundred and eighty kilometers down, pressure hit twenty-two times Earth's, and it went silent.",
+   "params": {
+    "planet": "gas",
+    "seed": 4,
+    "x": 0,
+    "y": -320,
+    "r": 420,
+    "camera": [
+     0,
+     -150,
+     1.0
+    ],
+    "wedge": [
+     -90,
+     0
+    ],
+    "layers": [
+     {
+      "r": 1.0,
+      "color": "gas",
+      "label": "HYDROGEN GAS",
+      "label_angle": -80,
+      "label_at": 99
+     },
+     {
+      "r": 0.9,
+      "color": "liquid_h",
+      "label": "LIQUID HYDROGEN",
+      "label_angle": -58,
+      "label_at": 99
+     },
+     {
+      "r": 0.66,
+      "color": "metallic_h",
+      "label": "METALLIC HYDROGEN",
+      "label_angle": -35,
+      "label_at": 99
+     },
+     {
+      "r": 0.2,
+      "color": "core",
+      "label": "CORE?",
+      "label_angle": -20,
+      "label_at": 99
+     }
+    ],
+    "marker": {
+     "angle": -45,
+     "s": [
+      [
+       0,
+       1.0
+      ],
+      [
+       "@silent",
+       0.985
+      ]
+     ],
+     "label": "PROBE"
+    },
+    "readout": {
+     "kicker": "PRESSURE (EARTH = 1)",
+     "value": [
+      [
+       0,
+       1
+      ],
+      [
+       "@twentytwo",
+       22
+      ]
+     ],
+     "fmt": "{:.0f}×",
+     "at": 0.2
+    }
+   },
+   "sfx": [
+    {
+     "at": "@silent",
+     "name": "drone_drop",
+     "gain": -8
+    }
+   ]
+  },
+  {
+   "id": "thicken",
+   "type": "cutaway",
+   "music_intensity": 0.55,
+   "narration": "You keep sinking for thousands of kilometers. The gas gets denser and denser until it's like a hot, dark ocean, but there's never a surface to hit.",
+   "params": {
+    "planet": "gas",
+    "seed": 4,
+    "x": 0,
+    "y": -320,
+    "r": 420,
+    "camera": [
+     0,
+     -150,
+     1.0
+    ],
+    "wedge": [
+     -90,
+     0
+    ],
+    "label_angle": -60,
+    "layers": [
+     {
+      "r": 1.0,
+      "color": "gas",
+      "label": "HYDROGEN GAS",
+      "label_angle": -80,
+      "label_at": "@gas",
+      "label_dur": 2.2
+     },
+     {
+      "r": 0.9,
+      "color": "liquid_h",
+      "label": "LIQUID HYDROGEN",
+      "label_angle": -58,
+      "label_at": "@ocean"
+     },
+     {
+      "r": 0.66,
+      "color": "metallic_h",
+      "label": null,
+      "label_angle": -35
+     },
+     {
+      "r": 0.2,
+      "color": "core",
+      "label": null,
+      "label_angle": -20
+     }
+    ],
+    "marker": {
+     "angle": -45,
+     "s": [
+      [
+       0,
+       0.98
+      ],
+      [
+       "@ocean+1.0",
+       0.84
+      ]
+     ]
+    }
+   }
+  },
+  {
+   "id": "metal",
+   "type": "cutaway",
+   "music_intensity": 0.7,
+   "narration": "About a third of the way down, the pressure reaches two million times Earth's air, at up to ten thousand degrees Celsius. Hydrogen is crushed into a liquid metal.",
+   "params": {
+    "planet": "gas",
+    "seed": 4,
+    "x": 0,
+    "y": -320,
+    "r": 420,
+    "camera": [
+     0,
+     -150,
+     1.0
+    ],
+    "wedge": [
+     -90,
+     0
+    ],
+    "layers": [
+     {
+      "r": 1.0,
+      "color": "gas",
+      "label": null,
+      "label_angle": -80
+     },
+     {
+      "r": 0.9,
+      "color": "liquid_h",
+      "label": null,
+      "label_angle": -58
+     },
+     {
+      "r": 0.66,
+      "color": "metallic_h",
+      "label": "METALLIC HYDROGEN",
+      "label_angle": -35,
+      "label_at": "@metal-0.6"
+     },
+     {
+      "r": 0.2,
+      "color": "core",
+      "label": null,
+      "label_angle": -20
+     }
+    ],
+    "marker": {
+     "angle": -45,
+     "s": [
+      [
+       0,
+       0.84
+      ],
+      [
+       "@third+0.6",
+       0.67
+      ]
+     ]
+    },
+    "readout": {
+     "kicker": "PRESSURE (EARTH = 1)",
+     "value": [
+      [
+       0,
+       22
+      ],
+      [
+       "@million",
+       2000000
+      ]
+     ],
+     "fmt": "{:,.0f}×",
+     "at": 0.2
+    }
+   },
+   "overlays": [
+    {
+     "at": "@ten",
+     "dur": 2.6,
+     "text": "10,000°C",
+     "kicker": "UP TO",
+     "style": "stat",
+     "y": 1430,
+     "size": 110,
+     "color": "danger"
+    }
+   ]
+  },
+  {
+   "id": "crushed",
+   "type": "statement",
+   "music_intensity": 0.6,
+   "narration": "Long before that, you'd be crushed and cooked, and your atoms would simply mix into the planet.",
+   "params": {
+    "lines": [
+     "CRUSHED.",
+     "COOKED.",
+     "DISSOLVED."
+    ],
+    "accent_line": 2,
+    "backdrop": "pulse"
+   }
+  },
+  {
+   "id": "core",
+   "type": "cutaway",
+   "music_intensity": 0.6,
+   "narration": "And at the very bottom? Scientists still aren't sure what Jupiter's core is like. It's one of the big questions NASA's Juno mission set out to answer.",
+   "params": {
+    "planet": "gas",
+    "seed": 4,
+    "x": 0,
+    "y": -320,
+    "r": 420,
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -250,
+       1.0
+      ]
+     ],
+     [
+      8,
+      [
+       0,
+       -300,
+       1.25
+      ]
+     ]
+    ],
+    "wedge": [
+     -90,
+     0
+    ],
+    "glow_core": 1.0,
+    "layers": [
+     {
+      "r": 1.0,
+      "color": "gas",
+      "label": "HYDROGEN GAS",
+      "label_angle": -80,
+      "label_at": 99
+     },
+     {
+      "r": 0.9,
+      "color": "liquid_h",
+      "label": "LIQUID HYDROGEN",
+      "label_angle": -58,
+      "label_at": 99
+     },
+     {
+      "r": 0.66,
+      "color": "metallic_h",
+      "label": "METALLIC HYDROGEN",
+      "label_angle": -35,
+      "label_at": 99
+     },
+     {
+      "r": 0.2,
+      "color": "core",
+      "label": "CORE?",
+      "label_angle": -20,
+      "label_at": "@core"
+     }
+    ]
+   }
+  },
+  {
+   "id": "end",
+   "type": "title_card",
+   "transition": "dip",
+   "music_intensity": 0.8,
+   "tail": 0.7,
+   "narration": "So you could never land on Jupiter. You'd just become part of it.",
+   "params": {
+    "lines": [
+     "WHAT IF",
+     "YOU FELL INTO",
+     "JUPITER?"
+    ],
+    "accent_line": 2,
+    "size": 92
+   }
+  }
+ ],
+ "claims": [
+  {
+   "claim": "Jupiter has no solid surface",
+   "source": 3
+  },
+  {
+   "claim": "Galileo probe released 1995, entered atmosphere Dec 7 1995 at about 106,000 mph",
+   "source": 1
+  },
+  {
+   "claim": "Probe returned data for about an hour (58-61 min); failed ~180 km down at ~22-23 atmospheres",
+   "source": 0
+  },
+  {
+   "claim": "Jupiter's clouds are largely ammonia ice (with water and ammonium hydrosulfide deeper)",
+   "source": 3
+  },
+  {
+   "claim": "Hydrogen gradually becomes denser/liquid with no sharp surface",
+   "source": 4
+  },
+  {
+   "claim": "About a third of the way down, ~2 million bar and 8,000-10,000 °C, hydrogen becomes metallic",
+   "source": 2
+  },
+  {
+   "claim": "Jupiter's core composition is uncertain; Juno was meant to help resolve it",
+   "source": 2
+  }
+ ],
+ "meta": {
+  "title": "What If You Fell Into Jupiter?",
+  "summary": "Jupiter has no ground to land on. Here's what happens as you sink through its clouds, past where NASA's Galileo probe died, down to where hydrogen turns into metal.",
+  "tags": [
+   "what if",
+   "jupiter",
+   "gas giant",
+   "galileo probe",
+   "juno",
+   "metallic hydrogen",
+   "space",
+   "astronomy",
+   "shorts"
+  ],
+  "playlist": "What If: Space"
+ }
+}

@@ -26,13 +26,31 @@
  {
   "slug": "0006-human-photosynthesis-short-01",
   "title": "What If Humans Could Photosynthesize?",
-  "premise": "Humans with photosynthetic skin: ~1 m² of sun at 4.6% max efficiency gives ~40 kcal/h, ~240 kcal a day vs 2,000 needed; sea slug Elysia chlorotica steals chloroplasts.",
+  "premise": "Humans with photosynthetic skin: ~1 m\u00b2 of sun at 4.6% max efficiency gives ~40 kcal/h, ~240 kcal a day vs 2,000 needed; sea slug Elysia chlorotica steals chloroplasts.",
   "date": "2026-11-25"
  },
  {
   "slug": "0007-never-slept-short-01",
   "title": "What If You Never Slept Again?",
-  "premise": "Never sleeping: 17-19 h awake ≈ 0.05% BAC on tests, 264-hour 1964 record, sleep widens brain spaces 60% to clear waste (mice), frigatebirds sleep in flight with half a brain.",
+  "premise": "Never sleeping: 17-19 h awake \u2248 0.05% BAC on tests, 264-hour 1964 record, sleep widens brain spaces 60% to clear waste (mice), frigatebirds sleep in flight with half a brain.",
+  "date": "2026-11-25"
+ },
+ {
+  "slug": "0008-earth-rings-short-01",
+  "title": "What If Earth Had Rings Like Saturn?",
+  "premise": "Earth gains a rocky ring inside the Roche limit; sky views by latitude, ring shadow, and the 466-Myr-old ring hypothesis.",
+  "date": "2026-11-25"
+ },
+ {
+  "slug": "0009-fall-into-jupiter-short-01",
+  "title": "What If You Fell Into Jupiter?",
+  "premise": "Sinking through Jupiter: Galileo probe entry and death at ~22 atm, no surface, metallic hydrogen, unknown core.",
+  "date": "2026-11-25"
+ },
+ {
+  "slug": "0010-hole-through-earth-short-01",
+  "title": "What If You Fell Through a Hole in the Earth?",
+  "premise": "Gravity tunnel: 7.9 km/s at the center, 38 minutes one way, endless oscillation, air drag leaves you at the center.",
   "date": "2026-11-25"
  }
 ]

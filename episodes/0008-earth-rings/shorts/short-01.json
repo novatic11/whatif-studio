@@ -1,0 +1,709 @@
+{
+ "format": "vertical",
+ "pace": "fast",
+ "status": "ready",
+ "slug": "0008-earth-rings-short-01",
+ "title": "What If Earth Had Rings Like Saturn?",
+ "palette": "deep_space",
+ "music_mood": "awe",
+ "seed": 81,
+ "sources": [
+  {
+   "title": "Live Science: What if Earth had rings?",
+   "url": "https://www.livescience.com/what-if-earth-had-rings.html"
+  },
+  {
+   "title": "Space.com: What if Earth had rings?",
+   "url": "https://www.space.com/what-if-earth-had-rings.html"
+  },
+  {
+   "title": "Gizmodo/io9: What Earth's sky would look like with a ring like Saturn (Ron Miller illustrations)",
+   "url": "https://gizmodo.com/if-earth-had-a-ring-like-saturn-508750253"
+  },
+  {
+   "title": "Monash University: Earth may have had a ring system 466 million years ago",
+   "url": "https://www.monash.edu/science/news-events/news/2024/earth-may-have-had-a-ring-system-466-million-years-ago"
+  },
+  {
+   "title": "Space.com: Earth had Saturn-like rings 466 million years ago, new study suggests",
+   "url": "https://www.space.com/ancient-earth-ring-system-asteroid-breakup"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "hook",
+   "type": "cosmos",
+   "music_intensity": 0.65,
+   "narration": "Tonight, Earth gets rings like Saturn: a glowing band of rock and dust circling the whole planet.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -150,
+       0.9
+      ]
+     ],
+     [
+      6,
+      [
+       0,
+       -150,
+       1.05
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "planet",
+      "planet": "earth",
+      "x": 0,
+      "y": -200,
+      "r": 200,
+      "spin": 0.04,
+      "rot0": 1.5,
+      "light_dir": [
+       -0.8,
+       -0.3,
+       0.5
+      ],
+      "rings": {
+       "inner": 1.45,
+       "outer": 2.35,
+       "squash": 0.26,
+       "angle": -14,
+       "grow": [
+        [
+         0,
+         0.0
+        ],
+        [
+         "@rings",
+         0.0
+        ],
+        [
+         "@rings+2.2",
+         1.0
+        ]
+       ]
+      }
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": "@rings",
+     "name": "shimmer",
+     "gain": -8
+    }
+   ]
+  },
+  {
+   "id": "cta",
+   "type": "statement",
+   "music_intensity": 0.5,
+   "transition": "cut",
+   "narration": "Quick pause: tap like if you'd want this sky.",
+   "params": {
+    "lines": [
+     "WOULD YOU",
+     "WANT THIS SKY?"
+    ],
+    "accent_line": 1,
+    "backdrop": "stars"
+   }
+  },
+  {
+   "id": "roche",
+   "type": "cosmos",
+   "music_intensity": 0.55,
+   "narration": "They'd have to sit close. Within about eighteen thousand kilometers of Earth's center, tides tear big chunks apart before they can clump into a moon.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -150,
+       1.1
+      ]
+     ],
+     [
+      6,
+      [
+       0,
+       -150,
+       0.95
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "planet",
+      "planet": "earth",
+      "x": 0,
+      "y": -200,
+      "r": 200,
+      "spin": 0.04,
+      "rot0": 2.0,
+      "light_dir": [
+       -0.8,
+       -0.3,
+       0.5
+      ],
+      "rings": {
+       "inner": 1.45,
+       "outer": 2.35,
+       "squash": 0.32,
+       "angle": -10
+      }
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@eighteen",
+     "dur": 2.6,
+     "text": "~18,000 KM",
+     "kicker": "RING ZONE",
+     "style": "stat",
+     "y": 1250,
+     "size": 110,
+     "color": "accent"
+    }
+   ]
+  },
+  {
+   "id": "ice",
+   "type": "cosmos",
+   "music_intensity": 0.55,
+   "narration": "And unlike Saturn's icy rings, ours would be mostly rock and dust. This close to the Sun, ice wouldn't last.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -150,
+       0.8
+      ]
+     ],
+     [
+      6,
+      [
+       0,
+       -150,
+       0.85
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "star",
+      "x": -600,
+      "y": -700,
+      "r": 200,
+      "seed": 5
+     },
+     {
+      "kind": "planet",
+      "planet": "earth",
+      "x": 180,
+      "y": 0,
+      "r": 190,
+      "spin": 0.04,
+      "rot0": 1.5,
+      "light_dir": null,
+      "rings": {
+       "inner": 1.45,
+       "outer": 2.35,
+       "squash": 0.22,
+       "angle": -18,
+       "color": [
+        0.72,
+        0.64,
+        0.55
+       ]
+      }
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@rock",
+     "dur": 3.0,
+     "text": "ROCK AND DUST, NOT ICE",
+     "style": "label",
+     "y": 1300,
+     "size": 40,
+     "color": "accent"
+    }
+   ]
+  },
+  {
+   "id": "equator",
+   "type": "cosmos",
+   "music_intensity": 0.5,
+   "narration": "From the equator, you'd see them edge-on: a thin, bright line cutting straight across the sky.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -150,
+       1.0
+      ]
+     ],
+     [
+      6,
+      [
+       0,
+       -150,
+       1.1
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "planet",
+      "planet": "earth",
+      "x": 0,
+      "y": -200,
+      "r": 200,
+      "spin": 0.04,
+      "rot0": 2.6,
+      "light_dir": [
+       -0.8,
+       -0.3,
+       0.5
+      ],
+      "rings": {
+       "inner": 1.45,
+       "outer": 2.35,
+       "squash": 0.015,
+       "angle": -6
+      }
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@equator",
+     "dur": 3.4,
+     "text": "SEEN FROM THE EQUATOR",
+     "style": "label",
+     "y": 360,
+     "size": 40,
+     "color": "text"
+    }
+   ]
+  },
+  {
+   "id": "north",
+   "type": "cosmos",
+   "music_intensity": 0.55,
+   "narration": "Head north, and the line opens into a giant arch. Near the Arctic, it's just a hump on the horizon.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -150,
+       1.0
+      ]
+     ],
+     [
+      6,
+      [
+       0,
+       -150,
+       0.95
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "planet",
+      "planet": "earth",
+      "x": 0,
+      "y": -200,
+      "r": 200,
+      "spin": 0.04,
+      "rot0": 3.0,
+      "light_dir": [
+       -0.8,
+       -0.3,
+       0.5
+      ],
+      "rings": {
+       "inner": 1.45,
+       "outer": 2.35,
+       "squash": [
+        [
+         0,
+         0.015
+        ],
+        [
+         "@arch",
+         0.42
+        ]
+       ],
+       "angle": -8
+      }
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@arch",
+     "dur": 4.5,
+     "text": "MID-LATITUDES: A GIANT ARCH",
+     "style": "label",
+     "y": 330,
+     "size": 40,
+     "color": "text"
+    },
+    {
+     "at": "@Arctic",
+     "dur": 2.6,
+     "text": "ARCTIC: A HUMP ON THE HORIZON",
+     "style": "label",
+     "y": 400,
+     "size": 40,
+     "color": "accent"
+    }
+   ]
+  },
+  {
+   "id": "shadow",
+   "type": "cosmos",
+   "music_intensity": 0.6,
+   "narration": "The rings would also cast a huge shadow that slides across the planet with the seasons. Some scientists think that could cool the climate.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -150,
+       0.9
+      ]
+     ],
+     [
+      6,
+      [
+       0,
+       -150,
+       0.98
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "star",
+      "x": -1100,
+      "y": -500,
+      "r": 200,
+      "seed": 5
+     },
+     {
+      "kind": "planet",
+      "planet": "earth",
+      "x": 0,
+      "y": -200,
+      "r": 230,
+      "spin": 0.04,
+      "rot0": 1.5,
+      "light_dir": null,
+      "rings": {
+       "inner": 1.45,
+       "outer": 2.35,
+       "squash": 0.3,
+       "angle": -12,
+       "shadow": {
+        "offset": [
+         [
+          0,
+          0.15
+         ],
+         [
+          8,
+          0.5
+         ]
+        ],
+        "alpha": [
+         [
+          0,
+          0.0
+         ],
+         [
+          "@shadow",
+          0.0
+         ],
+         [
+          "@shadow+1.0",
+          0.65
+         ]
+        ]
+       }
+      }
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@cool",
+     "dur": 2.6,
+     "text": "COOLER CLIMATE?",
+     "style": "label",
+     "y": 1300,
+     "size": 40,
+     "color": "cool"
+    }
+   ]
+  },
+  {
+   "id": "twist",
+   "type": "statement",
+   "music_intensity": 0.75,
+   "transition": "flash",
+   "narration": "But here's the strange part. Earth might have had rings before.",
+   "params": {
+    "lines": [
+     "EARTH MAY HAVE",
+     "HAD RINGS",
+     "BEFORE"
+    ],
+    "accent_line": 1,
+    "backdrop": "pulse"
+   },
+   "sfx": [
+    {
+     "at": "@before",
+     "name": "impact",
+     "gain": -6
+    }
+   ]
+  },
+  {
+   "id": "craters",
+   "type": "cosmos",
+   "music_intensity": 0.6,
+   "narration": "About four hundred sixty-six million years ago, all twenty-one known impact craters from that time landed within thirty degrees of the equator.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -150,
+       1.0
+      ]
+     ],
+     [
+      8,
+      [
+       0,
+       -150,
+       1.1
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "planet",
+      "planet": "earth",
+      "x": 0,
+      "y": -200,
+      "r": 200,
+      "spin": 0.04,
+      "rot0": 4.0,
+      "light_dir": [
+       -0.8,
+       -0.3,
+       0.5
+      ],
+      "rings": {
+       "inner": 1.45,
+       "outer": 2.35,
+       "squash": 0.2,
+       "angle": -9,
+       "alpha": 0.0
+      }
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@four",
+     "dur": 2.4,
+     "text": "466M YEARS",
+     "kicker": "AGO",
+     "style": "stat",
+     "y": 340,
+     "size": 110,
+     "color": "accent"
+    },
+    {
+     "at": "@twentyone",
+     "dur": 3.2,
+     "text": "21 / 21",
+     "kicker": "CRATERS NEAR THE EQUATOR",
+     "style": "stat",
+     "y": 1300,
+     "size": 120,
+     "color": "cool"
+    }
+   ]
+  },
+  {
+   "id": "rained",
+   "type": "cosmos",
+   "music_intensity": 0.6,
+   "narration": "One study says a shattered asteroid formed a ring that slowly rained down.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -150,
+       1.1
+      ]
+     ],
+     [
+      6,
+      [
+       0,
+       -150,
+       1.0
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "planet",
+      "planet": "earth",
+      "x": 0,
+      "y": -200,
+      "r": 200,
+      "spin": 0.04,
+      "rot0": 4.3,
+      "light_dir": [
+       -0.8,
+       -0.3,
+       0.5
+      ],
+      "rings": {
+       "inner": 1.45,
+       "outer": 2.35,
+       "squash": 0.2,
+       "angle": -9,
+       "grow": [
+        [
+         0,
+         0.0
+        ],
+        [
+         "@ring",
+         0.0
+        ],
+        [
+         "@ring+1.5",
+         1.0
+        ]
+       ],
+       "alpha": [
+        [
+         0,
+         1.0
+        ],
+        [
+         "@rained",
+         1.0
+        ],
+        [
+         "@rained+2.0",
+         0.2
+        ]
+       ]
+      }
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@study",
+     "dur": 3.0,
+     "text": "A HYPOTHESIS",
+     "style": "label",
+     "y": 330,
+     "size": 40,
+     "color": "muted"
+    }
+   ]
+  },
+  {
+   "id": "end",
+   "type": "title_card",
+   "transition": "dip",
+   "music_intensity": 0.8,
+   "tail": 0.7,
+   "narration": "Scientists still debate it. But long before us, Earth's sky may have had a ring.",
+   "params": {
+    "lines": [
+     "WHAT IF",
+     "EARTH HAD",
+     "RINGS?"
+    ],
+    "accent_line": 2,
+    "size": 96
+   }
+  }
+ ],
+ "claims": [
+  {
+   "claim": "Earth's Roche limit is about 18,000 km (≈18,470 km) from its centre; rings sit inside it",
+   "source": 2
+  },
+  {
+   "claim": "Earth's rings would be rock and dust rather than ice because Earth is close to the Sun",
+   "source": 0
+  },
+  {
+   "claim": "From the equator rings appear edge-on as a thin line; farther north as an arch; near the Arctic a hump on the horizon",
+   "source": 2
+  },
+  {
+   "claim": "Ring shadows could affect weather/climate (speculative)",
+   "source": 1
+  },
+  {
+   "claim": "All 21 Ordovician impact craters (~466 Myr ago) lie within 30 degrees of the equator; a ring from a broken-up asteroid is proposed",
+   "source": 3
+  },
+  {
+   "claim": "The ring hypothesis is debated; outside experts say data are not yet sufficient",
+   "source": 4
+  }
+ ],
+ "meta": {
+  "title": "What If Earth Had Rings Like Saturn?",
+  "summary": "If Earth had a ring system, it would be rocky, sit close to the planet and look completely different depending on where you stand. And one new study suggests Earth may really have had a ring 466 million years ago.",
+  "tags": [
+   "what if",
+   "earth",
+   "rings",
+   "saturn",
+   "planetary rings",
+   "space",
+   "astronomy",
+   "science",
+   "shorts"
+  ],
+  "playlist": "What If: Space"
+ }
+}

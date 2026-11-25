@@ -1,0 +1,348 @@
+{
+ "slug": "0005-insects-vanished-short-01",
+ "title": "What If Every Insect Vanished Overnight?",
+ "palette": "ember",
+ "music_mood": "mystery",
+ "seed": 75,
+ "sources": [
+  {
+   "title": "Smithsonian BugInfo: Numbers of Insects (Species and Individuals)",
+   "url": "https://www.si.edu/spotlight/buginfo/bugnos"
+  },
+  {
+   "title": "Nyffeler, Şekercioğlu & Whelan (2018), Insectivorous birds consume an estimated 400-500 million tons of prey annually, The Science of Nature",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6061143"
+  },
+  {
+   "title": "Klein et al. (2007), Importance of pollinators in changing landscapes for world crops, Proc. R. Soc. B",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1702377/"
+  },
+  {
+   "title": "Hall & Stevenson (2019), Floral odors and the interaction between pollinating Ceratopogonid midges and cacao, J. Chem. Ecol.",
+   "url": "https://link.springer.com/article/10.1007/s10886-019-01118-9"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "hook",
+   "type": "figures",
+   "music_intensity": 0.55,
+   "narration": "Tonight, every insect on Earth vanishes. Bees, beetles, butterflies. By one Smithsonian estimate, that's around ten quintillion of them, gone at once.",
+   "params": {
+    "swarm": {
+     "shapes": [
+      "bee",
+      "butterfly",
+      "beetle"
+     ],
+     "count": 26,
+     "seed": 11,
+     "area": [
+      90,
+      330,
+      990,
+      1150
+     ],
+     "size": 82,
+     "color": "accent",
+     "at": 0,
+     "out": "@gone",
+     "out_spread": 0.9
+    }
+   },
+   "overlays": [
+    {
+     "at": "@ten",
+     "dur": 2.6,
+     "text": "10,000,000,000,000,000,000",
+     "kicker": "INSECTS ALIVE AT ANY MOMENT",
+     "style": "stat",
+     "y": 1290,
+     "size": 52,
+     "color": "accent"
+    }
+   ],
+   "sfx": [
+    {
+     "at": "@gone",
+     "name": "drone_drop",
+     "gain": -4
+    }
+   ],
+   "tail": 0.4
+  },
+  {
+   "id": "cta",
+   "type": "statement",
+   "music_intensity": 0.4,
+   "transition": "cut",
+   "narration": "Quick pause: hit like, then let's see what breaks first.",
+   "params": {
+    "lines": [
+     "WHAT BREAKS",
+     "FIRST?"
+    ],
+    "accent_line": 1,
+    "kicker": "QUICK PAUSE",
+    "backdrop": "stars"
+   }
+  },
+  {
+   "id": "birds",
+   "type": "figures",
+   "music_intensity": 0.55,
+   "narration": "Birds notice first, and fast. Insect-eating birds worldwide eat an estimated four to five hundred million tonnes of insects and other bugs every year.",
+   "params": {
+    "figures": [
+     {
+      "shape": "bird",
+      "x": [
+       [
+        0,
+        300
+       ],
+       [
+        8,
+        380
+       ]
+      ],
+      "y": 470,
+      "size": 300,
+      "color": "text",
+      "at": 0.1,
+      "bob": 14
+     },
+     {
+      "shape": "bird",
+      "x": [
+       [
+        0,
+        760
+       ],
+       [
+        8,
+        830
+       ]
+      ],
+      "y": 720,
+      "size": 220,
+      "color": "muted",
+      "at": 0.4,
+      "bob": 10
+     },
+     {
+      "shape": "bird",
+      "x": [
+       [
+        0,
+        420
+       ],
+       [
+        8,
+        480
+       ]
+      ],
+      "y": 930,
+      "size": 170,
+      "color": "muted",
+      "at": 0.7,
+      "bob": 8
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@four",
+     "dur": 3.2,
+     "text": "400-500 M TONNES",
+     "kicker": "EATEN BY BIRDS EACH YEAR",
+     "style": "stat",
+     "y": 1250,
+     "size": 76,
+     "color": "accent"
+    }
+   ]
+  },
+  {
+   "id": "crops",
+   "type": "figures",
+   "music_intensity": 0.6,
+   "narration": "Then the fields go quiet. One major study found eighty-seven of the hundred and fifteen leading food crops rely at least partly on animal pollinators.",
+   "params": {
+    "title": "LEADING FOOD CROPS",
+    "grid": {
+     "shape": "flower",
+     "cols": 5,
+     "rows": 4,
+     "y": 680,
+     "cell": 170,
+     "size": 140,
+     "color": "muted",
+     "hi": 15,
+     "hi_color": "accent",
+     "hi_at": "@found+0.6",
+     "at": 0.2,
+     "stagger": 0.03
+    }
+   },
+   "overlays": [
+    {
+     "at": "@found+0.9",
+     "dur": 3.5,
+     "text": "87 OF 115",
+     "kicker": "NEED POLLINATORS, AT LEAST PARTLY",
+     "style": "stat",
+     "y": 1270,
+     "size": 84,
+     "color": "accent"
+    }
+   ],
+   "sfx": [
+    {
+     "at": "@found+0.6",
+     "name": "tick",
+     "gain": -6
+    }
+   ]
+  },
+  {
+   "id": "staples",
+   "type": "statement",
+   "music_intensity": 0.5,
+   "narration": "We wouldn't starve overnight, though. Staples like wheat, rice and corn don't need animals to pollinate them.",
+   "params": {
+    "lines": [
+     "WHEAT",
+     "RICE",
+     "CORN"
+    ],
+    "accent_line": -1,
+    "kicker": "NO POLLINATORS NEEDED",
+    "backdrop": "grid",
+    "size": 92
+   }
+  },
+  {
+   "id": "share",
+   "type": "compare",
+   "music_intensity": 0.55,
+   "narration": "But crops that depend on pollinators still make up about a third of the world's food production.",
+   "params": {
+    "title": "GLOBAL CROP PRODUCTION",
+    "mode": "bars",
+    "items": [
+     {
+      "label": "No pollinators needed",
+      "value": 60,
+      "display": "~60%",
+      "color": "cool"
+     },
+     {
+      "label": "Pollinator-dependent",
+      "value": 35,
+      "display": "~35%",
+      "color": "accent"
+     }
+    ],
+    "source": "Klein et al. 2007"
+   }
+  },
+  {
+   "id": "cacao",
+   "type": "figures",
+   "music_intensity": 0.7,
+   "narration": "And then there's chocolate. Cacao flowers are pollinated mainly by tiny flies called midges. Without them, cocoa pods would likely become rare.",
+   "params": {
+    "figures": [
+     {
+      "shape": "flower",
+      "x": 540,
+      "y": 640,
+      "size": 620,
+      "color": "accent",
+      "to_color": "muted",
+      "tint_at": "@midges",
+      "tint_dur": 1.5,
+      "at": 0.1
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@midges",
+     "dur": 2.2,
+     "text": "MIDGES",
+     "kicker": "CACAO'S MAIN POLLINATORS",
+     "style": "stat",
+     "y": 1200,
+     "size": 80,
+     "color": "accent"
+    }
+   ]
+  },
+  {
+   "id": "end",
+   "type": "title_card",
+   "transition": "dip",
+   "music_intensity": 0.8,
+   "tail": 0.7,
+   "narration": "So a world without insects could probably still bake bread. But it would be quieter, hungrier, and almost certainly short on chocolate.",
+   "params": {
+    "lines": [
+     "WHAT IF",
+     "INSECTS",
+     "VANISHED?"
+    ],
+    "accent_line": 1,
+    "backdrop": "none",
+    "size": 92
+   }
+  }
+ ],
+ "claims": [
+  {
+   "claim": "About 10 quintillion insects are estimated to be alive at any time",
+   "source": 0
+  },
+  {
+   "claim": "Insectivorous birds eat an estimated 400-500 million tonnes of prey (insects and other arthropods) per year",
+   "source": 1
+  },
+  {
+   "claim": "87 of the 115 leading global food crops depend at least partly on animal pollination",
+   "source": 2
+  },
+  {
+   "claim": "Staple crops such as wheat, rice and corn do not depend on animal pollination",
+   "source": 2
+  },
+  {
+   "claim": "Pollinator-dependent crops account for about 35% of global food production volume (about 60% from crops that don't need them)",
+   "source": 2
+  },
+  {
+   "claim": "Cacao is pollinated mainly by ceratopogonid midges",
+   "source": 3
+  }
+ ],
+ "meta": {
+  "title": "What If Every Insect Vanished Overnight?",
+  "summary": "Ten quintillion insects disappear at once. Here's who notices first, which foods survive, and why chocolate is in trouble.",
+  "tags": [
+   "what if",
+   "insects",
+   "pollinators",
+   "bees",
+   "ecology",
+   "food",
+   "chocolate",
+   "nature",
+   "science",
+   "shorts"
+  ],
+  "playlist": "What If: Life"
+ },
+ "format": "vertical",
+ "pace": "fast",
+ "status": "ready"
+}

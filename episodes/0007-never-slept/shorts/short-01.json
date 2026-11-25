@@ -1,0 +1,302 @@
+{
+ "slug": "0007-never-slept-short-01",
+ "title": "What If You Never Slept Again?",
+ "palette": "violet",
+ "music_mood": "mystery",
+ "seed": 97,
+ "sources": [
+  {
+   "title": "Williamson & Feyer (2000), Moderate sleep deprivation produces impairments equivalent to legally prescribed levels of alcohol intoxication, Occup. Environ. Med.",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1739867"
+  },
+  {
+   "title": "NPR: Lessons from sleeplessness, the 60th anniversary of Randy Gardner's world record",
+   "url": "https://www.npr.org/2024/01/28/1227217274/sleep-deprivation-record"
+  },
+  {
+   "title": "Xie et al. (2013), Sleep drives metabolite clearance from the adult brain, Science",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/24136970/"
+  },
+  {
+   "title": "NIH News Release: Brain may flush out toxins during sleep",
+   "url": "https://www.nih.gov/news-events/news-releases/brain-may-flush-out-toxins-during-sleep"
+  },
+  {
+   "title": "Rattenborg et al. (2016), Evidence that birds sleep in mid-flight, Nature Communications",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4976198"
+  },
+  {
+   "title": "Discover: Birds Sleep During Flights, Too",
+   "url": "https://discovermagazine.com/planet-earth/birds-sleep-during-flights-too"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "hook",
+   "type": "figures",
+   "music_intensity": 0.55,
+   "narration": "What if, starting tonight, you never slept again? No naps, no nights, just one endless day.",
+   "params": {
+    "backdrop": "pulse",
+    "figures": [
+     {
+      "shape": "head",
+      "x": 540,
+      "y": 680,
+      "size": 760,
+      "color": "text",
+      "detail_color": "accent",
+      "at": 0.1
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": "@never",
+     "name": "riser",
+     "gain": -9
+    }
+   ],
+   "tail": 0.3
+  },
+  {
+   "id": "cta",
+   "type": "statement",
+   "music_intensity": 0.4,
+   "transition": "cut",
+   "narration": "Tap like if you're watching this way past bedtime.",
+   "params": {
+    "lines": [
+     "PAST",
+     "BEDTIME?"
+    ],
+    "accent_line": 1,
+    "kicker": "BE HONEST",
+    "backdrop": "stars"
+   }
+  },
+  {
+   "id": "drunk",
+   "type": "statement",
+   "music_intensity": 0.55,
+   "narration": "After seventeen to nineteen hours awake, people in one study did as badly on tests as someone with a blood alcohol level of point zero five percent.",
+   "params": {
+    "lines": [
+     "17-19 HOURS",
+     "≈ 0.05% BAC"
+    ],
+    "accent_line": 1,
+    "kicker": "TEST PERFORMANCE",
+    "backdrop": "grid",
+    "size": 80
+   }
+  },
+  {
+   "id": "record",
+   "type": "timeline",
+   "music_intensity": 0.6,
+   "narration": "In a famous 1964 experiment, a seventeen-year-old student stayed awake for eleven days, about two hundred sixty-four hours.",
+   "params": {
+    "title": "HOURS AWAKE",
+    "spacing": 420,
+    "events": [
+     {
+      "at": 0.5,
+      "label": "Like 0.05% BAC",
+      "when": "17-19 h",
+      "color": "cool"
+     },
+     {
+      "at": "@eleven",
+      "label": "1964 record",
+      "when": "264 h",
+      "color": "accent"
+     }
+    ]
+   }
+  },
+  {
+   "id": "brain",
+   "type": "figures",
+   "music_intensity": 0.6,
+   "narration": "Part of the reason we can't skip it: in mice, sleep widens the space between brain cells by about sixty percent, so fluid can flush out waste.",
+   "params": {
+    "figures": [
+     {
+      "shape": "head",
+      "x": 540,
+      "y": 640,
+      "size": [
+       [
+        0,
+        640
+       ],
+       [
+        10,
+        700
+       ]
+      ],
+      "color": "muted",
+      "detail_color": "cool",
+      "at": 0.1
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@sixty",
+     "dur": 3.0,
+     "text": "+60%",
+     "kicker": "SPACE BETWEEN BRAIN CELLS",
+     "style": "stat",
+     "y": 1180,
+     "size": 110,
+     "color": "accent"
+    }
+   ]
+  },
+  {
+   "id": "clean",
+   "type": "statement",
+   "music_intensity": 0.55,
+   "narration": "Scientists think sleep may be, in part, a nightly cleaning shift for the brain.",
+   "params": {
+    "lines": [
+     "NIGHT SHIFT:",
+     "CLEANING"
+    ],
+    "accent_line": 1,
+    "kicker": "ONE LEADING IDEA",
+    "backdrop": "pulse"
+   }
+  },
+  {
+   "id": "bird",
+   "type": "figures",
+   "music_intensity": 0.7,
+   "narration": "Even animals that can't stop still sleep. Frigatebirds flying for days over the ocean nap mid-flight, sometimes with just half their brain.",
+   "params": {
+    "figures": [
+     {
+      "shape": "bird",
+      "x": [
+       [
+        0,
+        380
+       ],
+       [
+        11,
+        700
+       ]
+      ],
+      "y": 600,
+      "size": 560,
+      "color": "text",
+      "at": 0.1,
+      "bob": 18
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@half",
+     "dur": 2.6,
+     "text": "HALF A BRAIN",
+     "kicker": "ASLEEP IN FLIGHT",
+     "style": "stat",
+     "y": 1180,
+     "size": 80,
+     "color": "accent"
+    }
+   ]
+  },
+  {
+   "id": "minutes",
+   "type": "compare",
+   "music_intensity": 0.6,
+   "narration": "About forty-two minutes of sleep a day in the air, compared with roughly twelve hours on land.",
+   "params": {
+    "title": "FRIGATEBIRD SLEEP PER DAY",
+    "mode": "bars",
+    "items": [
+     {
+      "label": "In flight",
+      "value": 0.7,
+      "display": "~42 min",
+      "color": "accent"
+     },
+     {
+      "label": "On land",
+      "value": 12,
+      "display": "~12 h",
+      "color": "cool"
+     }
+    ],
+    "source": "Rattenborg et al. 2016"
+   }
+  },
+  {
+   "id": "end",
+   "type": "title_card",
+   "transition": "dip",
+   "music_intensity": 0.8,
+   "tail": 0.7,
+   "narration": "So evolution never deleted sleep. It just found ways to do it with half a brain.",
+   "params": {
+    "lines": [
+     "WHAT IF",
+     "YOU NEVER",
+     "SLEPT?"
+    ],
+    "accent_line": 1,
+    "backdrop": "none",
+    "size": 92
+   }
+  }
+ ],
+ "claims": [
+  {
+   "claim": "After 17-19 hours without sleep, test performance was equivalent to or worse than at 0.05% BAC",
+   "source": 0
+  },
+  {
+   "claim": "In 1963-64 a 17-year-old stayed awake about 11 days (264 hours)",
+   "source": 1
+  },
+  {
+   "claim": "In mice, sleep increased the brain's interstitial space by about 60%, increasing clearance of waste such as beta-amyloid",
+   "source": 2
+  },
+  {
+   "claim": "Researchers suggest the brain may flush out toxins during sleep",
+   "source": 3
+  },
+  {
+   "claim": "Great frigatebirds sleep in flight, sometimes with one hemisphere at a time",
+   "source": 4
+  },
+  {
+   "claim": "Frigatebirds slept about 42 minutes a day in flight versus about 12 hours a day on land",
+   "source": 5
+  }
+ ],
+ "meta": {
+  "title": "What If You Never Slept Again?",
+  "summary": "What happens to your brain if you stop sleeping, what the record says, and the birds that sleep while flying.",
+  "tags": [
+   "what if",
+   "sleep",
+   "brain",
+   "human body",
+   "frigatebird",
+   "sleep deprivation",
+   "biology",
+   "science",
+   "shorts"
+  ],
+  "playlist": "What If: Humans"
+ },
+ "format": "vertical",
+ "pace": "fast",
+ "status": "ready"
+}

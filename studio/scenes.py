@@ -448,3 +448,186 @@ def timeline(ctx, t, dur, p, env):
             yy = y + (-130 - 40 * (len(draw.wrap(ctx, e["label"], spacing * 0.85, 32)[:3]) - 1 - k) if up else 150 + 40 * k)
             draw.text(ctx, line, x, yy, 32, brand.FONT, env.pal["text"], min(u, 1))
     draw.vignette(ctx)
+
+
+# ------------------------------------------------------------ figures (life, animals, human body)
+def _fill_subpaths(ctx):
+    """Fill every sub-path of the current path on its own, so overlapping parts
+    always merge into one silhouette whatever their winding direction."""
+    path = list(ctx.copy_path())
+    ctx.new_path()
+    started = False
+    for kind, pts in path:
+        if kind == cairo.PATH_MOVE_TO:
+            if started:
+                ctx.fill()
+            ctx.move_to(*pts)
+            started = True
+        elif kind == cairo.PATH_LINE_TO:
+            ctx.line_to(*pts)
+        elif kind == cairo.PATH_CURVE_TO:
+            ctx.curve_to(*pts)
+        elif kind == cairo.PATH_CLOSE_PATH:
+            ctx.close_path()
+    if started:
+        ctx.fill()
+
+
+def _color(env, c, default="accent"):
+    if isinstance(c, (list, tuple)):
+        return tuple(c)
+    return env.pal.get(c or default, env.pal[default])
+
+
+def draw_figure(ctx, shape, x, y, size, col, alpha, t, env, flip=False, rot=0.0, detail=None, glow=0.22):
+    """Draw one silhouette from studio.figures.SHAPES as a single shaded form."""
+    from .figures import SHAPES
+    if alpha <= 0.003 or size <= 0.5:
+        return
+    fn = SHAPES[shape]
+    if glow:
+        draw.glow(ctx, x, y, size * 0.75, col, glow * alpha)
+    ctx.save()
+    ctx.translate(x, y)
+    ctx.rotate(rot)
+    ctx.scale(-size if flip else size, size)
+    ctx.push_group()
+    ctx.set_source_rgb(1, 1, 1)
+    fn(ctx, "base", t)
+    _fill_subpaths(ctx)
+    base = ctx.pop_group()
+    ctx.push_group()
+    ctx.set_source_rgb(1, 1, 1)
+    fn(ctx, "detail", t)
+    _fill_subpaths(ctx)
+    det = ctx.pop_group()
+    ctx.push_group()
+    g = cairo.LinearGradient(-0.3, -0.5, 0.3, 0.5)
+    g.add_color_stop_rgb(0, *draw.mix(col, (1, 1, 1), 0.28))
+    g.add_color_stop_rgb(0.55, *col)
+    g.add_color_stop_rgb(1, *[c * 0.62 for c in col])
+    ctx.set_source(g)
+    ctx.mask(base)
+    dcol = detail if detail is not None else tuple(c * 0.42 for c in col)
+    ctx.push_group()
+    ctx.set_source_rgb(*dcol)
+    ctx.mask(det)
+    dg = ctx.pop_group()
+    ctx.set_source(dg)
+    ctx.mask(base)
+    hl = cairo.RadialGradient(-0.18, -0.3, 0.0, -0.18, -0.3, 0.7)
+    hl.add_color_stop_rgba(0, 1, 1, 1, 0.16)
+    hl.add_color_stop_rgba(1, 1, 1, 1, 0.0)
+    ctx.set_source(hl)
+    ctx.mask(base)
+    grp = ctx.pop_group()
+    ctx.set_source(grp)
+    ctx.paint_with_alpha(alpha)
+    ctx.restore()
+
+
+def _life(t, at, out, fade=0.5):
+    """(alpha, scale, rise) for a figure that pops in at `at` and vanishes at `out`."""
+    u_in = window(t, at, fade)
+    a, s = out_cubic(u_in), 0.6 + 0.4 * out_back(u_in)
+    rise = 0.0
+    if out is not None:
+        u_out = window(t, out, fade * 1.4)
+        a *= 1 - u_out
+        s *= 1 - 0.35 * u_out
+        rise = 40 * smooth(u_out)
+    return a, s, rise
+
+
+@scene("figures")
+def figures(ctx, t, dur, p, env):
+    """Clean vector silhouettes of living things (see studio/figures.py SHAPES:
+    person, head, bee, butterfly, beetle, flower, leaf, bird, dolphin, sea_slug, sun).
+    params:
+      backdrop: stars (default) | pulse | none
+      title, kicker: optional heading near the top (y ~ 230)
+      figures: [{shape, x, y, size (px tall), color (palette key or rgb), at, out,
+                 to_color + tint_at (+ tint_dur) to recolour, detail_color, flip, rot,
+                 bob (px), glow (0..1), label, label_color}]  x/y/size accept keyframes
+      grid: {shape, cols, rows, x, y, cell, size, at, stagger, color,
+             hi (first n icons), hi_color, hi_at, rest: dim|vanish}  (icon array, e.g. "87 of 115")
+      swarm: {shapes, count, seed, area [x0,y0,x1,y1], size, color, at, out}
+             (many small drifting figures; `out` makes them blink away one by one)
+    Keep important figures in the upper 60% of vertical frames."""
+    draw.background(ctx, env.pal)
+    bd = p.get("backdrop", "stars")
+    if bd == "stars":
+        env.stars.draw(ctx, (t * 8, 0, 1.0 + t * 0.01), t, 0.5)
+    elif bd == "pulse":
+        for k in range(4):
+            r = ((t * 120 + k * 260) % 1100)
+            ctx.set_source_rgba(*env.pal["accent"], 0.14 * (1 - r / 1100))
+            ctx.set_line_width(3); ctx.new_path()
+            ctx.arc(brand.W / 2, brand.H * 0.4, r, 0, 2 * math.pi); ctx.stroke()
+    ta = smooth(window(t, 0.05, 0.5))
+    if p.get("kicker"):
+        draw.text(ctx, p["kicker"], brand.W / 2, 170, 28, brand.FONT, env.pal["muted"], ta, tracking=0.25)
+    if p.get("title"):
+        draw.text(ctx, p["title"], brand.W / 2, 240, 56, brand.FONT_HEAVY, env.pal["text"], ta)
+
+    sw = p.get("swarm")
+    if sw:
+        rng = np.random.default_rng(sw.get("seed", 7))
+        x0, y0, x1, y1 = sw.get("area", [80, 300, brand.W - 80, brand.H * 0.6])
+        shapes = sw.get("shapes", ["bee", "butterfly", "beetle"])
+        n = sw.get("count", 24)
+        out = sw.get("out")
+        for i in range(n):
+            px, py = rng.uniform(x0, x1), rng.uniform(y0, y1)
+            ph, sp = rng.uniform(0, 6.28), rng.uniform(0.4, 0.9)
+            sz = sw.get("size", 60) * rng.uniform(0.7, 1.25)
+            shp = shapes[i % len(shapes)]
+            o = None if out is None else out + rng.uniform(0, sw.get("out_spread", 1.2))
+            a, s, _ = _life(t, sw.get("at", 0) + rng.uniform(0, 0.6), o, 0.35)
+            if o is not None and t >= o:
+                draw.glow(ctx, px, py, sz * (0.6 + window(t, o, 0.5)), env.pal["text"], 0.35 * (1 - window(t, o, 0.6)))
+            xx = px + 26 * math.sin(t * sp + ph)
+            yy = py + 18 * math.sin(t * sp * 1.3 + ph * 2)
+            draw_figure(ctx, shp, xx, yy, sz * s, _color(env, sw.get("color"), "accent"), a,
+                        t + ph, env, flip=(math.cos(t * sp + ph) < 0), rot=0.15 * math.sin(ph), glow=0.12)
+
+    gr = p.get("grid")
+    if gr:
+        cols, rows = gr.get("cols", 10), gr.get("rows", 5)
+        cell = gr.get("cell", 88)
+        gx = gr.get("x", brand.W / 2) - cell * (cols - 1) / 2
+        gy = gr.get("y", 520) - cell * (rows - 1) / 2
+        hi_at = gr.get("hi_at")
+        for i in range(cols * rows):
+            r_, c_ = divmod(i, cols)
+            a, s, _ = _life(t, gr.get("at", 0.2) + i * gr.get("stagger", 0.02), None, 0.4)
+            col = _color(env, gr.get("color"), "muted")
+            if hi_at is not None:
+                u = window(t, hi_at + 0.01 * i, 0.5)
+                if i < gr.get("hi", 0):
+                    col = draw.mix(col, _color(env, gr.get("hi_color"), "accent"), u)
+                elif gr.get("rest", "dim") == "vanish":
+                    a *= 1 - u; s *= 1 - 0.4 * u
+                else:
+                    a *= 1 - 0.65 * u
+            draw_figure(ctx, gr.get("shape", "flower"), gx + c_ * cell, gy + r_ * cell,
+                        gr.get("size", cell * 0.8) * s, col, a, t + i, env, glow=0)
+
+    for f in p.get("figures", []):
+        a, s, rise = _life(t, f.get("at", 0.0), f.get("out"))
+        if a <= 0:
+            continue
+        col = _color(env, f.get("color"), "accent")
+        if f.get("to_color") is not None:
+            u = smooth(window(t, f.get("tint_at", 1.0), f.get("tint_dur", 1.2)))
+            col = draw.mix(col, _color(env, f["to_color"]), u)
+        x, y, size = kf(f.get("x", brand.W / 2), t), kf(f.get("y", brand.H * 0.4), t), kf(f.get("size", 400), t)
+        y += f.get("bob", 0) * math.sin(t * 1.4 + x * 0.01) - rise
+        det = f.get("detail_color")
+        draw_figure(ctx, f["shape"], x, y, size * s, col, a * f.get("alpha", 1.0), t, env,
+                    flip=f.get("flip", False), rot=kf(f.get("rot", 0.0), t),
+                    detail=_color(env, det) if det is not None else None, glow=f.get("glow", 0.22))
+        if f.get("label"):
+            draw.text(ctx, f["label"], x, y + size * 0.62, f.get("label_size", 34), brand.FONT_HEAVY,
+                      _color(env, f.get("label_color"), "text"), a, tracking=0.08)
+    draw.vignette(ctx)

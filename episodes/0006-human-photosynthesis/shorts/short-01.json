@@ -1,0 +1,312 @@
+{
+ "slug": "0006-human-photosynthesis-short-01",
+ "title": "What If Humans Could Photosynthesize?",
+ "palette": "verdant",
+ "music_mood": "warm",
+ "seed": 86,
+ "sources": [
+  {
+   "title": "Zhu, Long & Ort (2008), What is the maximum efficiency with which photosynthesis can convert solar energy into biomass?, Curr. Opin. Biotechnol.",
+   "url": "https://experts.illinois.edu/en/publications/what-is-the-maximum-efficiency-with-which-photosynthesis-can-conv/"
+  },
+  {
+   "title": "NREL: Reference Solar Spectral Irradiance, Air Mass 1.5 (1000 W/m²)",
+   "url": "https://rredc.nrel.gov/solar/spectra/am1.5/"
+  },
+  {
+   "title": "BioNumbers: Mean body surface area",
+   "url": "https://bionumbers.hms.harvard.edu/bionumber.aspx?id=112012"
+  },
+  {
+   "title": "U.S. FDA: Daily Value on the Nutrition Facts Label (2,000 calories a day)",
+   "url": "https://www.accessdata.fda.gov/scripts/interactivenutritionfactslabel/daily-value.cfm"
+  },
+  {
+   "title": "Rumpho et al. (2011), The making of a photosynthetic animal, Journal of Experimental Biology",
+   "url": "https://cob.silverchair.com/jeb/article-split/214/2/303/10459/The-making-of-a-photosynthetic-animal"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "hook",
+   "type": "figures",
+   "music_intensity": 0.55,
+   "narration": "What if your skin could photosynthesize, like a leaf? No more grocery runs. Lunch would just mean stepping out into the sunshine.",
+   "params": {
+    "figures": [
+     {
+      "shape": "sun",
+      "x": 830,
+      "y": 340,
+      "size": 300,
+      "color": "accent",
+      "at": 0,
+      "glow": 0.5
+     },
+     {
+      "shape": "person",
+      "x": 470,
+      "y": 760,
+      "size": 720,
+      "color": "text",
+      "to_color": "good",
+      "tint_at": "@leaf",
+      "tint_dur": 1.6,
+      "at": 0.1
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": "@leaf",
+     "name": "shimmer",
+     "gain": -8
+    }
+   ],
+   "tail": 0.3
+  },
+  {
+   "id": "cta",
+   "type": "statement",
+   "music_intensity": 0.4,
+   "transition": "cut",
+   "narration": "Subscribe if you like the math, because here it comes.",
+   "params": {
+    "lines": [
+     "LET'S DO",
+     "THE MATH"
+    ],
+    "accent_line": 1,
+    "kicker": "SUN-POWERED HUMANS",
+    "backdrop": "grid"
+   }
+  },
+  {
+   "id": "sun",
+   "type": "figures",
+   "music_intensity": 0.5,
+   "narration": "Bright midday sun delivers roughly a thousand watts per square meter. Stand in it, and about one square meter of you faces the Sun.",
+   "params": {
+    "figures": [
+     {
+      "shape": "sun",
+      "x": 540,
+      "y": 560,
+      "size": [
+       [
+        0,
+        520
+       ],
+       [
+        9,
+        600
+       ]
+      ],
+      "color": "accent",
+      "at": 0,
+      "glow": 0.6
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@thousand",
+     "dur": 3.4,
+     "text": "~1,000 W / m²",
+     "kicker": "PEAK SUNLIGHT",
+     "style": "stat",
+     "y": 1160,
+     "size": 84,
+     "color": "accent"
+    }
+   ]
+  },
+  {
+   "id": "eff",
+   "type": "compare",
+   "music_intensity": 0.55,
+   "narration": "The catch: photosynthesis is inefficient. Even in theory, most plants store at most four point six percent of the sunlight they get.",
+   "params": {
+    "title": "SUNLIGHT TURNED INTO FOOD",
+    "mode": "bars",
+    "items": [
+     {
+      "label": "Sunlight",
+      "value": 100,
+      "display": "100%",
+      "color": "muted"
+     },
+     {
+      "label": "Stored (max)",
+      "value": 4.6,
+      "display": "4.6%",
+      "color": "good"
+     }
+    ],
+    "source": "Zhu, Long & Ort 2008"
+   }
+  },
+  {
+   "id": "hour",
+   "type": "statement",
+   "music_intensity": 0.6,
+   "narration": "Do the math, and that's about forty food calories an hour, in perfect, cloudless sun.",
+   "params": {
+    "lines": [
+     "~40",
+     "CALORIES / HOUR"
+    ],
+    "accent_line": 0,
+    "kicker": "ROUGH ESTIMATE, BEST CASE",
+    "backdrop": "pulse"
+   }
+  },
+  {
+   "id": "day",
+   "type": "compare",
+   "music_intensity": 0.6,
+   "narration": "Six hours of that gives you around two hundred and forty calories. A typical daily guide is two thousand.",
+   "params": {
+    "title": "CALORIES PER DAY",
+    "mode": "bars",
+    "items": [
+     {
+      "label": "6 h of sun",
+      "value": 240,
+      "display": "~240",
+      "color": "good"
+     },
+     {
+      "label": "Daily guide",
+      "value": 2000,
+      "display": "2,000",
+      "color": "accent"
+     }
+    ],
+    "source": "Zhu et al. 2008; FDA"
+   }
+  },
+  {
+   "id": "skin",
+   "type": "statement",
+   "music_intensity": 0.55,
+   "narration": "To live on light alone, you'd need roughly eight times more skin facing the Sun, all day, every single day.",
+   "params": {
+    "lines": [
+     "8×",
+     "MORE SKIN"
+    ],
+    "accent_line": 0,
+    "kicker": "TO LIVE ON SUNLIGHT",
+    "backdrop": "stars"
+   }
+  },
+  {
+   "id": "slug",
+   "type": "figures",
+   "music_intensity": 0.7,
+   "narration": "Yet one animal does a version of this. The sea slug Elysia chlorotica steals chloroplasts from the algae it eats, and keeps them working for months.",
+   "params": {
+    "figures": [
+     {
+      "shape": "sea_slug",
+      "x": 520,
+      "y": 640,
+      "size": [
+       [
+        0,
+        600
+       ],
+       [
+        10,
+        680
+       ]
+      ],
+      "color": "good",
+      "at": 0.1,
+      "bob": 10
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@chloroplasts",
+     "dur": 2.6,
+     "text": "STOLEN CHLOROPLASTS",
+     "kicker": "ELYSIA CHLOROTICA",
+     "style": "stat",
+     "y": 1160,
+     "size": 60,
+     "color": "accent"
+    }
+   ]
+  },
+  {
+   "id": "end",
+   "type": "title_card",
+   "transition": "dip",
+   "music_intensity": 0.8,
+   "tail": 0.7,
+   "narration": "And look at its shape: flat, wide and green. To run on sunlight, it basically became a leaf.",
+   "params": {
+    "lines": [
+     "WHAT IF",
+     "HUMANS",
+     "WERE PLANTS?"
+    ],
+    "accent_line": 1,
+    "backdrop": "none",
+    "size": 88
+   }
+  }
+ ],
+ "claims": [
+  {
+   "claim": "Clear-sky peak sunlight is about 1000 W per square metre (standard AM1.5 reference)",
+   "source": 1
+  },
+  {
+   "claim": "Adult body surface area is roughly 1.7-1.9 m², so about 1 m² faces the Sun at once (rough estimate)",
+   "source": 2
+  },
+  {
+   "claim": "Maximum theoretical solar-to-biomass efficiency is 4.6% for C3 plants (most plants), 6% for C4",
+   "source": 0
+  },
+  {
+   "claim": "1000 W/m² x 1 m² x 4.6% = 46 W, about 40 kcal per hour (own calculation from the sourced figures)",
+   "source": 0
+  },
+  {
+   "claim": "Six hours gives about 240 kcal versus the 2,000-calorie daily reference; about 8x the sun-facing area needed (own calculation)",
+   "source": 3
+  },
+  {
+   "claim": "Elysia chlorotica takes up chloroplasts from the alga Vaucheria litorea and keeps them photosynthesizing",
+   "source": 4
+  },
+  {
+   "claim": "Elysia chlorotica's stolen chloroplasts keep photosynthesizing for months (up to its ~10-month lifespan)",
+   "source": 4
+  }
+ ],
+ "meta": {
+  "title": "What If Humans Could Photosynthesize?",
+  "summary": "Green skin, free lunch? We run the numbers on a sun-powered human, and meet the sea slug that actually steals photosynthesis.",
+  "tags": [
+   "what if",
+   "photosynthesis",
+   "human body",
+   "biology",
+   "sea slug",
+   "plants",
+   "sunlight",
+   "science",
+   "shorts"
+  ],
+  "playlist": "What If: Humans"
+ },
+ "format": "vertical",
+ "pace": "fast",
+ "status": "ready"
+}

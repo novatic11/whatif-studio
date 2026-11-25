@@ -75,7 +75,9 @@ Copy the structure of `episodes/0001-sun-black-hole/plan.json`. Rules:
 - Available scene types (see `studio/scenes.py` docstrings): `cosmos` (camera, stars,
   planets, black holes, orbits, collapse effects), `light_travel`, `chart` (needs a real
   data source), `compare` (bars or circles), `timeline`, `statement` (kinetic text beat),
-  `title_card`. Planet kinds: earth, rocky, moon, gas, star.
+  `title_card`, `figures` (vector silhouettes of living things: person, head, bee, butterfly,
+  beetle, flower, leaf, bird, dolphin, sea_slug, sun; plus icon grids and vanishing swarms;
+  shapes live in `studio/figures.py`). Planet kinds: earth, rocky, moon, gas, star.
 - Set `palette` (deep_space, ember, abyss, verdant, violet), `music_mood` (awe, mystery,
   tense, warm), a new `seed`, `music_intensity` per scene, `sfx` for key beats
   (impact, whoosh, riser, tick, shimmer, drone_drop) and `transition` (crossfade, cut,

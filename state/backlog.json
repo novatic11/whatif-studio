@@ -150,21 +150,6 @@
   "added": "2026-11-25"
  },
  {
-  "idea": "What if humans could photosynthesize?",
-  "premise": "Human skin with chloroplasts",
-  "angle": "Why you'd need a tennis-court of skin to eat sunlight",
-  "theme": "life",
-  "scores": {
-   "curiosity": 5,
-   "payoff": 5,
-   "evidence": 4,
-   "visual_fit": 2,
-   "freshness": 5,
-   "advertiser_friendly": 5
-  },
-  "added": "2026-11-25"
- },
- {
   "idea": "What if insects were the size of dogs?",
   "premise": "Giant insects today",
   "angle": "Oxygen limits and the Carboniferous giant dragonflies",
@@ -173,22 +158,7 @@
    "curiosity": 5,
    "payoff": 4,
    "evidence": 4,
-   "visual_fit": 2,
-   "freshness": 5,
-   "advertiser_friendly": 5
-  },
-  "added": "2026-11-25"
- },
- {
-  "idea": "What if you stopped sleeping?",
-  "premise": "Going without sleep",
-  "angle": "What research shows happens hour by hour",
-  "theme": "humans",
-  "scores": {
-   "curiosity": 5,
-   "payoff": 4,
-   "evidence": 4,
-   "visual_fit": 2,
+   "visual_fit": 4,
    "freshness": 5,
    "advertiser_friendly": 5
   },
@@ -238,5 +208,35 @@
    "advertiser_friendly": 5
   },
   "added": "2026-11-25"
+ },
+ {
+  "idea": "What if you could breathe underwater?",
+  "premise": "Humans gain working gills",
+  "angle": "How little oxygen water holds vs air, and the gill area a human would need",
+  "scores": {
+   "curiosity": 5,
+   "payoff": 4,
+   "evidence": 4,
+   "visual_fit": 4,
+   "freshness": 5,
+   "advertiser_friendly": 5
+  },
+  "added": "2026-11-25",
+  "theme": "human body"
+ },
+ {
+  "idea": "What if all the bees disappeared?",
+  "premise": "Only bees vanish, other pollinators remain",
+  "angle": "Which foods depend on bees specifically; wild vs honeybees",
+  "scores": {
+   "curiosity": 5,
+   "payoff": 3,
+   "evidence": 4,
+   "visual_fit": 4,
+   "freshness": 3,
+   "advertiser_friendly": 5
+  },
+  "added": "2026-11-25",
+  "theme": "life"
  }
 ]

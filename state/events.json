@@ -78,5 +78,29 @@
   "publish_at": "2026-11-28T01:00:00Z",
   "mode": "scheduled_public",
   "warnings": []
+ },
+ {
+  "at": "2026-11-25T17:17:49+00:00",
+  "msg": "Error producing item; will retry next run",
+  "item": "episodes/0008-earth-rings/shorts/short-01.json",
+  "error": "operands could not be broadcast together with shapes (46463,) (120000,) "
+ },
+ {
+  "at": "2026-11-25T17:24:44+00:00",
+  "msg": "Uploaded",
+  "item": "episodes/0009-fall-into-jupiter/shorts/short-01.json",
+  "video_id": "IO8Kwcde_Cs",
+  "publish_at": "2026-11-29T01:00:00Z",
+  "mode": "scheduled_public",
+  "warnings": []
+ },
+ {
+  "at": "2026-11-25T17:31:18+00:00",
+  "msg": "Uploaded",
+  "item": "episodes/0010-hole-through-earth/shorts/short-01.json",
+  "video_id": "zW-0kQktFhQ",
+  "publish_at": "2026-11-29T18:00:00Z",
+  "mode": "scheduled_public",
+  "warnings": []
  }
 ]

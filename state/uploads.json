@@ -97,5 +97,33 @@
   "uploaded_at": "2026-11-25T17:14:54+00:00",
   "plan_hash": "66004053d9614ee3",
   "warnings": []
+ },
+ "episodes/0009-fall-into-jupiter/shorts/short-01.json": {
+  "video_id": "IO8Kwcde_Cs",
+  "title": "What If You Fell Into Jupiter?",
+  "kind": "short",
+  "status": "uploaded",
+  "privacy": "private",
+  "publish_at": "2026-11-29T01:00:00Z",
+  "mode": "scheduled_public",
+  "playlist": "What If: Space",
+  "duration": 71.3,
+  "uploaded_at": "2026-11-25T17:24:44+00:00",
+  "plan_hash": "54d9467304df865d",
+  "warnings": []
+ },
+ "episodes/0010-hole-through-earth/shorts/short-01.json": {
+  "video_id": "zW-0kQktFhQ",
+  "title": "What If You Fell Through a Hole in the Earth?",
+  "kind": "short",
+  "status": "uploaded",
+  "privacy": "private",
+  "publish_at": "2026-11-29T18:00:00Z",
+  "mode": "scheduled_public",
+  "playlist": "What If: Earth",
+  "duration": 64.0,
+  "uploaded_at": "2026-11-25T17:31:17+00:00",
+  "plan_hash": "fdc1710b6c54d8a5",
+  "warnings": []
  }
 }

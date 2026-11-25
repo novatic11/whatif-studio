@@ -1,0 +1,99 @@
+{
+  "slug": "0001-sun-black-hole",
+  "title": "What If the Sun Became a Black Hole?",
+  "status": "sample",
+  "palette": "deep_space",
+  "music_mood": "mystery",
+  "seed": 11,
+  "scenes": [
+    {
+      "id": "collapse",
+      "type": "cosmos",
+      "narration": "Imagine that, right now, without any warning, the Sun collapses into a black hole.",
+      "music_intensity": 0.4,
+      "params": {
+        "camera": [[0, [380, 0, 0.92]], [9, [250, 0, 1.08]]],
+        "bodies": [
+          {"kind": "star", "x": 0, "y": 0, "r": 230, "seed": 5, "collapse": {"at": "@collapses", "dur": 1.1, "bh_r": 60}},
+          {"kind": "planet", "planet": "earth", "x": 980, "y": 160, "r": 64, "spin": 0.06, "rot0": 1.3}
+        ],
+        "shake": [[0, 0], ["@collapses+0.9", 0], ["@collapses+1.2", 1.5], ["@collapses+2.6", 0]]
+      },
+      "sfx": [{"at": "@collapses-1.4", "name": "riser", "gain": -10}, {"at": "@collapses+1.05", "name": "impact", "gain": -3}],
+      "tail": 1.6
+    },
+    {
+      "id": "same-mass",
+      "type": "cosmos",
+      "narration": "Not a bigger star. Not an explosion. The same mass, all of it, crushed into a ball about six kilometers across.",
+      "music_intensity": 0.55,
+      "params": {
+        "camera": [[0, [0, 0, 1.0]], [12, [0, -10, 1.25]]],
+        "bodies": [{"kind": "black_hole", "x": 0, "y": 0, "r": 140}]
+      },
+      "overlays": [
+        {"at": "@same", "dur": 2.2, "text": "SAME MASS", "style": "pop", "y": 930, "size": 84, "color": "accent"},
+        {"at": "@six-0.1", "dur": 3.2, "text": "≈ 6 KM", "kicker": "DIAMETER", "style": "stat", "x": 1560, "y": 300, "size": 92},
+        {"at": "@six+0.4", "dur": 2.8, "text": "NOT TO SCALE", "style": "label", "x": 1560, "y": 360, "size": 22, "color": "muted"}
+      ]
+    },
+    {
+      "id": "nobody-notices",
+      "type": "cosmos",
+      "narration": "Here's the strange part. Down on Earth, nobody would notice. Not for eight minutes and twenty seconds.",
+      "music_intensity": 0.5,
+      "params": {
+        "camera": [[0, [0, 0, 1.0]], [10, [40, 0, 1.12]]],
+        "bodies": [{"kind": "planet", "planet": "earth", "x": 120, "y": 40, "r": 330, "spin": 0.035, "rot0": 2.2, "light_dir": [-0.85, -0.25, 0.45]}]
+      },
+      "overlays": [{"at": "@eight", "dur": 3.0, "text": "8 MIN 20 SEC", "style": "pop", "x": 560, "y": 980, "size": 80, "color": "accent"}]
+    },
+    {
+      "id": "last-light",
+      "type": "light_travel",
+      "narration": "That's how long light takes to cross the hundred and fifty million kilometers to Earth. Until the last of it arrives, the sky looks perfectly normal.",
+      "music_intensity": 0.6,
+      "params": {"start": 0.6, "end": "@normal", "counter_to": 500, "from_label": "WHERE THE SUN WAS", "to_label": "EARTH",
+                 "distance_label": "≈ 150 MILLION KM", "counter_label": "TIME SINCE COLLAPSE"},
+      "sfx": [{"at": "@normal+0.1", "name": "tick", "gain": -8}]
+    },
+    {
+      "id": "orbit",
+      "type": "cosmos",
+      "narration": "And Earth's orbit? It wouldn't change at all. Gravity depends on mass, not size, so Earth would keep circling exactly as before.",
+      "music_intensity": 0.45,
+      "params": {
+        "camera": [[0, [0, 0, 1.15]], [11, [0, 0, 1.0]]],
+        "bodies": [
+          {"kind": "black_hole", "x": 0, "y": 0, "r": 26},
+          {"kind": "planet", "planet": "earth", "r": 24, "orbit": {"cx": 0, "cy": 0, "r": 380, "period": 16, "phase": 2.4},
+           "trail": true, "ghost_orbit": true, "light_dir": [-0.6, -0.3, 0.5], "light": 0.6, "spin": 0.3}
+        ]
+      },
+      "overlays": [{"at": "@mass", "dur": 4.0, "text": "SAME MASS  →  SAME ORBIT", "style": "lower"}]
+    },
+    {
+      "id": "lights-out",
+      "type": "cosmos",
+      "narration": "Then... the lights go out.",
+      "music_intensity": 0.2,
+      "min_dur": 6.0,
+      "params": {
+        "camera": [[0, [0, 0, 1.0]], [6, [0, 0, 1.08]]],
+        "bodies": [{"kind": "planet", "planet": "earth", "x": 0, "y": 30, "r": 340, "spin": 0.04, "rot0": 3.4,
+                    "light_dir": [-0.7, -0.2, 0.6], "light": [[0, 1.0], ["@out", 1.0], ["@out+2.2", 0.02, "in_out"]]}],
+        "star_alpha": [[0, 1.0], ["@out", 1.0], ["@out+2", 0.6]]
+      },
+      "sfx": [{"at": "@out", "name": "drone_drop", "gain": -6}]
+    },
+    {
+      "id": "title",
+      "type": "title_card",
+      "transition": "dip",
+      "min_dur": 4.5,
+      "music_intensity": 0.8,
+      "params": {"lines": ["WHAT IF THE SUN", "BECAME A BLACK HOLE?"], "accent_line": 1, "size": 104},
+      "sfx": [{"at": 0.25, "name": "impact", "gain": -6}]
+    }
+  ]
+}

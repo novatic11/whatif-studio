@@ -65,22 +65,25 @@ def next_slot(cfg, kind, ledger):
     return None
 
 
-def pending_packages(ledger, failures):
+def pending_items(cfg, ledger, failures):
+    """Ready items not yet uploaded. Shorts carry their own "status": "ready";
+    long-form plans only count when long_form_enabled is true."""
+    items = []
+    if cfg.get("long_form_enabled", False):
+        for p in sorted(glob.glob(os.path.join(ROOT, "episodes", "*", "plan.json"))):
+            items.append(("long", p))
+    for p in sorted(glob.glob(os.path.join(ROOT, "episodes", "*", "shorts", "*.json"))):
+        items.append(("short", p))
     out = []
-    for p in sorted(glob.glob(os.path.join(ROOT, "episodes", "*", "plan.json"))):
-        plan = json.load(open(p))
+    for kind, path in items:
+        plan = json.load(open(path))
         if plan.get("status") != "ready":
             continue
-        items = [("long", p)] + [("short", s) for s in sorted(glob.glob(os.path.join(os.path.dirname(p), "shorts", "*.json")))]
-        todo = []
-        for kind, path in items:
-            key = os.path.relpath(path, ROOT)
-            f = failures.get(key)
-            if key in ledger or (f and f["hash"] == plan_hash(path)):
-                continue
-            todo.append((kind, path))
-        if todo:
-            out.append((p, todo))
+        key = os.path.relpath(path, ROOT)
+        f = failures.get(key)
+        if key in ledger or (f and f["hash"] == plan_hash(path)):
+            continue
+        out.append((kind, path))
     return out
 
 
@@ -200,19 +203,19 @@ def main():
             save("health.json", health)
             log_event("PAUSED: YouTube credentials rejected; re-run setup step 5 to refresh the token")
             sys.exit(2)
-    pkgs = pending_packages(ledger, failures)
-    if not pkgs:
+    items = pending_items(cfg, ledger, failures)[: cfg.get("max_items_per_run", 4)]
+    if not items:
         log_event("Nothing ready to produce")
         save("health.json", health)
         return
-    plan_path, items = pkgs[0]
     long_ids = {os.path.join(ROOT, os.path.dirname(k)): v["video_id"] for k, v in ledger.items()
                 if v.get("kind") == "long" and v.get("video_id")}
     for kind, path in items:
         ep_dir = os.path.dirname(os.path.dirname(path)) if kind == "short" else os.path.dirname(path)
-        if kind == "short" and upload and ep_dir not in long_ids:
+        if kind == "short" and upload and cfg.get("long_form_enabled", False) \
+                and os.path.exists(os.path.join(ep_dir, "plan.json")) and ep_dir not in long_ids:
             log_event("Short waits for its long-form upload", item=os.path.relpath(path, ROOT))
-            continue  # shorts link to the full video, so they go up after it
+            continue
         try:
             r = produce_item(kind, path, cfg, ledger, failures, token, long_ids, upload)
             if r and kind == "long" and r.get("video_id"):

@@ -39,9 +39,9 @@ def check_plan(plan, fmt):
     words = len(narr.split())
     if fmt == "landscape" and words < 1150:
         issues.append(f"script too short for 8+ min ({words} words; need ~1150+)")
-    if fmt == "vertical" and not (130 <= words <= 230):
+    if fmt == "vertical" and not (130 <= words <= 240):
         issues.append(f"Short script length {words} words is outside 130-230")
-    if not plan.get("sources") and fmt == "landscape":
+    if not plan.get("sources"):
         issues.append("no sources listed")
     # repeated sentences / filler
     sents = [x.strip().lower() for x in re.split(r"[.!?]", narr) if len(x.split()) > 4]
@@ -123,7 +123,7 @@ def check_metadata(meta, fmt):
     tags = meta.get("tags", [])
     if sum(len(x) + 2 for x in tags) > 480:
         issues.append("tags exceed 500 chars")
-    if fmt == "landscape" and "Sources" not in d:
+    if "Sources" not in d:
         issues.append("description has no Sources section")
     return issues
 

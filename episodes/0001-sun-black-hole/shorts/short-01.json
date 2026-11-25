@@ -7,9 +7,18 @@
  "music_mood": "tense",
  "seed": 12,
  "sources": [
-  "https://www.popsci.com/science/article/2013-07/if-sun-went-out-how-long-could-life-earth-survive/",
-  "https://experts.caltech.edu/news/caltech-question-month-if-sun-ceased-exist-right-now-how-long-would-mankind-survive-would",
-  "https://www.livescience.com/planet-earth/what-would-happen-to-earth-if-the-sun-suddenly-vanished"
+  {
+   "title": "Popular Science: If the Sun went out, how long could life on Earth survive?",
+   "url": "https://www.popsci.com/science/article/2013-07/if-sun-went-out-how-long-could-life-earth-survive/"
+  },
+  {
+   "title": "Caltech: If the Sun ceased to exist right now, how long would mankind survive?",
+   "url": "https://experts.caltech.edu/news/caltech-question-month-if-sun-ceased-exist-right-now-how-long-would-mankind-survive-would"
+  },
+  {
+   "title": "Live Science: What would happen to Earth if the Sun suddenly vanished?",
+   "url": "https://www.livescience.com/planet-earth/what-would-happen-to-earth-if-the-sun-suddenly-vanished"
+  }
  ],
  "scenes": [
   {
@@ -617,5 +626,47 @@
     "size": 92
    }
   }
- ]
+ ],
+ "claims": [
+  {
+   "claim": "A Sun-mass black hole would be about 6 km across (Schwarzschild radius ~3 km)",
+   "source": "standard physics"
+  },
+  {
+   "claim": "Sunlight takes about 8 min 20 s to reach Earth",
+   "source": 1
+  },
+  {
+   "claim": "Below 0°F average within about a week; around -100°F within a year",
+   "source": 0
+  },
+  {
+   "claim": "Top ocean layer freezes and insulates deeper water",
+   "source": 0
+  },
+  {
+   "claim": "Most plants die within weeks; some large trees could survive decades",
+   "source": 0
+  },
+  {
+   "claim": "Chemosynthetic microbes near vents don't depend on sunlight",
+   "source": 2
+  }
+ ],
+ "meta": {
+  "title": "What If the Sun Became a Black Hole?",
+  "summary": "If the Sun collapsed into a black hole with the same mass, Earth wouldn't be swallowed. Here's what would actually happen, minute by minute and year by year.",
+  "tags": [
+   "what if",
+   "sun",
+   "black hole",
+   "space",
+   "astronomy",
+   "science",
+   "hypothetical",
+   "shorts"
+  ],
+  "playlist": "What If: Space"
+ },
+ "status": "ready"
 }

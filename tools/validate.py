@@ -66,7 +66,7 @@ def check(path, stills=True):
 
 if __name__ == "__main__":
     ep = sys.argv[1]
-    files = [os.path.join(ep, "plan.json")] + sorted(glob.glob(os.path.join(ep, "shorts", "*.json")))
+    files = [f for f in [os.path.join(ep, "plan.json")] if os.path.exists(f)] + sorted(glob.glob(os.path.join(ep, "shorts", "*.json")))
     results = [check(f, stills="--no-stills" not in sys.argv) for f in files]
     print(json.dumps(results, indent=1))
     sys.exit(0 if all(r["ok"] for r in results) else 1)

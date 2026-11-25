@@ -1,0 +1,10 @@
+{
+ "publish_mode": "private_review",
+ "_publish_mode_options": "private_review = upload as private for the owner to review; scheduled_public = upload private with publishAt so YouTube publishes it at the next slot",
+ "uploads_enabled": true,
+ "timezone": "America/Chicago",
+ "long_slots": [["TUE", "17:00"], ["SAT", "11:00"]],
+ "short_slots": [["MON", "12:00"], ["WED", "12:00"], ["THU", "17:00"], ["SUN", "12:00"]],
+ "category_id": "28",
+ "contains_synthetic_media": false
+}

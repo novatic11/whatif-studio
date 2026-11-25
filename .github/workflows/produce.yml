@@ -1,0 +1,70 @@
+name: Produce and publish
+on:
+  push:
+    branches: [main]
+    paths: ["episodes/**"]
+  schedule:
+    - cron: "23 14 * * *"   # daily safety net (08:23 CT): resumes anything unfinished
+  workflow_dispatch:
+    inputs:
+      no_upload: { description: "Render + QC only", type: boolean, default: false }
+permissions:
+  contents: write
+  issues: write
+concurrency: { group: produce, cancel-in-progress: false }
+jobs:
+  produce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - name: System packages
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg libcairo2-dev pkg-config espeak-ng > /dev/null
+          mkdir -p ~/.local/share/fonts && cp assets/fonts/*.otf assets/fonts/*.ttf ~/.local/share/fonts/ && fc-cache -f > /dev/null
+      - name: Python packages
+        run: |
+          pip install -q torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -q -r requirements.txt
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: hf-kokoro-v1
+      - name: Produce
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          HF_HUB_DISABLE_XET: "1"
+        run: python tools/produce.py ${{ inputs.no_upload && '--no-upload' || '' }}
+      - name: Keep renders for 7 days (review copies)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: renders-${{ github.run_id }}
+          path: |
+            out/*/final.mp4
+            out/*/thumbs/thumbnail.jpg
+            out/*/qc_report.json
+          retention-days: 7
+          if-no-files-found: ignore
+      - name: Save state
+        if: always()
+        run: |
+          git config user.name "hypothetica-bot"
+          git config user.email "hypothetica-bot@users.noreply.github.com"
+          git add state/
+          git commit -qm "Production run ${{ github.run_id }}" || exit 0
+          for i in 1 2 3 4; do git pull --rebase -q && git push -q && break; sleep $((i*5)); done
+      - name: Alert owner if paused
+        if: always()
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: |
+          if python3 -c "import json,sys; h=json.load(open('state/health.json')); sys.exit(0 if h.get('auth',{}).get('ok',True) else 1)"; then exit 0; fi
+          gh issue list --label paused --state open --json number -q '.[0].number' | grep -q . && exit 0
+          gh label create paused --color B60205 2>/dev/null || true
+          gh issue create --label paused --title "Pipeline paused: YouTube credentials need refreshing" \
+            --body "The production run could not authenticate with YouTube, so uploads are paused (nothing was lost). Redo setup step 5 (OAuth Playground) and replace the YT_REFRESH_TOKEN secret, then close this issue."

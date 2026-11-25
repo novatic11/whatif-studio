@@ -12,6 +12,7 @@
   "plan_hash": "cbc01b1751d0cf48",
   "warnings": [
    "playlist: POST https://www.googleapis.com/youtube/v3/playlistItems -> 409: {\n  \"error\": {\n    \"code\": 409,\n    \"message\": \"The operation was aborted.\",\n    \"errors\": [\n  "
-  ]
+  ],
+  "playlist_pending": "What If: Space"
  }
 }

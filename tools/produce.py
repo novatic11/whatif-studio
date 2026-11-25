@@ -177,6 +177,7 @@ def produce_item(kind, path, cfg, ledger, failures, token, long_ids, upload):
             youtube.add_to_playlist(pid, vid, token)
         except Exception as e:
             warnings.append(f"playlist: {str(e)[:160]}")
+            entry["playlist_pending"] = meta["playlist"]
     entry["warnings"] = warnings
     save("uploads.json", ledger)
     log_event("Uploaded", item=key, video_id=vid, publish_at=publish_at, mode=mode, warnings=warnings)
@@ -203,6 +204,19 @@ def main():
             save("health.json", health)
             log_event("PAUSED: YouTube credentials rejected; re-run setup step 5 to refresh the token")
             sys.exit(2)
+    if token:  # catch up on playlist adds that failed in earlier runs
+        cache = load("playlists.json", {})
+        for k, v in ledger.items():
+            if v.get("playlist_pending") and v.get("video_id"):
+                try:
+                    pid = youtube.ensure_playlist(v["playlist_pending"], "Hypothetica thought experiments.", token, cache)
+                    youtube.add_to_playlist(pid, v["video_id"], token)
+                    v.pop("playlist_pending")
+                    log_event("Added to playlist (retry)", item=k)
+                except Exception as e:  # noqa: BLE001
+                    print("playlist retry failed:", str(e)[:200])
+        save("playlists.json", cache)
+        save("uploads.json", ledger)
     items = pending_items(cfg, ledger, failures)[: cfg.get("max_items_per_run", 4)]
     if not items:
         log_event("Nothing ready to produce")

@@ -57,8 +57,8 @@ def _request(method, url, token, body=None, headers=None, retries=5, raw=False):
                 raise AuthError(txt[:200])
             if e.code == 403 and ("quotaExceeded" in txt or "dailyLimitExceeded" in txt or "uploadLimitExceeded" in txt):
                 raise QuotaError(txt[:300])
-            if e.code in (500, 502, 503, 504) and attempt < retries - 1:
-                time.sleep(2 ** attempt * 3)
+            if e.code in (409, 500, 502, 503, 504) and attempt < retries - 1:
+                time.sleep(2 ** attempt * 3 + 2)
                 continue
             raise RuntimeError(f"{method} {url.split('?')[0]} -> {e.code}: {txt[:400]}")
         except (urllib.error.URLError, TimeoutError, ConnectionError):

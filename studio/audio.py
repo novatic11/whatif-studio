@@ -71,8 +71,9 @@ def music(duration, mood="awe", seed=1, bar=8.0, intensity=None):
             break
         L = e - s
         env = np.ones(L, np.float32)
-        env[:fade] = np.linspace(0, 1, fade) ** 1.5 if L > fade else env[:fade]
-        env[-fade:] = np.minimum(env[-fade:], np.linspace(1, 0, fade) ** 1.5)
+        f = max(1, min(fade, L // 2))  # last chord may be shorter than a full fade
+        env[:f] = np.linspace(0, 1, f) ** 1.5
+        env[-f:] = np.minimum(env[-f:], np.linspace(1, 0, f) ** 1.5)
         seg = np.zeros(L, np.float32)
         for note in chord:
             f = hz(note)

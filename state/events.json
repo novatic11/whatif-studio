@@ -13,5 +13,43 @@
   "warnings": [
    "playlist: POST https://www.googleapis.com/youtube/v3/playlistItems -> 409: {\n  \"error\": {\n    \"code\": 409,\n    \"message\": \"The operation was aborted.\",\n    \"errors\": [\n  "
   ]
+ },
+ {
+  "at": "2026-11-25T09:50:14+00:00",
+  "msg": "Added to playlist (retry)",
+  "item": "episodes/0001-sun-black-hole/shorts/short-01.json"
+ },
+ {
+  "at": "2026-11-25T09:50:15+00:00",
+  "msg": "Scheduled for public release",
+  "item": "episodes/0001-sun-black-hole/shorts/short-01.json",
+  "publish_at": "2026-11-25T18:00:00Z"
+ },
+ {
+  "at": "2026-11-25T09:52:55+00:00",
+  "msg": "Uploaded",
+  "item": "episodes/0002-moon-vanished/shorts/short-01.json",
+  "video_id": "tbu4xuPL4ME",
+  "publish_at": "2026-11-26T18:00:00Z",
+  "mode": "scheduled_public",
+  "warnings": []
+ },
+ {
+  "at": "2026-11-25T09:55:10+00:00",
+  "msg": "Uploaded",
+  "item": "episodes/0003-earth-stopped-spinning/shorts/short-01.json",
+  "video_id": "x8qKCCr1DNE",
+  "publish_at": "2026-11-27T18:00:00Z",
+  "mode": "scheduled_public",
+  "warnings": []
+ },
+ {
+  "at": "2026-11-25T09:56:48+00:00",
+  "msg": "Uploaded",
+  "item": "episodes/0004-betelgeuse-exploded/shorts/short-01.json",
+  "video_id": "NmKd5JqGlUg",
+  "publish_at": "2026-11-28T18:00:00Z",
+  "mode": "scheduled_public",
+  "warnings": []
  }
 ]

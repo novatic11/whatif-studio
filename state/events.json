@@ -2,5 +2,16 @@
  {
   "at": "2026-11-25T05:06:19+00:00",
   "msg": "Nothing ready to produce"
+ },
+ {
+  "at": "2026-11-25T05:16:45+00:00",
+  "msg": "Uploaded",
+  "item": "episodes/0001-sun-black-hole/shorts/short-01.json",
+  "video_id": "6F7MraHHZwg",
+  "publish_at": null,
+  "mode": "private_review",
+  "warnings": [
+   "playlist: POST https://www.googleapis.com/youtube/v3/playlistItems -> 409: {\n  \"error\": {\n    \"code\": 409,\n    \"message\": \"The operation was aborted.\",\n    \"errors\": [\n  "
+  ]
  }
 ]

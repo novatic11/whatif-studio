@@ -125,5 +125,19 @@
   "uploaded_at": "2026-11-25T17:31:17+00:00",
   "plan_hash": "fdc1710b6c54d8a5",
   "warnings": []
+ },
+ "episodes/0008-earth-rings/shorts/short-01.json": {
+  "video_id": "u3ozmCwLQ4U",
+  "title": "What If Earth Had Rings Like Saturn?",
+  "kind": "short",
+  "status": "uploaded",
+  "privacy": "private",
+  "publish_at": "2026-11-30T01:00:00Z",
+  "mode": "scheduled_public",
+  "playlist": "What If: Space",
+  "duration": 66.5,
+  "uploaded_at": "2026-11-25T17:41:40+00:00",
+  "plan_hash": "1ffc969fbab6cc11",
+  "warnings": []
  }
 }

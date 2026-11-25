@@ -108,5 +108,14 @@
   "msg": "Error producing item; will retry next run",
   "item": "episodes/0008-earth-rings/shorts/short-01.json",
   "error": "operands could not be broadcast together with shapes (48463,) (120000,) "
+ },
+ {
+  "at": "2026-11-25T17:41:41+00:00",
+  "msg": "Uploaded",
+  "item": "episodes/0008-earth-rings/shorts/short-01.json",
+  "video_id": "u3ozmCwLQ4U",
+  "publish_at": "2026-11-30T01:00:00Z",
+  "mode": "scheduled_public",
+  "warnings": []
  }
 ]

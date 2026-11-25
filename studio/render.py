@@ -200,6 +200,8 @@ def build_audio(plan, timeline, total, vtrack, work):
             if k < 0:
                 continue
             m = min(len(clip), fx.shape[1] - k)
+            if m <= 0:
+                continue  # effect timed past the end of the video
             fx[:, k:k + m] += clip[:m] * g
     vw, mw, fw = (os.path.join(work, x) for x in ("voice.wav", "music.wav", "sfx.wav"))
     audio.write_wav(vw, vtrack, tts.SR)

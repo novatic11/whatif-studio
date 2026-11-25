@@ -2,7 +2,7 @@ name: Produce and publish
 on:
   push:
     branches: [main]
-    paths: ["episodes/**"]
+    paths: ["episodes/**", "studio/**"]
   schedule:
     - cron: "23 14 * * *"   # daily safety net (08:23 CT): resumes anything unfinished
   workflow_dispatch:

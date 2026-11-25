@@ -322,3 +322,129 @@ def overlay(ctx, t, items, env):
             ctx.rectangle(80, brand.H - 300, 8, 110)
             ctx.fill()
             draw.text(ctx, it["text"], 116, brand.H - 232, 40, brand.FONT_HEAVY, env.pal["text"], alpha, align="left")
+
+
+# ------------------------------------------------------------ statement card
+@scene("statement")
+def statement(ctx, t, dur, p, env):
+    """Big kinetic text beat. params: lines [str], accent_line, kicker, backdrop: stars|grid|pulse"""
+    draw.background(ctx, env.pal)
+    bd = p.get("backdrop", "stars")
+    if bd == "stars":
+        env.stars.draw(ctx, (t * 12, 0, 1.0 + t * 0.015), t, 0.8)
+    elif bd == "grid":
+        ctx.set_line_width(1)
+        off = (t * 30) % 80
+        for x in range(-80, brand.W + 80, 80):
+            ctx.set_source_rgba(*env.pal["cool"], 0.07)
+            ctx.move_to(x + off, 0); ctx.line_to(x + off, brand.H); ctx.stroke()
+        for y in range(-80, brand.H + 80, 80):
+            ctx.move_to(0, y + off); ctx.line_to(brand.W, y + off); ctx.stroke()
+    elif bd == "pulse":
+        for k in range(5):
+            r = ((t * 140 + k * 220) % 1100)
+            ctx.set_source_rgba(*env.pal["accent"], 0.18 * (1 - r / 1100))
+            ctx.set_line_width(3); ctx.new_path()
+            ctx.arc(brand.W / 2, brand.H / 2, r, 0, 2 * math.pi); ctx.stroke()
+    lines = p.get("lines", [])
+    size = p.get("size", 96 if brand.W > brand.H else 84)
+    y0 = brand.H / 2 + size * 0.35 - (len(lines) - 1) * size * 0.58
+    if p.get("kicker"):
+        u = out_cubic(window(t, 0.05, 0.5))
+        draw.text(ctx, p["kicker"], brand.W / 2, y0 - size * 1.1, size * 0.3, brand.FONT, env.pal["muted"], u, tracking=0.25)
+    for i, line in enumerate(lines):
+        u = out_cubic(window(t, 0.15 + i * p.get("stagger", 0.35), 0.55))
+        col = env.pal["accent"] if i == p.get("accent_line", -1) else env.pal["text"]
+        draw.text(ctx, line, brand.W / 2, y0 + i * size * 1.16 + (1 - u) * 30, size, brand.FONT_HEAVY, col, u, tracking=0.01)
+    draw.vignette(ctx)
+
+
+# ------------------------------------------------------------ comparison (bars or circles)
+@scene("compare")
+def compare(ctx, t, dur, p, env):
+    """Animated comparison. params: title, mode: bars|circles, scale: diameter(default)|area, items: [{label, value, display, color}],
+    log: bool (log scale for huge ranges), source, reveal_at (per-item times optional)"""
+    draw.background(ctx, env.pal)
+    env.stars.draw(ctx, (0, 0, 1), t, 0.3)
+    items = p["items"]
+    a = smooth(window(t, 0.05, 0.5))
+    draw.text(ctx, p.get("title", ""), brand.W / 2, 150, 54, brand.FONT_HEAVY, env.pal["text"], a)
+    vals = [it["value"] for it in items]
+    f = (lambda v: math.log10(max(v, 1e-9))) if p.get("log") else (lambda v: v)
+    lo = min(0, min(f(v) for v in vals)) if not p.get("log") else min(f(v) for v in vals) - 0.3
+    hi = max(f(v) for v in vals)
+    n = len(items)
+    if p.get("mode", "bars") == "bars":
+        top, bottom = 260, brand.H - 200
+        bw = min(220, (brand.W - 300) / n * 0.6)
+        for i, it in enumerate(items):
+            at = it.get("at", 0.4 + i * 0.5)
+            u = in_out_cubic(window(t, at, 1.1))
+            x = 150 + (brand.W - 300) * (i + 0.5) / n
+            h = (bottom - top) * (f(it["value"]) - lo) / (hi - lo + 1e-9) * u
+            col = env.pal.get(it.get("color", "accent"), env.pal["accent"])
+            g = cairo.LinearGradient(0, bottom - h, 0, bottom)
+            g.add_color_stop_rgba(0, *col, 0.95); g.add_color_stop_rgba(1, *col, 0.45)
+            ctx.set_source(g)
+            draw.rounded_rect(ctx, x - bw / 2, bottom - h, bw, max(h, 1), min(14, bw / 4)); ctx.fill()
+            ua = window(t, at + 0.6, 0.4)
+            draw.text(ctx, it.get("display", f"{it['value']:,}"), x, bottom - h - 24, 44, brand.FONT_MONO, env.pal["text"], ua)
+            draw.text(ctx, it["label"], x, bottom + 60, 30, brand.FONT, env.pal["muted"], a, tracking=0.06)
+    else:  # circles side by side, area-true
+        maxr = min(brand.H * 0.32, brand.W / (2.4 * n))
+        for i, it in enumerate(items):
+            at = it.get("at", 0.4 + i * 0.6)
+            u = out_back(window(t, at, 0.9))
+            frac = it["value"] / max(vals)
+            r = max(maxr * (math.sqrt(frac) if p.get("scale") == "area" else frac), 3.0) * u
+            x = brand.W * (i + 0.5) / n
+            col = env.pal.get(it.get("color", "accent"), env.pal["accent"])
+            draw.glow(ctx, x, brand.H / 2 + 40, max(r, 2) * 1.5, col, 0.25)
+            ctx.set_source_rgba(*col, 0.9); ctx.new_path(); ctx.arc(x, brand.H / 2 + 40, max(r, 1.5), 0, 2 * math.pi); ctx.fill()
+            ua = window(t, at + 0.5, 0.4)
+            draw.text(ctx, it.get("display", str(it["value"])), x, brand.H / 2 + 40 + maxr + 70, 44, brand.FONT_MONO, env.pal["text"], ua)
+            draw.text(ctx, it["label"], x, brand.H / 2 + 40 + maxr + 115, 28, brand.FONT, env.pal["muted"], ua, tracking=0.06)
+    if p.get("source"):
+        draw.text(ctx, "Source: " + p["source"], brand.W - 60, brand.H - 50, 20, brand.FONT, env.pal["muted"], 0.7 * a, align="right", shadow=False)
+    draw.vignette(ctx)
+
+
+# ------------------------------------------------------------ timeline
+@scene("timeline")
+def timeline(ctx, t, dur, p, env):
+    """Horizontal timeline that pans as events appear.
+    params: title, events: [{at (scene s), label, when, color}], span: [start_label, end_label]"""
+    draw.background(ctx, env.pal)
+    env.stars.draw(ctx, (t * 10, 0, 1), t, 0.4)
+    ev = p["events"]
+    n = len(ev)
+    spacing = p.get("spacing", 520)
+    a = smooth(window(t, 0, 0.5))
+    if p.get("title"):
+        draw.text(ctx, p["title"], brand.W / 2, 160, 50, brand.FONT_HEAVY, env.pal["text"], a)
+    # camera follows the most recent revealed event
+    shown = [i for i, e in enumerate(ev) if t >= e.get("at", 0.5 + i * 2.0)]
+    focus = shown[-1] if shown else 0
+    cam_x = 0.0
+    for i in range(focus + 1):
+        e0 = ev[i].get("at", 0.5 + i * 2.0)
+        cam_x = cam_x + (i * spacing - cam_x) * in_out_cubic(window(t, e0, 0.8))
+    y = brand.H / 2 + 40
+    x_of = lambda i: brand.W / 2 + i * spacing - cam_x
+    ctx.set_source_rgba(*env.pal["muted"], 0.5 * a); ctx.set_line_width(3)
+    ctx.move_to(x_of(0) - 400, y); ctx.line_to(x_of(n - 1) + 400, y); ctx.stroke()
+    for i, e in enumerate(ev):
+        at = e.get("at", 0.5 + i * 2.0)
+        u = out_back(window(t, at, 0.6))
+        if u <= 0:
+            continue
+        x = x_of(i)
+        col = env.pal.get(e.get("color", "accent"), env.pal["accent"])
+        draw.glow(ctx, x, y, 40 * u, col, 0.6)
+        ctx.set_source_rgba(*col, 1); ctx.new_path(); ctx.arc(x, y, 12 * u, 0, 2 * math.pi); ctx.fill()
+        up = i % 2 == 0
+        draw.text(ctx, e.get("when", ""), x, y + (-70 if up else 95), 40, brand.FONT_MONO, col, min(u, 1))
+        for k, line in enumerate(draw.wrap(ctx, e["label"], spacing * 0.85, 32)[:3]):
+            yy = y + (-130 - 40 * (len(draw.wrap(ctx, e["label"], spacing * 0.85, 32)[:3]) - 1 - k) if up else 150 + 40 * k)
+            draw.text(ctx, line, x, yy, 32, brand.FONT, env.pal["text"], min(u, 1))
+    draw.vignette(ctx)

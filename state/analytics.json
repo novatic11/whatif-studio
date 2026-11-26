@@ -2,23 +2,44 @@
  "videos": {
   "6F7MraHHZwg": {
    "item": "episodes/0001-sun-black-hole/shorts/short-01.json",
-   "history": [],
+   "history": [
+    {
+     "date": "2026-11-26",
+     "views": 1,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 21,
+     "averageViewPercentage": 34.11,
+     "subscribersGained": 0,
+     "likes": 0,
+     "shares": 0
+    }
+   ],
    "title": "What If the Sun Became a Black Hole?",
    "privacy": "public",
    "published": "2026-11-25T18:00:34Z",
-   "views": 239,
-   "likes": 6,
-   "comments": 0
+   "views": 322,
+   "likes": 7,
+   "comments": 0,
+   "analytics": {
+    "video": "6F7MraHHZwg",
+    "views": 1,
+    "estimatedMinutesWatched": 0,
+    "averageViewDuration": 21,
+    "averageViewPercentage": 34.11,
+    "subscribersGained": 0,
+    "likes": 0,
+    "shares": 0
+   }
   },
   "tbu4xuPL4ME": {
    "item": "episodes/0002-moon-vanished/shorts/short-01.json",
    "history": [],
    "title": "What If the Moon Vanished Tonight?",
-   "privacy": "private",
-   "published": "2026-11-25T09:52:52Z",
-   "views": 0,
-   "likes": 0,
-   "comments": 0
+   "privacy": "public",
+   "published": "2026-11-26T18:00:07Z",
+   "views": 58,
+   "likes": 10,
+   "comments": 1
   },
   "x8qKCCr1DNE": {
    "item": "episodes/0003-earth-stopped-spinning/shorts/short-01.json",
@@ -44,9 +65,9 @@
    "item": "episodes/0005-insects-vanished/shorts/short-01.json",
    "history": [],
    "title": "What If Every Insect Vanished Overnight?",
-   "privacy": "private",
-   "published": "2026-11-25T17:12:30Z",
-   "views": 0,
+   "privacy": "public",
+   "published": "2026-11-26T01:00:14Z",
+   "views": 39,
    "likes": 0,
    "comments": 0
   },
@@ -66,7 +87,7 @@
    "title": "What If You Never Slept Again?",
    "privacy": "private",
    "published": "2026-11-25T17:14:53Z",
-   "views": 2,
+   "views": 1,
    "likes": 0,
    "comments": 0
   },
@@ -96,13 +117,56 @@
    "title": "What If Earth Had Rings Like Saturn?",
    "privacy": "private",
    "published": "2026-11-25T17:41:38Z",
+   "views": 1,
+   "likes": 0,
+   "comments": 0
+  },
+  "lo9TpQjuRD4": {
+   "item": "episodes/0011-apophis-hits/shorts/short-01.json",
+   "history": [],
+   "title": "What If Asteroid Apophis Hit Earth in 2029?",
+   "privacy": "private",
+   "published": "2026-11-26T08:00:34Z",
+   "views": 0,
+   "likes": 0,
+   "comments": 0
+  },
+  "scQu-Cwl3eg": {
+   "item": "episodes/0012-breathe-underwater/shorts/short-01.json",
+   "history": [],
+   "title": "What If You Could Breathe Underwater?",
+   "privacy": "private",
+   "published": "2026-11-26T08:02:01Z",
+   "views": 0,
+   "likes": 0,
+   "comments": 0
+  },
+  "Nv6RQgEwqYI": {
+   "item": "episodes/0013-all-ice-melted/shorts/short-01.json",
+   "history": [],
+   "title": "What If All the Ice on Earth Melted?",
+   "privacy": "private",
+   "published": "2026-11-26T08:04:16Z",
    "views": 0,
    "likes": 0,
    "comments": 0
   }
  },
  "channel": [],
- "traffic_sources_28d": {},
- "channel_daily_28d": [],
- "updated": "2026-11-25T20:37:48+00:00"
+ "traffic_sources_28d": {
+  "NO_LINK_OTHER": {
+   "views": 1,
+   "minutes": 0
+  }
+ },
+ "channel_daily_28d": [
+  [
+   "2026-11-24",
+   1,
+   0,
+   0,
+   0
+  ]
+ ],
+ "updated": "2026-11-26T20:29:50+00:00"
 }

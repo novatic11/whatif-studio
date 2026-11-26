@@ -139,5 +139,47 @@
   "uploaded_at": "2026-11-25T17:41:40+00:00",
   "plan_hash": "1ffc969fbab6cc11",
   "warnings": []
+ },
+ "episodes/0011-apophis-hits/shorts/short-01.json": {
+  "video_id": "lo9TpQjuRD4",
+  "title": "What If Asteroid Apophis Hit Earth in 2029?",
+  "kind": "short",
+  "status": "uploaded",
+  "privacy": "private",
+  "publish_at": "2026-11-30T18:00:00Z",
+  "mode": "scheduled_public",
+  "playlist": "What If: Space",
+  "duration": 67.1,
+  "uploaded_at": "2026-11-26T08:00:36+00:00",
+  "plan_hash": "cdcbf720050cb43e",
+  "warnings": []
+ },
+ "episodes/0012-breathe-underwater/shorts/short-01.json": {
+  "video_id": "scQu-Cwl3eg",
+  "title": "What If You Could Breathe Underwater?",
+  "kind": "short",
+  "status": "uploaded",
+  "privacy": "private",
+  "publish_at": "2026-12-01T01:00:00Z",
+  "mode": "scheduled_public",
+  "playlist": "What If: Humans",
+  "duration": 62.8,
+  "uploaded_at": "2026-11-26T08:02:04+00:00",
+  "plan_hash": "02624b72516ceccc",
+  "warnings": []
+ },
+ "episodes/0013-all-ice-melted/shorts/short-01.json": {
+  "video_id": "Nv6RQgEwqYI",
+  "title": "What If All the Ice on Earth Melted?",
+  "kind": "short",
+  "status": "uploaded",
+  "privacy": "private",
+  "publish_at": "2026-12-01T18:00:00Z",
+  "mode": "scheduled_public",
+  "playlist": "What If: Earth",
+  "duration": 64.2,
+  "uploaded_at": "2026-11-26T08:04:18+00:00",
+  "plan_hash": "a1f2b714d546d97e",
+  "warnings": []
  }
 }

@@ -1,0 +1,337 @@
+{
+ "title": "What If All the Ice on Earth Melted?",
+ "palette": "abyss",
+ "music_mood": "awe",
+ "seed": 113,
+ "sources": [
+  {
+   "title": "USGS FAQ: How would sea level change if all glaciers melted?",
+   "url": "https://www.usgs.gov/faqs/how-would-sea-level-change-if-all-glaciers-melted"
+  },
+  {
+   "title": "USGS Water Science School: Sea Level and Climate",
+   "url": "https://www.usgs.gov/water-science-school/science/sea-level-and-climate"
+  },
+  {
+   "title": "NASA Sea Level Change: Melting ocean ice affects sea level, unlike ice cubes in a glass",
+   "url": "https://sealevel.nasa.gov/news/261/melting-ocean-ice-affects-sea-level-unlike-ice-cubes-in-a-glass"
+  },
+  {
+   "title": "NASA Goddard Cryospheric Sciences: Sea level research area",
+   "url": "https://science.gsfc.nasa.gov/earth/cryosphere/researchareas/125"
+  },
+  {
+   "title": "USGS Fact Sheet FS-002-00: Sea Level and Climate",
+   "url": "https://pubs.usgs.gov/fs/fs2-00/"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "hook",
+   "type": "cosmos",
+   "music_intensity": 0.6,
+   "narration": "Imagine every glacier and ice sheet on Earth melting. All of it, down to the last ice cube.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -150,
+       0.9
+      ]
+     ],
+     [
+      6,
+      [
+       0,
+       -150,
+       1.05
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "planet",
+      "planet": "earth",
+      "x": 0,
+      "y": -230,
+      "r": 340,
+      "spin": 0.05,
+      "rot0": 4.4,
+      "light_dir": [
+       -0.7,
+       -0.3,
+       0.55
+      ]
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": "@All",
+     "name": "drone_drop",
+     "gain": -6
+    }
+   ]
+  },
+  {
+   "id": "cta",
+   "type": "statement",
+   "music_intensity": 0.5,
+   "transition": "cut",
+   "narration": "Hit like, and guess how high the water climbs.",
+   "params": {
+    "lines": [
+     "HOW HIGH",
+     "DOES IT",
+     "CLIMB?"
+    ],
+    "accent_line": 2,
+    "backdrop": "grid"
+   }
+  },
+  {
+   "id": "seaice",
+   "type": "statement",
+   "music_intensity": 0.5,
+   "narration": "First, a surprise. The floating ice at the North Pole barely matters. It's already in the water, like ice cubes in a glass. NASA puts its effect at just a few percent of melting land ice.",
+   "params": {
+    "kicker": "FLOATING SEA ICE",
+    "lines": [
+     "BARELY",
+     "MATTERS"
+    ],
+    "accent_line": 1,
+    "backdrop": "stars"
+   }
+  },
+  {
+   "id": "share",
+   "type": "compare",
+   "music_intensity": 0.55,
+   "narration": "The real water is locked on land. Antarctica holds about ninety-one percent of the world's ice, Greenland eight, and all the mountain glaciers together, just one.",
+   "params": {
+    "title": "WHERE THE ICE IS",
+    "mode": "bars",
+    "items": [
+     {
+      "label": "ANTARCTICA",
+      "value": 91,
+      "display": "91%",
+      "color": "cool",
+      "at": "@Antarctica"
+     },
+     {
+      "label": "GREENLAND",
+      "value": 8,
+      "display": "8%",
+      "color": "accent",
+      "at": "@Greenland"
+     },
+     {
+      "label": "GLACIERS",
+      "value": 1,
+      "display": "1%",
+      "color": "muted",
+      "at": "@mountain"
+     }
+    ],
+    "source": "USGS"
+   }
+  },
+  {
+   "id": "rise",
+   "type": "statement",
+   "music_intensity": 0.75,
+   "transition": "flash",
+   "narration": "Melt it all, and the oceans rise about seventy meters.",
+   "params": {
+    "kicker": "GLOBAL SEA LEVEL",
+    "lines": [
+     "+70",
+     "METERS"
+    ],
+    "accent_line": 0,
+    "backdrop": "pulse"
+   },
+   "sfx": [
+    {
+     "at": "@seventy",
+     "name": "impact",
+     "gain": -4
+    }
+   ]
+  },
+  {
+   "id": "scale",
+   "type": "compare",
+   "music_intensity": 0.6,
+   "narration": "That's roughly the height of a twenty-story building, standing on every beach in the world.",
+   "params": {
+    "title": "SEA LEVEL RISE",
+    "mode": "bars",
+    "items": [
+     {
+      "label": "YOU",
+      "value": 1.7,
+      "display": "1.7 m",
+      "color": "muted",
+      "at": 0.4
+     },
+     {
+      "label": "ALL ICE MELTED",
+      "value": 70,
+      "display": "~70 m",
+      "color": "accent",
+      "at": "@building"
+     }
+    ],
+    "source": "USGS"
+   }
+  },
+  {
+   "id": "cities",
+   "type": "cosmos",
+   "music_intensity": 0.65,
+   "narration": "According to the US Geological Survey, that would flood every coastal city on the planet. Ports, beaches and whole low-lying countries would slip under the sea.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -230,
+       1.2
+      ]
+     ],
+     [
+      6,
+      [
+       0,
+       -230,
+       1.4
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "planet",
+      "planet": "earth",
+      "x": 0,
+      "y": -230,
+      "r": 340,
+      "spin": 0.05,
+      "rot0": 5.2,
+      "light_dir": [
+       -0.7,
+       -0.3,
+       0.55
+      ],
+      "light": [
+       [
+        0,
+        1.0
+       ],
+       [
+        6,
+        0.7
+       ]
+      ]
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@every",
+     "dur": 2.6,
+     "text": "EVERY COASTAL CITY",
+     "style": "label",
+     "y": 1300,
+     "size": 64,
+     "color": "accent"
+    }
+   ]
+  },
+  {
+   "id": "east",
+   "type": "statement",
+   "music_intensity": 0.6,
+   "narration": "And most of that water sits in one place: the East Antarctic ice sheet, the biggest block of ice on Earth, worth over sixty meters of sea level by itself.",
+   "params": {
+    "kicker": "EAST ANTARCTICA ALONE",
+    "lines": [
+     "60+",
+     "METERS"
+    ],
+    "accent_line": 0,
+    "backdrop": "stars"
+   }
+  },
+  {
+   "id": "end",
+   "type": "title_card",
+   "transition": "dip",
+   "music_intensity": 0.8,
+   "tail": 0.7,
+   "narration": "So if you dream of beachfront property, you might want to look seventy meters up.",
+   "params": {
+    "lines": [
+     "WHAT IF",
+     "ALL THE ICE",
+     "MELTED?"
+    ],
+    "accent_line": 1,
+    "size": 92,
+    "backdrop": "none"
+   }
+  }
+ ],
+ "claims": [
+  {
+   "claim": "If all glaciers and ice caps melted, global sea level would rise approximately 70 m (230 ft), flooding every coastal city on the planet",
+   "source": 0
+  },
+  {
+   "claim": "Antarctica and Greenland hold about 91% and 8% of the world's ice; mountain glaciers about 1%",
+   "source": 1
+  },
+  {
+   "claim": "Melting floating sea ice adds almost nothing to sea level because it already displaces seawater (a small effect from fresh/salt density difference)",
+   "source": 2
+  },
+  {
+   "claim": "Melt from sea ice and ice shelves does not significantly contribute because it already displaces an equivalent amount of seawater",
+   "source": 3
+  },
+  {
+   "claim": "The East Antarctic ice sheet alone holds about 64.8 m of potential sea-level rise",
+   "source": 4
+  },
+  {
+   "claim": "Melting floating ice has about 3% of the effect of melting grounded ice",
+   "source": 2
+  }
+ ],
+ "meta": {
+  "title": "What If All the Ice on Earth Melted?",
+  "summary": "Melting the floating Arctic ice barely changes sea level, but melting the ice on land would raise the oceans about 70 meters. Here's where that ice is, and what it would flood.",
+  "tags": [
+   "what if",
+   "ice melt",
+   "sea level",
+   "antarctica",
+   "greenland",
+   "glaciers",
+   "earth",
+   "climate",
+   "science",
+   "shorts"
+  ],
+  "playlist": "What If: Earth"
+ },
+ "format": "vertical",
+ "pace": "fast",
+ "status": "ready",
+ "slug": "0013-all-ice-melted-short-01"
+}

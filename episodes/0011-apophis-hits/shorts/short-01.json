@@ -1,0 +1,542 @@
+{
+ "title": "What If Asteroid Apophis Hit Earth in 2029?",
+ "palette": "deep_space",
+ "music_mood": "tense",
+ "seed": 111,
+ "sources": [
+  {
+   "title": "NASA Science: Apophis facts",
+   "url": "https://science.nasa.gov/solar-system/asteroids/apophis-facts"
+  },
+  {
+   "title": "ESA: Apophis (Planetary Defence)",
+   "url": "https://www.esa.int/Space_Safety/Planetary_Defence/Apophis"
+  },
+  {
+   "title": "USGS Fact Sheet 2025-3028: Countdown to Apophis Close Approach, Cascading Hazards from Asteroid Impacts",
+   "url": "https://pubs.usgs.gov/publication/fs20253028"
+  },
+  {
+   "title": "Live Science: Apophis could be visible to 90 percent of Earth's population during 2029 flyby",
+   "url": "https://livescience.com/space/asteroids/shared-cosmic-experience-potentially-hazardous-asteroid-apophis-could-be-visible-to-90-percent-of-earths-population-during-ultraclose-2029-flyby-new-maps-reveal"
+  },
+  {
+   "title": "Big Think (Starts With A Bang): What are the real odds of doomsday asteroid Apophis striking Earth?",
+   "url": "https://bigthink.com/starts-with-a-bang/what-are-the-real-odds-of-doomsday-asteroid-apophis-striking-earth-in-2068/"
+  },
+  {
+   "title": "The Planetary Society: OSIRIS-APEX, NASA's asteroid Apophis chaser",
+   "url": "https://planetary.org/space-missions/osiris-apex"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "hook",
+   "type": "cosmos",
+   "music_intensity": 0.6,
+   "narration": "On April thirteenth, 2029, an asteroid three hundred forty meters wide will skim past Earth. Now imagine it doesn't miss.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -200,
+       0.9
+      ]
+     ],
+     [
+      7,
+      [
+       0,
+       -200,
+       1.0
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "planet",
+      "planet": "earth",
+      "x": 0,
+      "y": -150,
+      "r": 300,
+      "spin": 0.05,
+      "rot0": 1.0,
+      "light_dir": [
+       -0.7,
+       -0.3,
+       0.55
+      ]
+     },
+     {
+      "kind": "planet",
+      "planet": "rocky",
+      "x": [
+       [
+        0,
+        -620
+       ],
+       [
+        7,
+        260,
+        "in_out"
+       ]
+      ],
+      "y": [
+       [
+        0,
+        -900
+       ],
+       [
+        7,
+        -560,
+        "in_out"
+       ]
+      ],
+      "r": 34,
+      "spin": 0.2,
+      "seed": 9,
+      "light_dir": [
+       -0.7,
+       -0.3,
+       0.55
+      ],
+      "label": "APOPHIS",
+      "label_alpha": [
+       [
+        0,
+        0
+       ],
+       [
+        1.0,
+        1
+       ]
+      ]
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": "@miss",
+     "name": "riser",
+     "gain": -6
+    }
+   ]
+  },
+  {
+   "id": "cta",
+   "type": "statement",
+   "music_intensity": 0.5,
+   "transition": "cut",
+   "narration": "Tap like, then let's run the numbers.",
+   "params": {
+    "lines": [
+     "TAP LIKE.",
+     "NOW THE",
+     "NUMBERS."
+    ],
+    "accent_line": 2,
+    "backdrop": "grid"
+   }
+  },
+  {
+   "id": "close",
+   "type": "cosmos",
+   "music_intensity": 0.55,
+   "narration": "First, the real flyby. Apophis will pass about thirty-two thousand kilometers above the surface, closer than the satellites that beam down TV.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -150,
+       1.0
+      ]
+     ],
+     [
+      8,
+      [
+       0,
+       -150,
+       1.1
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "planet",
+      "planet": "earth",
+      "x": 0,
+      "y": -200,
+      "r": 260,
+      "spin": 0.05,
+      "rot0": 2.0,
+      "light_dir": [
+       -0.7,
+       -0.3,
+       0.55
+      ]
+     },
+     {
+      "kind": "planet",
+      "planet": "moon",
+      "r": 10,
+      "orbit": {
+       "cx": 0,
+       "cy": -200,
+       "r": 420,
+       "period": 30,
+       "phase": 0.3
+      },
+      "ghost_orbit": true,
+      "light_dir": [
+       -0.7,
+       -0.3,
+       0.55
+      ]
+     },
+     {
+      "kind": "planet",
+      "planet": "rocky",
+      "x": [
+       [
+        0,
+        -650
+       ],
+       [
+        8,
+        650
+       ]
+      ],
+      "y": [
+       [
+        0,
+        -620
+       ],
+       [
+        8,
+        -560
+       ]
+      ],
+      "r": 26,
+      "spin": 0.2,
+      "seed": 9,
+      "light_dir": [
+       -0.7,
+       -0.3,
+       0.55
+      ]
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@thirtytwo",
+     "dur": 2.8,
+     "text": "32,000 KM",
+     "kicker": "ABOVE THE SURFACE",
+     "style": "stat",
+     "y": 1380,
+     "size": 120,
+     "color": "accent"
+    }
+   ]
+  },
+  {
+   "id": "dist",
+   "type": "compare",
+   "music_intensity": 0.55,
+   "narration": "That's inside the ring of geostationary satellites, though well beyond the Space Station.",
+   "params": {
+    "title": "HEIGHT ABOVE EARTH",
+    "mode": "bars",
+    "log": true,
+    "items": [
+     {
+      "label": "SPACE STATION",
+      "value": 400,
+      "display": "~400 km",
+      "color": "muted",
+      "at": "@Space"
+     },
+     {
+      "label": "APOPHIS",
+      "value": 32000,
+      "display": "32,000 km",
+      "color": "accent",
+      "at": 0.4
+     },
+     {
+      "label": "TV SATELLITES",
+      "value": 35786,
+      "display": "35,786 km",
+      "color": "cool",
+      "at": "@geostationary"
+     }
+    ],
+    "source": "ESA / NASA"
+   }
+  },
+  {
+   "id": "see",
+   "type": "statement",
+   "music_intensity": 0.5,
+   "narration": "It'll be bright enough to see without a telescope, a dot of light crawling across the sky.",
+   "params": {
+    "kicker": "APRIL 13, 2029",
+    "lines": [
+     "NO TELESCOPE",
+     "NEEDED"
+    ],
+    "accent_line": 1,
+    "backdrop": "stars"
+   }
+  },
+  {
+   "id": "scare",
+   "type": "timeline",
+   "music_intensity": 0.6,
+   "narration": "When it was found in 2004, a hit in 2029 couldn't be ruled out. Radar later cleared it for at least a hundred years.",
+   "params": {
+    "title": "THE APOPHIS SCARE",
+    "events": [
+     {
+      "at": "@found",
+      "label": "Discovered",
+      "when": "2004",
+      "color": "warn"
+     },
+     {
+      "at": "@ruled",
+      "label": "2029 impact possible",
+      "when": "2004",
+      "color": "warn"
+     },
+     {
+      "at": "@Radar",
+      "label": "Radar clears it",
+      "when": "2021",
+      "color": "cool"
+     },
+     {
+      "at": "@hundred",
+      "label": "Safe for 100+ years",
+      "when": "2121+",
+      "color": "accent"
+     }
+    ],
+    "span": [
+     "2004",
+     "2121"
+    ]
+   }
+  },
+  {
+   "id": "impact",
+   "type": "statement",
+   "music_intensity": 0.8,
+   "transition": "flash",
+   "narration": "But if it did hit, one estimate puts the blast around twelve hundred megatons, enough to devastate a whole region.",
+   "params": {
+    "kicker": "ONE ESTIMATE",
+    "lines": [
+     "~1,200",
+     "MEGATONS"
+    ],
+    "accent_line": 0,
+    "backdrop": "pulse"
+   },
+   "sfx": [
+    {
+     "at": "@hit",
+     "name": "impact",
+     "gain": -3
+    }
+   ]
+  },
+  {
+   "id": "cascade",
+   "type": "statement",
+   "music_intensity": 0.7,
+   "narration": "Then the ripple effects: tsunamis, blast winds, wildfires, and dust that could hurt crops far away.",
+   "params": {
+    "kicker": "CASCADING HAZARDS",
+    "lines": [
+     "TSUNAMIS",
+     "WILDFIRES",
+     "DUST"
+    ],
+    "accent_line": 2,
+    "backdrop": "grid"
+   }
+  },
+  {
+   "id": "twist",
+   "type": "cosmos",
+   "music_intensity": 0.6,
+   "narration": "Instead, Earth's gravity will grab Apophis and bend its orbit, and a NASA spacecraft will chase it to study the change.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -200,
+       1.0
+      ]
+     ],
+     [
+      8,
+      [
+       0,
+       -200,
+       0.9
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "planet",
+      "planet": "earth",
+      "x": 0,
+      "y": -200,
+      "r": 220,
+      "spin": 0.05,
+      "rot0": 3.0,
+      "light_dir": [
+       -0.7,
+       -0.3,
+       0.55
+      ]
+     },
+     {
+      "kind": "planet",
+      "planet": "rocky",
+      "x": [
+       [
+        0,
+        -500
+       ],
+       [
+        3,
+        0,
+        "out"
+       ],
+       [
+        8,
+        600,
+        "in"
+       ]
+      ],
+      "y": [
+       [
+        0,
+        -760
+       ],
+       [
+        3,
+        -520,
+        "out"
+       ],
+       [
+        8,
+        -900,
+        "in"
+       ]
+      ],
+      "r": 24,
+      "spin": 0.2,
+      "seed": 9,
+      "light_dir": [
+       -0.7,
+       -0.3,
+       0.55
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "end",
+   "type": "title_card",
+   "transition": "dip",
+   "music_intensity": 0.8,
+   "tail": 0.7,
+   "narration": "Apophis is named after the Egyptian god of chaos. In 2029, it's just saying hello.",
+   "params": {
+    "lines": [
+     "WHAT IF",
+     "APOPHIS",
+     "HIT EARTH?"
+    ],
+    "accent_line": 1,
+    "size": 92,
+    "backdrop": "none"
+   }
+  }
+ ],
+ "claims": [
+  {
+   "claim": "Apophis makes its close approach on April 13, 2029, about 32,000 km above Earth's surface",
+   "source": 1
+  },
+  {
+   "claim": "Apophis is roughly 340 m across",
+   "source": 2
+  },
+  {
+   "claim": "It passes closer than geosynchronous satellites but well beyond the ISS",
+   "source": 0
+  },
+  {
+   "claim": "It will be visible to the naked eye from large parts of the world",
+   "source": 3
+  },
+  {
+   "claim": "After discovery in 2004 an impact in 2029 could not be ruled out; 2021 radar observations ruled out impact for at least 100 years",
+   "source": 0
+  },
+  {
+   "claim": "One estimate: ~1,200 megatons of energy if it struck Earth",
+   "source": 4
+  },
+  {
+   "claim": "Cascading impact hazards include tsunamis, blast winds, wildfires and dust plumes affecting agriculture",
+   "source": 2
+  },
+  {
+   "claim": "Earth's gravity will alter Apophis's orbit during the 2029 flyby",
+   "source": 1
+  },
+  {
+   "claim": "NASA's OSIRIS-APEX will study Apophis after the flyby",
+   "source": 5
+  },
+  {
+   "claim": "Apophis is named after the Egyptian god of chaos",
+   "source": 0
+  }
+ ],
+ "meta": {
+  "title": "What If Asteroid Apophis Hit Earth in 2029?",
+  "summary": "In April 2029 a 340-meter asteroid will pass closer than our TV satellites. Here's how close it really comes, what an impact would do, and why it won't happen.",
+  "tags": [
+   "what if",
+   "apophis",
+   "asteroid",
+   "2029",
+   "planetary defense",
+   "space",
+   "nasa",
+   "science",
+   "shorts"
+  ],
+  "playlist": "What If: Space"
+ },
+ "format": "vertical",
+ "pace": "fast",
+ "status": "ready",
+ "slug": "0011-apophis-hits-short-01"
+}

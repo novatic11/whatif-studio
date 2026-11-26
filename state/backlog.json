@@ -72,22 +72,8 @@
    "freshness": 5,
    "advertiser_friendly": 5
   },
-  "added": "2026-11-25"
- },
- {
-  "idea": "What if all the ice on Earth melted?",
-  "premise": "Every glacier and ice sheet melts",
-  "angle": "About 70 m of sea-level rise and new coastlines",
-  "theme": "earth",
-  "scores": {
-   "curiosity": 5,
-   "payoff": 4,
-   "evidence": 5,
-   "visual_fit": 3,
-   "freshness": 5,
-   "advertiser_friendly": 5
-  },
-  "added": "2026-11-25"
+  "added": "2026-11-25",
+  "note": "2026-11-26: skipped; only popular-press sources for the off-star expansion; needs a solid physics source first"
  },
  {
   "idea": "What if Earth had no atmosphere?",
@@ -210,21 +196,6 @@
   "added": "2026-11-25"
  },
  {
-  "idea": "What if you could breathe underwater?",
-  "premise": "Humans gain working gills",
-  "angle": "How little oxygen water holds vs air, and the gill area a human would need",
-  "scores": {
-   "curiosity": 5,
-   "payoff": 4,
-   "evidence": 4,
-   "visual_fit": 4,
-   "freshness": 5,
-   "advertiser_friendly": 5
-  },
-  "added": "2026-11-25",
-  "theme": "human body"
- },
- {
   "idea": "What if all the bees disappeared?",
   "premise": "Only bees vanish, other pollinators remain",
   "angle": "Which foods depend on bees specifically; wild vs honeybees",
@@ -278,21 +249,6 @@
    "curiosity": 4,
    "payoff": 4,
    "evidence": 4,
-   "visual_fit": 4,
-   "freshness": 5,
-   "advertiser_friendly": 5
-  },
-  "added": "2026-11-25"
- },
- {
-  "idea": "What if asteroid Apophis hit Earth in 2029?",
-  "premise": "The 2029 close flyby becomes an impact",
-  "angle": "It won't; but what a 340 m impact would do, and how close it really passes",
-  "theme": "space",
-  "scores": {
-   "curiosity": 5,
-   "payoff": 4,
-   "evidence": 5,
    "visual_fit": 4,
    "freshness": 5,
    "advertiser_friendly": 5

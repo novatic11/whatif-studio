@@ -1,0 +1,306 @@
+{
+ "title": "What If You Could Breathe Underwater?",
+ "palette": "abyss",
+ "music_mood": "mystery",
+ "seed": 112,
+ "sources": [
+  {
+   "title": "American Museum of Natural History: Life in Water, Vertebrates - Breathing",
+   "url": "https://www.amnh.org/learn-teach/resources-for-learning/hall-of-ocean-life/water-vertebrates-breathing"
+  },
+  {
+   "title": "FAO: Water quality, dissolved oxygen (fish culture manual)",
+   "url": "https://www.fao.org/3/ac183e/ac183e04.htm"
+  },
+  {
+   "title": "Kylstra, Breathing fluid, Experientia 18, 68 (1962)",
+   "url": "https://link.springer.com/article/10.1007/BF02138257"
+  },
+  {
+   "title": "Scientific American (1968): Altered mice breathe water instead of air",
+   "url": "https://www.scientificamerican.com/article/altered-mice-breathe-water-instead-of-air/"
+  },
+  {
+   "title": "Springer review chapter: Liquid ventilation, history and clinical use",
+   "url": "https://rd.springer.com/chapter/10.1007/978-88-470-2282-9_25"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "hook",
+   "type": "figures",
+   "music_intensity": 0.6,
+   "narration": "Imagine you dive into the ocean, open your mouth, and just breathe the water, like a fish.",
+   "params": {
+    "backdrop": "pulse",
+    "figures": [
+     {
+      "shape": "person",
+      "x": 540,
+      "y": [
+       [
+        0,
+        520
+       ],
+       [
+        6,
+        700,
+        "in_out"
+       ]
+      ],
+      "size": 520,
+      "color": "text",
+      "at": 0.1,
+      "bob": 12,
+      "glow": 0.4
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": "@dive",
+     "name": "whoosh",
+     "gain": -6
+    }
+   ]
+  },
+  {
+   "id": "cta",
+   "type": "statement",
+   "music_intensity": 0.5,
+   "transition": "cut",
+   "narration": "Subscribe for more weird biology. Now, the catch.",
+   "params": {
+    "lines": [
+     "NOW,",
+     "THE CATCH."
+    ],
+    "accent_line": 1,
+    "backdrop": "grid"
+   }
+  },
+  {
+   "id": "oxygen",
+   "type": "compare",
+   "music_intensity": 0.55,
+   "narration": "A liter of air holds about two hundred ten milliliters of oxygen. A liter of water holds around eight. That's over twenty times less.",
+   "params": {
+    "title": "OXYGEN PER LITER",
+    "mode": "bars",
+    "items": [
+     {
+      "label": "AIR",
+      "value": 210,
+      "display": "~210 mL",
+      "color": "cool",
+      "at": "@air"
+     },
+     {
+      "label": "WATER",
+      "value": 8,
+      "display": "~8 mL",
+      "color": "accent",
+      "at": "@water"
+     }
+    ],
+    "source": "AMNH / FAO"
+   }
+  },
+  {
+   "id": "dense",
+   "type": "statement",
+   "music_intensity": 0.6,
+   "narration": "And water is nearly eight hundred times denser than air, and a hundred times thicker. Pumping it in and out of your lungs would be brutal work.",
+   "params": {
+    "lines": [
+     "800×",
+     "DENSER"
+    ],
+    "accent_line": 0,
+    "kicker": "WATER VS AIR",
+    "backdrop": "pulse"
+   },
+   "overlays": [
+    {
+     "at": "@hundred",
+     "dur": 2.4,
+     "text": "100× THICKER",
+     "style": "label",
+     "y": 1250,
+     "size": 64,
+     "color": "accent"
+    }
+   ]
+  },
+  {
+   "id": "gills",
+   "type": "compare",
+   "music_intensity": 0.55,
+   "narration": "Fish solve this with gills, pulling out about seventy-five percent of the oxygen flowing past, twice what our lungs take from a breath.",
+   "params": {
+    "title": "OXYGEN EXTRACTED",
+    "mode": "bars",
+    "items": [
+     {
+      "label": "FISH GILLS",
+      "value": 75,
+      "display": "~75%",
+      "color": "accent",
+      "at": "@gills"
+     },
+     {
+      "label": "HUMAN LUNGS",
+      "value": 37,
+      "display": "about half",
+      "color": "muted",
+      "at": "@lungs"
+     }
+    ],
+    "source": "AMNH"
+   }
+  },
+  {
+   "id": "twist",
+   "type": "statement",
+   "music_intensity": 0.65,
+   "transition": "flash",
+   "narration": "But here's the twist. In 1961, a scientist named Johannes Kylstra had mice breathe salt water loaded with oxygen under high pressure. And they did.",
+   "params": {
+    "kicker": "LEIDEN, 1961",
+    "lines": [
+     "MICE",
+     "BREATHED",
+     "WATER."
+    ],
+    "accent_line": 2,
+    "backdrop": "stars"
+   },
+   "sfx": [
+    {
+     "at": "@did",
+     "name": "shimmer",
+     "gain": -6
+    }
+   ]
+  },
+  {
+   "id": "co2",
+   "type": "statement",
+   "music_intensity": 0.55,
+   "narration": "What limited them wasn't oxygen. It was getting rid of carbon dioxide fast enough.",
+   "params": {
+    "kicker": "THE REAL PROBLEM",
+    "lines": [
+     "NOT OXYGEN.",
+     "CO₂."
+    ],
+    "accent_line": 1,
+    "backdrop": "grid"
+   }
+  },
+  {
+   "id": "today",
+   "type": "timeline",
+   "music_intensity": 0.6,
+   "narration": "Later, doctors swapped water for special oxygen-rich liquids, and in 1989 tested them in the lungs of premature babies.",
+   "params": {
+    "title": "LIQUID BREATHING",
+    "events": [
+     {
+      "at": 0.4,
+      "label": "Mice breathe saltwater",
+      "when": "1961",
+      "color": "cool"
+     },
+     {
+      "at": "@liquids",
+      "label": "Oxygen-rich liquids",
+      "when": "1960s",
+      "color": "cool"
+     },
+     {
+      "at": "@1989",
+      "label": "First trial in newborns",
+      "when": "1989",
+      "color": "accent"
+     }
+    ],
+    "span": [
+     "1961",
+     "1989"
+    ]
+   }
+  },
+  {
+   "id": "end",
+   "type": "title_card",
+   "transition": "dip",
+   "music_intensity": 0.8,
+   "tail": 0.7,
+   "narration": "So humans can breathe a liquid. Just not the ocean.",
+   "params": {
+    "lines": [
+     "WHAT IF",
+     "YOU BREATHED",
+     "WATER?"
+    ],
+    "accent_line": 2,
+    "size": 88,
+    "backdrop": "none"
+   }
+  }
+ ],
+ "claims": [
+  {
+   "claim": "Air contains about 209-210 mL of oxygen per liter",
+   "source": 0
+  },
+  {
+   "claim": "Water holds roughly 5-8 mL of dissolved oxygen per liter, about 20-40 times less than air depending on temperature",
+   "source": 1
+  },
+  {
+   "claim": "Water is about 777 times denser and 100 times more viscous than air",
+   "source": 0
+  },
+  {
+   "claim": "Fish gills extract about 75% of the oxygen passing through, twice the percentage our lungs take from air",
+   "source": 0
+  },
+  {
+   "claim": "Kylstra's mice breathed oxygenated saline under high pressure (8 atm) in experiments at Leiden from 1961",
+   "source": 3
+  },
+  {
+   "claim": "The limiting factor was eliminating carbon dioxide, not lack of oxygen",
+   "source": 3
+  },
+  {
+   "claim": "Mice breathed isotonic saline equilibrated with oxygen at 8 atm",
+   "source": 2
+  },
+  {
+   "claim": "First clinical trial of perfluorocarbon liquid ventilation in neonates was in 1989",
+   "source": 4
+  }
+ ],
+ "meta": {
+  "title": "What If You Could Breathe Underwater?",
+  "summary": "Water holds a tiny fraction of the oxygen in air and is far heavier to pump. Yet in 1961 mice really did breathe oxygenated water, and the real problem turned out to be carbon dioxide.",
+  "tags": [
+   "what if",
+   "breathe underwater",
+   "gills",
+   "liquid breathing",
+   "human body",
+   "biology",
+   "science",
+   "shorts"
+  ],
+  "playlist": "What If: Humans"
+ },
+ "format": "vertical",
+ "pace": "fast",
+ "status": "ready",
+ "slug": "0012-breathe-underwater-short-01"
+}

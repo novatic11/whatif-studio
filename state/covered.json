@@ -26,13 +26,13 @@
  {
   "slug": "0006-human-photosynthesis-short-01",
   "title": "What If Humans Could Photosynthesize?",
-  "premise": "Humans with photosynthetic skin: ~1 m\u00b2 of sun at 4.6% max efficiency gives ~40 kcal/h, ~240 kcal a day vs 2,000 needed; sea slug Elysia chlorotica steals chloroplasts.",
+  "premise": "Humans with photosynthetic skin: ~1 m² of sun at 4.6% max efficiency gives ~40 kcal/h, ~240 kcal a day vs 2,000 needed; sea slug Elysia chlorotica steals chloroplasts.",
   "date": "2026-11-25"
  },
  {
   "slug": "0007-never-slept-short-01",
   "title": "What If You Never Slept Again?",
-  "premise": "Never sleeping: 17-19 h awake \u2248 0.05% BAC on tests, 264-hour 1964 record, sleep widens brain spaces 60% to clear waste (mice), frigatebirds sleep in flight with half a brain.",
+  "premise": "Never sleeping: 17-19 h awake ≈ 0.05% BAC on tests, 264-hour 1964 record, sleep widens brain spaces 60% to clear waste (mice), frigatebirds sleep in flight with half a brain.",
   "date": "2026-11-25"
  },
  {
@@ -52,5 +52,23 @@
   "title": "What If You Fell Through a Hole in the Earth?",
   "premise": "Gravity tunnel: 7.9 km/s at the center, 38 minutes one way, endless oscillation, air drag leaves you at the center.",
   "date": "2026-11-25"
+ },
+ {
+  "slug": "0011-apophis-hits-short-01",
+  "title": "What If Asteroid Apophis Hit Earth in 2029?",
+  "premise": "A 340 m asteroid passes 32,000 km above Earth in April 2029; what an impact would do, and why it won't happen.",
+  "date": "2026-11-26"
+ },
+ {
+  "slug": "0012-breathe-underwater-short-01",
+  "title": "What If You Could Breathe Underwater?",
+  "premise": "Water holds ~25x less oxygen than air and is ~800x denser; gills extract 75%; Kylstra's 1961 mice breathed oxygenated saline, limited by CO2.",
+  "date": "2026-11-26"
+ },
+ {
+  "slug": "0013-all-ice-melted-short-01",
+  "title": "What If All the Ice on Earth Melted?",
+  "premise": "Floating sea ice barely matters; land ice (91% Antarctica) would raise seas ~70 m, flooding every coastal city.",
+  "date": "2026-11-26"
  }
 ]

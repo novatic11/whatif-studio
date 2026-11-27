@@ -152,5 +152,32 @@
  {
   "at": "2026-11-26T23:07:44+00:00",
   "msg": "Nothing ready to produce"
+ },
+ {
+  "at": "2026-11-27T08:04:19+00:00",
+  "msg": "Uploaded",
+  "item": "episodes/0014-yellowstone-erupts/shorts/short-01.json",
+  "video_id": "mZopJ0c9v-U",
+  "publish_at": "2026-12-02T01:00:00Z",
+  "mode": "scheduled_public",
+  "warnings": []
+ },
+ {
+  "at": "2026-11-27T08:05:30+00:00",
+  "msg": "Uploaded",
+  "item": "episodes/0015-giant-insects/shorts/short-01.json",
+  "video_id": "2zxIux99HpI",
+  "publish_at": "2026-12-02T18:00:00Z",
+  "mode": "scheduled_public",
+  "warnings": []
+ },
+ {
+  "at": "2026-11-27T08:07:11+00:00",
+  "msg": "Uploaded",
+  "item": "episodes/0016-magnetic-field-gone/shorts/short-01.json",
+  "video_id": "XBDY3kzvd7o",
+  "publish_at": "2026-12-03T01:00:00Z",
+  "mode": "scheduled_public",
+  "warnings": []
  }
 ]

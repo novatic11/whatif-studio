@@ -181,5 +181,47 @@
   "uploaded_at": "2026-11-26T08:04:18+00:00",
   "plan_hash": "a1f2b714d546d97e",
   "warnings": []
+ },
+ "episodes/0014-yellowstone-erupts/shorts/short-01.json": {
+  "video_id": "mZopJ0c9v-U",
+  "title": "What If Yellowstone Erupted Tomorrow?",
+  "kind": "short",
+  "status": "uploaded",
+  "privacy": "private",
+  "publish_at": "2026-12-02T01:00:00Z",
+  "mode": "scheduled_public",
+  "playlist": "What If: Earth",
+  "duration": 62.2,
+  "uploaded_at": "2026-11-27T08:04:18+00:00",
+  "plan_hash": "75f4074cab528254",
+  "warnings": []
+ },
+ "episodes/0015-giant-insects/shorts/short-01.json": {
+  "video_id": "2zxIux99HpI",
+  "title": "What If Insects Were the Size of Dogs?",
+  "kind": "short",
+  "status": "uploaded",
+  "privacy": "private",
+  "publish_at": "2026-12-02T18:00:00Z",
+  "mode": "scheduled_public",
+  "playlist": "What If: Life",
+  "duration": 64.0,
+  "uploaded_at": "2026-11-27T08:05:30+00:00",
+  "plan_hash": "ba4f0206f7976588",
+  "warnings": []
+ },
+ "episodes/0016-magnetic-field-gone/shorts/short-01.json": {
+  "video_id": "XBDY3kzvd7o",
+  "title": "What If Earth's Magnetic Field Disappeared?",
+  "kind": "short",
+  "status": "uploaded",
+  "privacy": "private",
+  "publish_at": "2026-12-03T01:00:00Z",
+  "mode": "scheduled_public",
+  "playlist": "What If: Space",
+  "duration": 61.8,
+  "uploaded_at": "2026-11-27T08:07:10+00:00",
+  "plan_hash": "f17d9f0f63cbdb91",
+  "warnings": []
  }
 }

@@ -1,0 +1,332 @@
+{
+ "title": "What If Insects Were the Size of Dogs?",
+ "palette": "verdant",
+ "music_mood": "mystery",
+ "seed": 115,
+ "sources": [
+  {
+   "title": "Smithsonian Magazine: The History of Air",
+   "url": "https://www.smithsonianmag.com/science-nature/the-history-of-air-21082166/"
+  },
+  {
+   "title": "Argonne Advanced Photon Source: What Keeps Bugs from Being Bigger? (Kaiser et al. 2007, PNAS)",
+   "url": "https://www.aps.anl.gov/APS-Science-Highlight/2007/what-keeps-bugs-being-bigger"
+  },
+  {
+   "title": "ASU Ask A Biologist: Prehistoric Insects and Giant Bugs",
+   "url": "https://askabiologist.asu.edu/explore/prehistoric-insects"
+  },
+  {
+   "title": "Clapham & Karr 2012, PNAS: Environmental and biotic controls on the evolutionary history of insect body size",
+   "url": "https://www.pnas.org/doi/pdf/10.1073/pnas.1204026109"
+  },
+  {
+   "title": "National Geographic: Giant Bugs Eaten Out of Existence by First Birds?",
+   "url": "https://www.nationalgeographic.com/animals/article/120601-insects-birds-giant-prehistoric-clapham-proceedings-science-bugs"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "hook",
+   "type": "figures",
+   "music_intensity": 0.55,
+   "narration": "Imagine a beetle as big as a golden retriever, strolling past you on the sidewalk.",
+   "params": {
+    "backdrop": "stars",
+    "figures": [
+     {
+      "shape": "person",
+      "x": 330,
+      "y": 640,
+      "size": 640,
+      "color": "muted",
+      "at": 0.1
+     },
+     {
+      "shape": "beetle",
+      "x": [
+       [
+        0,
+        900
+       ],
+       [
+        5,
+        720
+       ]
+      ],
+      "y": 800,
+      "size": 340,
+      "color": "accent",
+      "at": 0.4,
+      "bob": 6
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": "@retriever",
+     "name": "drone_drop",
+     "gain": -6
+    }
+   ]
+  },
+  {
+   "id": "cta",
+   "type": "statement",
+   "music_intensity": 0.5,
+   "transition": "cut",
+   "narration": "Hit like if that gave you chills.",
+   "params": {
+    "lines": [
+     "COULD IT",
+     "EVEN",
+     "BREATHE?"
+    ],
+    "accent_line": 2,
+    "backdrop": "grid"
+   }
+  },
+  {
+   "id": "past",
+   "type": "statement",
+   "music_intensity": 0.55,
+   "narration": "It's not pure fantasy. About three hundred million years ago, a dragonfly relative called Meganeura had wings spanning almost seventy centimeters.",
+   "params": {
+    "kicker": "MEGANEURA'S WINGSPAN",
+    "lines": [
+     "~70",
+     "CM"
+    ],
+    "accent_line": 0,
+    "backdrop": "stars"
+   },
+   "sfx": [
+    {
+     "at": "@seventy",
+     "name": "impact",
+     "gain": -6
+    }
+   ]
+  },
+  {
+   "id": "oxygen",
+   "type": "compare",
+   "music_intensity": 0.6,
+   "narration": "Back then, the air may have held as much as thirty-five percent oxygen. Today, it's twenty-one.",
+   "params": {
+    "title": "OXYGEN IN THE AIR",
+    "mode": "bars",
+    "items": [
+     {
+      "label": "300 M YEARS AGO",
+      "value": 35,
+      "display": "up to 35%",
+      "color": "accent",
+      "at": "@thirtyfive"
+     },
+     {
+      "label": "TODAY",
+      "value": 21,
+      "display": "21%",
+      "color": "muted",
+      "at": "@Today"
+     }
+    ],
+    "source": "Smithsonian"
+   }
+  },
+  {
+   "id": "tubes",
+   "type": "figures",
+   "music_intensity": 0.6,
+   "narration": "That matters, because insects have no lungs. Air seeps through a network of tiny tubes, and the bigger the bug, the farther it has to travel.",
+   "params": {
+    "title": "NO LUNGS",
+    "figures": [
+     {
+      "shape": "beetle",
+      "x": 540,
+      "y": [
+       [
+        0,
+        700
+       ],
+       [
+        8,
+        660
+       ]
+      ],
+      "size": [
+       [
+        0,
+        300
+       ],
+       [
+        8,
+        560
+       ]
+      ],
+      "color": "accent",
+      "detail_color": "text",
+      "at": 0.2
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@tubes",
+     "dur": 2.6,
+     "text": "TINY AIR TUBES",
+     "style": "label",
+     "y": 1250,
+     "size": 60,
+     "color": "accent"
+    }
+   ]
+  },
+  {
+   "id": "legs",
+   "type": "figures",
+   "music_intensity": 0.6,
+   "narration": "X-ray studies of living beetles found the tubes into their legs are the bottleneck. The math predicts a limit matching today's biggest beetle, the Titan beetle.",
+   "params": {
+    "kicker": "X-RAY STUDY, 2007",
+    "figures": [
+     {
+      "shape": "beetle",
+      "x": 300,
+      "y": 620,
+      "size": 180,
+      "color": "muted",
+      "at": 0.2,
+      "label": "SMALL"
+     },
+     {
+      "shape": "beetle",
+      "x": 720,
+      "y": 600,
+      "size": 380,
+      "color": "accent",
+      "at": "@limit",
+      "label": "THE LIMIT"
+     }
+    ]
+   }
+  },
+  {
+   "id": "dog",
+   "type": "statement",
+   "music_intensity": 0.65,
+   "narration": "So in today's air, a dog-sized beetle would probably struggle to get oxygen to its legs.",
+   "params": {
+    "kicker": "IN TODAY'S AIR",
+    "lines": [
+     "OUT OF",
+     "BREATH"
+    ],
+    "accent_line": 1,
+    "backdrop": "pulse"
+   }
+  },
+  {
+   "id": "birds",
+   "type": "timeline",
+   "music_intensity": 0.6,
+   "narration": "But there's a twist. One study found insect size tracked oxygen for about a hundred fifty million years, until birds appeared. After that, insects shrank, even as oxygen rose.",
+   "params": {
+    "title": "WHAT SHRANK THE GIANTS?",
+    "events": [
+     {
+      "at": "@tracked",
+      "label": "Size follows oxygen",
+      "when": "~300 M yrs ago",
+      "color": "accent"
+     },
+     {
+      "at": "@birds",
+      "label": "Birds appear",
+      "when": "~150 M yrs ago",
+      "color": "warn"
+     },
+     {
+      "at": "@shrank",
+      "label": "Insects shrink",
+      "when": "after birds",
+      "color": "cool"
+     }
+    ],
+    "span": [
+     "300 M yrs ago",
+     "today"
+    ],
+    "spacing": 330,
+    "fit": true
+   }
+  },
+  {
+   "id": "end",
+   "type": "title_card",
+   "transition": "dip",
+   "music_intensity": 0.8,
+   "tail": 0.7,
+   "narration": "So the reason you'll never meet a dog-sized bug might be flying right over your head.",
+   "params": {
+    "lines": [
+     "WHAT IF",
+     "BUGS WERE",
+     "GIANT?"
+    ],
+    "accent_line": 1,
+    "size": 92,
+    "backdrop": "none"
+   }
+  }
+ ],
+ "claims": [
+  {
+   "claim": "Meganeura had a wingspan of almost 70 cm, about 300 million years ago in the Late Carboniferous",
+   "source": 0
+  },
+  {
+   "claim": "Oxygen may have reached as high as 35 percent of the atmosphere in the Late Carboniferous, versus about 21 percent today",
+   "source": 0
+  },
+  {
+   "claim": "Insects breathe through tracheal tubes rather than lungs; as insects get bigger the distance air must travel increases",
+   "source": 2
+  },
+  {
+   "claim": "X-ray imaging of living beetles found larger beetles invest proportionally more in tracheae; the constriction of tracheae leading to the legs predicts a maximum size matching the largest living beetle, Titanus giganteus",
+   "source": 1
+  },
+  {
+   "claim": "Maximum insect size tracked atmospheric oxygen for about 150 million years until birds evolved; afterwards insect size decreased even as oxygen rose",
+   "source": 3
+  },
+  {
+   "claim": "Researchers proposed that agile birds hunting insects limited insect size",
+   "source": 4
+  }
+ ],
+ "meta": {
+  "title": "What If Insects Were the Size of Dogs?",
+  "summary": "300 million years ago, dragonfly relatives had wings nearly 70 cm across. Here's why today's air keeps bugs small, and the surprising role birds may have played.",
+  "tags": [
+   "what if",
+   "giant insects",
+   "meganeura",
+   "carboniferous",
+   "oxygen",
+   "beetles",
+   "evolution",
+   "biology",
+   "science",
+   "shorts"
+  ],
+  "playlist": "What If: Life"
+ },
+ "format": "vertical",
+ "pace": "fast",
+ "status": "ready",
+ "slug": "0015-giant-insects-short-01"
+}

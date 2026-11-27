@@ -491,7 +491,9 @@ def compare(ctx, t, dur, p, env):
 @scene("timeline")
 def timeline(ctx, t, dur, p, env):
     """Horizontal timeline that pans as events appear.
-    params: title, events: [{at (scene s), label, when, color}], span: [start_label, end_label]"""
+    params: title, events: [{at (scene s), label, when, color}], span: [start_label, end_label],
+      spacing (px between events, default 520), fit: true = no panning, all events stay centred in frame
+      (use with spacing ~330 for 3 events on vertical video so nothing is cut at the edges)"""
     draw.background(ctx, env.pal)
     env.stars.draw(ctx, (t * 10, 0, 1), t, 0.4)
     ev = p["events"]
@@ -507,6 +509,8 @@ def timeline(ctx, t, dur, p, env):
     for i in range(focus + 1):
         e0 = ev[i].get("at", 0.5 + i * 2.0)
         cam_x = cam_x + (i * spacing - cam_x) * in_out_cubic(window(t, e0, 0.8))
+    if p.get("fit"):
+        cam_x = (n - 1) * spacing / 2
     y = brand.H / 2 + 40
     x_of = lambda i: brand.W / 2 + i * spacing - cam_x
     ctx.set_source_rgba(*env.pal["muted"], 0.5 * a); ctx.set_line_width(3)

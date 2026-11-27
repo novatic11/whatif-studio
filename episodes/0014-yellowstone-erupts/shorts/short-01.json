@@ -1,0 +1,402 @@
+{
+ "title": "What If Yellowstone Erupted Tomorrow?",
+ "palette": "ember",
+ "music_mood": "tense",
+ "seed": 114,
+ "sources": [
+  {
+   "title": "USGS FAQ: Is Yellowstone overdue for an eruption?",
+   "url": "https://www.usgs.gov/faqs/yellowstone-overdue-eruption-when-will-yellowstone-erupt"
+  },
+  {
+   "title": "USGS Fact Sheet 2005-3024: Steam Explosions, Quakes, and Volcanic Eruptions - What's in Yellowstone's Future?",
+   "url": "https://pubs.usgs.gov/fs/2005/3024/"
+  },
+  {
+   "title": "USGS Yellowstone Volcano Observatory: Modeling the Ash Distribution of a Yellowstone Supereruption",
+   "url": "https://www.usgs.gov/observatories/yvo/news/modeling-ash-distribution-yellowstone-supereruption"
+  },
+  {
+   "title": "USGS FAQ: Could a large Yellowstone eruption significantly change the climate?",
+   "url": "https://www.usgs.gov/faqs/could-a-large-yellowstone-eruption-significantly-change-climate"
+  },
+  {
+   "title": "USGS: Questions About Supervolcanoes",
+   "url": "https://www.usgs.gov/volcanoes/yellowstone/questions-about-supervolcanoes"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "hook",
+   "type": "cosmos",
+   "music_intensity": 0.6,
+   "narration": "Under Yellowstone National Park sits a supervolcano. Imagine it erupted tomorrow, at full power.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -150,
+       0.9
+      ]
+     ],
+     [
+      7,
+      [
+       0,
+       -150,
+       1.05
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "planet",
+      "planet": "earth",
+      "x": 0,
+      "y": -230,
+      "r": 340,
+      "spin": 0.05,
+      "rot0": 4.0,
+      "light_dir": [
+       -0.7,
+       -0.3,
+       0.55
+      ]
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@supervolcano",
+     "dur": 2.6,
+     "text": "YELLOWSTONE",
+     "style": "label",
+     "y": 1300,
+     "size": 64,
+     "color": "accent"
+    }
+   ],
+   "sfx": [
+    {
+     "at": "@full",
+     "name": "drone_drop",
+     "gain": -6
+    }
+   ]
+  },
+  {
+   "id": "cta",
+   "type": "statement",
+   "music_intensity": 0.5,
+   "transition": "cut",
+   "narration": "Comment your guess: how far does the ash reach?",
+   "params": {
+    "lines": [
+     "HOW FAR",
+     "DOES THE",
+     "ASH GO?"
+    ],
+    "accent_line": 2,
+    "backdrop": "grid"
+   }
+  },
+  {
+   "id": "past",
+   "type": "timeline",
+   "music_intensity": 0.55,
+   "narration": "It has happened before. Three giant eruptions, about two point one million, one point three million, and six hundred thirty-one thousand years ago.",
+   "params": {
+    "title": "YELLOWSTONE'S BIG THREE",
+    "events": [
+     {
+      "at": "@two",
+      "label": "Huckleberry Ridge",
+      "when": "2.1 M yrs ago",
+      "color": "warn"
+     },
+     {
+      "at": "@three",
+      "label": "Mesa Falls",
+      "when": "1.3 M yrs ago",
+      "color": "accent"
+     },
+     {
+      "at": "@six",
+      "label": "Lava Creek",
+      "when": "631,000 yrs ago",
+      "color": "warn"
+     }
+    ],
+    "span": [
+     "2.1 M yrs ago",
+     "today"
+    ],
+    "spacing": 330,
+    "fit": true
+   }
+  },
+  {
+   "id": "scale",
+   "type": "compare",
+   "music_intensity": 0.6,
+   "narration": "The biggest one released nearly six thousand times more magma than Mount Saint Helens did in 1980.",
+   "params": {
+    "title": "MAGMA ERUPTED",
+    "mode": "bars",
+    "items": [
+     {
+      "label": "ST. HELENS 1980",
+      "value": 1,
+      "display": "1x",
+      "color": "muted",
+      "at": "@Helens"
+     },
+     {
+      "label": "HUCKLEBERRY RIDGE",
+      "value": 6000,
+      "display": "~6,000x",
+      "color": "accent",
+      "at": "@six"
+     }
+    ],
+    "source": "USGS",
+    "log": true
+   },
+   "sfx": [
+    {
+     "at": "@six",
+     "name": "impact",
+     "gain": -5
+    }
+   ]
+  },
+  {
+   "id": "spread",
+   "type": "cosmos",
+   "music_intensity": 0.65,
+   "transition": "flash",
+   "narration": "A USGS computer model shows the ash cloud spreading more than fifteen hundred kilometers in every direction.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -150,
+       1.0
+      ]
+     ],
+     [
+      7,
+      [
+       0,
+       -150,
+       1.1
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "planet",
+      "planet": "earth",
+      "x": 0,
+      "y": -230,
+      "r": 340,
+      "spin": 0.05,
+      "rot0": 4.3,
+      "light_dir": [
+       -0.7,
+       -0.3,
+       0.55
+      ]
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@fifteen",
+     "dur": 2.8,
+     "text": "1,500+ KM",
+     "kicker": "ASH CLOUD SPREAD",
+     "style": "stat",
+     "y": 1440,
+     "size": 110,
+     "color": "accent"
+    }
+   ]
+  },
+  {
+   "id": "depth",
+   "type": "statement",
+   "music_intensity": 0.6,
+   "narration": "Up to meters of ash in the northern Rockies. Centimeters in the Midwest. Even a dusting on both coasts.",
+   "params": {
+    "kicker": "ASH ON THE GROUND",
+    "lines": [
+     "METERS",
+     "CENTIMETERS",
+     "MILLIMETERS"
+    ],
+    "accent_line": 0,
+    "backdrop": "stars"
+   }
+  },
+  {
+   "id": "climate",
+   "type": "statement",
+   "music_intensity": 0.65,
+   "narration": "Then the sky dims. In 1991, Pinatubo cooled the whole planet by up to point seven degrees. Yellowstone's biggest was a thousand times larger.",
+   "params": {
+    "kicker": "PINATUBO, 1991",
+    "lines": [
+     "-0.7°C",
+     "WORLDWIDE"
+    ],
+    "accent_line": 0,
+    "backdrop": "pulse"
+   },
+   "overlays": [
+    {
+     "at": "@thousand",
+     "dur": 2.8,
+     "text": "1,000x BIGGER",
+     "kicker": "YELLOWSTONE'S LARGEST",
+     "style": "stat",
+     "y": 1300,
+     "size": 84,
+     "color": "accent"
+    }
+   ]
+  },
+  {
+   "id": "farms",
+   "type": "cosmos",
+   "music_intensity": 0.6,
+   "narration": "The USGS says global weather would probably change for years, hitting farms around the world.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -150,
+       1.0
+      ]
+     ],
+     [
+      7,
+      [
+       0,
+       -150,
+       1.1
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "planet",
+      "planet": "earth",
+      "x": 0,
+      "y": -230,
+      "r": 340,
+      "spin": 0.05,
+      "rot0": 1.2,
+      "light_dir": [
+       -0.7,
+       -0.3,
+       0.55
+      ],
+      "light": [
+       [
+        0,
+        1.0
+       ],
+       [
+        6,
+        0.6
+       ]
+      ]
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@years",
+     "dur": 2.6,
+     "text": "YEARS OF CHANGED WEATHER",
+     "style": "label",
+     "y": 1300,
+     "size": 56,
+     "color": "accent"
+    }
+   ]
+  },
+  {
+   "id": "end",
+   "type": "title_card",
+   "transition": "dip",
+   "music_intensity": 0.8,
+   "tail": 0.7,
+   "narration": "The odds in any given year? About one in seven hundred thirty thousand. And no, it is not overdue.",
+   "params": {
+    "lines": [
+     "1 IN",
+     "730,000",
+     "PER YEAR"
+    ],
+    "accent_line": 1,
+    "size": 92,
+    "backdrop": "none"
+   }
+  }
+ ],
+ "claims": [
+  {
+   "claim": "Yellowstone's three large eruptions were about 2.08, 1.3 and 0.631 million years ago; Yellowstone is not overdue",
+   "source": 0
+  },
+  {
+   "claim": "The magma erupted 2.1 million years ago was nearly 6,000 times the volume of the 1980 Mount St. Helens eruption",
+   "source": 1
+  },
+  {
+   "claim": "USGS Ash3d modeling of a supereruption: umbrella cloud pushes ash more than 1,500 km; deposits decimeters to meters in the northern Rockies, centimeters in the northern Midwest, millimeters to centimeters on the coasts",
+   "source": 2
+  },
+  {
+   "claim": "Pinatubo (1991) dropped global temperatures by up to 0.7 C at the height of its impact; Pinatubo was about 1,000 times smaller than Yellowstone's largest eruption",
+   "source": 3
+  },
+  {
+   "claim": "A caldera-forming Yellowstone eruption would probably alter global weather patterns and affect agriculture for many years",
+   "source": 3
+  },
+  {
+   "claim": "The annual probability of another caldera-forming Yellowstone eruption is about 1 in 730,000",
+   "source": 4
+  }
+ ],
+ "meta": {
+  "title": "What If Yellowstone Erupted Tomorrow?",
+  "summary": "Yellowstone's biggest eruption released nearly 6,000 times more magma than Mount St. Helens. Here's where the ash would land, what it would do to the climate, and the real odds.",
+  "tags": [
+   "what if",
+   "yellowstone",
+   "supervolcano",
+   "volcano",
+   "eruption",
+   "geology",
+   "earth science",
+   "usgs",
+   "science",
+   "shorts"
+  ],
+  "playlist": "What If: Earth"
+ },
+ "format": "vertical",
+ "pace": "fast",
+ "status": "ready",
+ "slug": "0014-yellowstone-erupts-short-01"
+}

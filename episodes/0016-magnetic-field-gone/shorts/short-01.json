@@ -1,0 +1,365 @@
+{
+ "title": "What If Earth's Magnetic Field Disappeared?",
+ "palette": "violet",
+ "music_mood": "mystery",
+ "seed": 116,
+ "sources": [
+  {
+   "title": "NASA Science: Earth's Magnetosphere - Protecting Our Planet from Harmful Space Energy",
+   "url": "https://science.nasa.gov/science-research/earth-science/earths-magnetosphere-protecting-our-planet-from-harmful-space-energy/"
+  },
+  {
+   "title": "NASA Goddard FAQ: The Great Magnet, the Earth",
+   "url": "https://pwg.gsfc.nasa.gov/Education/magnQ&A1.htm"
+  },
+  {
+   "title": "USGS FAQ: Do any mass extinctions correlate with magnetic reversals?",
+   "url": "https://www.usgs.gov/faqs/do-any-mass-extinctions-correlate-magnetic-reversals"
+  },
+  {
+   "title": "NASA Science: Flip Flop - Why Variations in Earth's Magnetic Field Aren't Causing Today's Climate Change",
+   "url": "https://science.nasa.gov/science-research/earth-science/flip-flop-why-variations-in-earths-magnetic-field-arent-causing-todays-climate-change/"
+  },
+  {
+   "title": "NASA: NASA Mission Reveals Speed of Solar Wind Stripping Martian Atmosphere",
+   "url": "https://www.nasa.gov/news-release/nasa-mission-reveals-speed-of-solar-wind-stripping-martian-atmosphere/"
+  },
+  {
+   "title": "UNC Lohmann Lab: Regional Magnetic Fields as Navigational Markers for Sea Turtles",
+   "url": "https://oceanweb.sites.oasis.unc.edu/www.unc.edu/depts/oceanweb/turtles/regionalfields.html"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "hook",
+   "type": "cosmos",
+   "music_intensity": 0.6,
+   "narration": "An invisible magnetic bubble wraps around Earth. Now imagine someone flipped the switch, and it vanished.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -150,
+       0.9
+      ]
+     ],
+     [
+      7,
+      [
+       0,
+       -150,
+       1.05
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "planet",
+      "planet": "earth",
+      "x": 0,
+      "y": -230,
+      "r": 340,
+      "spin": 0.05,
+      "rot0": 2.4,
+      "light_dir": [
+       -0.7,
+       -0.3,
+       0.55
+      ]
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": "@vanished",
+     "name": "drone_drop",
+     "gain": -6
+    }
+   ]
+  },
+  {
+   "id": "cta",
+   "type": "statement",
+   "music_intensity": 0.5,
+   "transition": "cut",
+   "narration": "Subscribe, then guess what goes wrong first.",
+   "params": {
+    "lines": [
+     "WHAT GOES",
+     "WRONG",
+     "FIRST?"
+    ],
+    "accent_line": 1,
+    "backdrop": "grid"
+   }
+  },
+  {
+   "id": "wind",
+   "type": "cosmos",
+   "music_intensity": 0.55,
+   "narration": "That bubble deflects the solar wind, a nonstop stream of charged particles blowing off the Sun, day and night.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -150,
+       0.8
+      ]
+     ],
+     [
+      7,
+      [
+       0,
+       -150,
+       0.9
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "star",
+      "x": -700,
+      "y": -650,
+      "r": 160
+     },
+     {
+      "kind": "planet",
+      "planet": "earth",
+      "x": 150,
+      "y": -150,
+      "r": 240,
+      "spin": 0.05,
+      "rot0": 2.6,
+      "light_dir": [
+       -0.7,
+       -0.3,
+       0.55
+      ]
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@solar",
+     "dur": 2.6,
+     "text": "SOLAR WIND",
+     "style": "label",
+     "y": 1300,
+     "size": 64,
+     "color": "accent"
+    }
+   ]
+  },
+  {
+   "id": "surprise",
+   "type": "statement",
+   "music_intensity": 0.6,
+   "transition": "flash",
+   "narration": "But here's the surprise. On the ground, you probably wouldn't feel a thing. Our thick atmosphere is the main shield, like about three meters of concrete over your head.",
+   "params": {
+    "kicker": "THE AIR ABOVE YOU",
+    "lines": [
+     "~3 M OF",
+     "CONCRETE"
+    ],
+    "accent_line": 0,
+    "backdrop": "stars"
+   },
+   "sfx": [
+    {
+     "at": "@concrete",
+     "name": "impact",
+     "gain": -6
+    }
+   ]
+  },
+  {
+   "id": "flips",
+   "type": "timeline",
+   "music_intensity": 0.55,
+   "narration": "Earth has even had practice. The field flips roughly every million years, weakening as it does, and no mass extinction lines up with the flips.",
+   "params": {
+    "title": "MAGNETIC FLIPS",
+    "events": [
+     {
+      "at": "@flips",
+      "label": "Field flips",
+      "when": "~every 1 M yrs",
+      "color": "accent"
+     },
+     {
+      "at": "@weakening",
+      "label": "Weakens, never gone",
+      "when": "during a flip",
+      "color": "cool"
+     },
+     {
+      "at": "@extinction",
+      "label": "No extinction link",
+      "when": "USGS",
+      "color": "warn"
+     }
+    ],
+    "span": [
+     "past",
+     "today"
+    ],
+    "spacing": 330,
+    "fit": true
+   }
+  },
+  {
+   "id": "mars",
+   "type": "cosmos",
+   "music_intensity": 0.65,
+   "narration": "The real danger is slow. Mars has no global magnetic field, and NASA's MAVEN probe watched the solar wind strip its air away, about a hundred grams every second.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -150,
+       0.95
+      ]
+     ],
+     [
+      8,
+      [
+       0,
+       -150,
+       1.1
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "planet",
+      "planet": "rocky",
+      "x": 0,
+      "y": -230,
+      "r": 300,
+      "spin": 0.04,
+      "seed": 5,
+      "light_dir": [
+       -0.7,
+       -0.3,
+       0.55
+      ],
+      "label": "MARS",
+      "label_alpha": [
+       [
+        0,
+        0
+       ],
+       [
+        1.0,
+        1
+       ]
+      ]
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@hundred",
+     "dur": 2.8,
+     "text": "~100 G/S",
+     "kicker": "MARS' AIR, LOST TO SPACE",
+     "style": "stat",
+     "y": 1300,
+     "size": 110,
+     "color": "accent"
+    }
+   ]
+  },
+  {
+   "id": "turtles",
+   "type": "statement",
+   "music_intensity": 0.6,
+   "narration": "Some travelers would lose their map, too. Young sea turtles read magnetic signatures to steer across the open ocean.",
+   "params": {
+    "kicker": "SEA TURTLES",
+    "lines": [
+     "LOST",
+     "THEIR MAP"
+    ],
+    "accent_line": 0,
+    "backdrop": "pulse"
+   }
+  },
+  {
+   "id": "end",
+   "type": "title_card",
+   "transition": "dip",
+   "music_intensity": 0.8,
+   "tail": 0.7,
+   "narration": "So you'd survive the day the shield switched off. But over long ages, our planet might slowly start turning into another Mars.",
+   "params": {
+    "lines": [
+     "WHAT IF",
+     "THE SHIELD",
+     "VANISHED?"
+    ],
+    "accent_line": 1,
+    "size": 92,
+    "backdrop": "none"
+   }
+  }
+ ],
+ "claims": [
+  {
+   "claim": "Earth's magnetosphere deflects the solar wind, a stream of charged particles from the Sun",
+   "source": 0
+  },
+  {
+   "claim": "The atmosphere, not the magnetic field, is the main shield against energetic particles, equivalent to about 10 feet (3 m) of concrete",
+   "source": 1
+  },
+  {
+   "claim": "Magnetic reversals happen about every million years or so and no mass extinctions correlate with them",
+   "source": 2
+  },
+  {
+   "claim": "During a reversal the magnetic field weakens but does not completely disappear",
+   "source": 3
+  },
+  {
+   "claim": "Mars lacks a global magnetic field; MAVEN measured the solar wind stripping its upper atmosphere at roughly 100 grams (a quarter pound) per second",
+   "source": 4
+  },
+  {
+   "claim": "Young sea turtles use regional magnetic fields as open-ocean navigational markers",
+   "source": 5
+  },
+  {
+   "claim": "Over long times, losing the field could let the solar wind erode Earth's upper atmosphere as on Mars (speculative, phrased with 'might')",
+   "source": 4
+  }
+ ],
+ "meta": {
+  "title": "What If Earth's Magnetic Field Disappeared?",
+  "summary": "Earth's magnetic bubble deflects the solar wind, but our air is the real radiation shield. Here's what would actually change, and why Mars is the warning.",
+  "tags": [
+   "what if",
+   "magnetic field",
+   "magnetosphere",
+   "solar wind",
+   "mars",
+   "maven",
+   "space weather",
+   "earth",
+   "science",
+   "shorts"
+  ],
+  "playlist": "What If: Space"
+ },
+ "format": "vertical",
+ "pace": "fast",
+ "status": "ready",
+ "slug": "0016-magnetic-field-gone-short-01"
+}

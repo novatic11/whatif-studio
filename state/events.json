@@ -179,5 +179,9 @@
   "publish_at": "2026-12-03T01:00:00Z",
   "mode": "scheduled_public",
   "warnings": []
+ },
+ {
+  "at": "2026-11-27T22:49:13+00:00",
+  "msg": "Nothing ready to produce"
  }
 ]

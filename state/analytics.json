@@ -12,22 +12,32 @@
      "subscribersGained": 0,
      "likes": 0,
      "shares": 0
+    },
+    {
+     "date": "2026-11-27",
+     "views": 314,
+     "estimatedMinutesWatched": 118,
+     "averageViewDuration": 37,
+     "averageViewPercentage": 61.01,
+     "subscribersGained": 2,
+     "likes": 7,
+     "shares": 0
     }
    ],
    "title": "What If the Sun Became a Black Hole?",
    "privacy": "public",
    "published": "2026-11-25T18:00:34Z",
-   "views": 322,
-   "likes": 7,
+   "views": 345,
+   "likes": 8,
    "comments": 0,
    "analytics": {
     "video": "6F7MraHHZwg",
-    "views": 1,
-    "estimatedMinutesWatched": 0,
-    "averageViewDuration": 21,
-    "averageViewPercentage": 34.11,
-    "subscribersGained": 0,
-    "likes": 0,
+    "views": 314,
+    "estimatedMinutesWatched": 118,
+    "averageViewDuration": 37,
+    "averageViewPercentage": 61.01,
+    "subscribersGained": 2,
+    "likes": 7,
     "shares": 0
    }
   },
@@ -37,7 +47,7 @@
    "title": "What If the Moon Vanished Tonight?",
    "privacy": "public",
    "published": "2026-11-26T18:00:07Z",
-   "views": 58,
+   "views": 86,
    "likes": 10,
    "comments": 1
   },
@@ -45,10 +55,10 @@
    "item": "episodes/0003-earth-stopped-spinning/shorts/short-01.json",
    "history": [],
    "title": "What If Earth Stopped Spinning?",
-   "privacy": "private",
-   "published": "2026-11-25T09:55:03Z",
-   "views": 0,
-   "likes": 0,
+   "privacy": "public",
+   "published": "2026-11-27T18:00:05Z",
+   "views": 97,
+   "likes": 3,
    "comments": 0
   },
   "NmKd5JqGlUg": {
@@ -63,33 +73,75 @@
   },
   "5JvPHps963I": {
    "item": "episodes/0005-insects-vanished/shorts/short-01.json",
-   "history": [],
+   "history": [
+    {
+     "date": "2026-11-27",
+     "views": 4,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 7,
+     "averageViewPercentage": 11.52,
+     "subscribersGained": 0,
+     "likes": 0,
+     "shares": 0
+    }
+   ],
    "title": "What If Every Insect Vanished Overnight?",
    "privacy": "public",
    "published": "2026-11-26T01:00:14Z",
-   "views": 39,
+   "views": 61,
    "likes": 0,
-   "comments": 0
+   "comments": 0,
+   "analytics": {
+    "video": "5JvPHps963I",
+    "views": 4,
+    "estimatedMinutesWatched": 0,
+    "averageViewDuration": 7,
+    "averageViewPercentage": 11.52,
+    "subscribersGained": 0,
+    "likes": 0,
+    "shares": 0
+   }
   },
   "ttWUJ90nyoI": {
    "item": "episodes/0006-human-photosynthesis/shorts/short-01.json",
    "history": [],
    "title": "What If Humans Could Photosynthesize?",
-   "privacy": "private",
-   "published": "2026-11-25T17:13:44Z",
-   "views": 0,
-   "likes": 0,
-   "comments": 0
+   "privacy": "public",
+   "published": "2026-11-27T01:00:30Z",
+   "views": 1081,
+   "likes": 26,
+   "comments": 2
   },
   "O_EF_40E3BQ": {
    "item": "episodes/0007-never-slept/shorts/short-01.json",
-   "history": [],
+   "history": [
+    {
+     "date": "2026-11-27",
+     "views": 1,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 38,
+     "averageViewPercentage": 61.4,
+     "subscribersGained": 0,
+     "likes": 0,
+     "shares": 0
+    }
+   ],
    "title": "What If You Never Slept Again?",
    "privacy": "private",
    "published": "2026-11-25T17:14:53Z",
    "views": 1,
    "likes": 0,
-   "comments": 0
+   "comments": 0,
+   "analytics": {
+    "video": "O_EF_40E3BQ",
+    "views": 1,
+    "estimatedMinutesWatched": 0,
+    "averageViewDuration": 38,
+    "averageViewPercentage": 61.4,
+    "subscribersGained": 0,
+    "likes": 0,
+    "shares": 0
+   }
   },
   "IO8Kwcde_Cs": {
    "item": "episodes/0009-fall-into-jupiter/shorts/short-01.json",
@@ -113,13 +165,34 @@
   },
   "u3ozmCwLQ4U": {
    "item": "episodes/0008-earth-rings/shorts/short-01.json",
-   "history": [],
+   "history": [
+    {
+     "date": "2026-11-27",
+     "views": 1,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 56,
+     "averageViewPercentage": 83.88,
+     "subscribersGained": 0,
+     "likes": 0,
+     "shares": 0
+    }
+   ],
    "title": "What If Earth Had Rings Like Saturn?",
    "privacy": "private",
    "published": "2026-11-25T17:41:38Z",
    "views": 1,
    "likes": 0,
-   "comments": 0
+   "comments": 0,
+   "analytics": {
+    "video": "u3ozmCwLQ4U",
+    "views": 1,
+    "estimatedMinutesWatched": 0,
+    "averageViewDuration": 56,
+    "averageViewPercentage": 83.88,
+    "subscribersGained": 0,
+    "likes": 0,
+    "shares": 0
+   }
   },
   "lo9TpQjuRD4": {
    "item": "episodes/0011-apophis-hits/shorts/short-01.json",
@@ -150,6 +223,36 @@
    "views": 0,
    "likes": 0,
    "comments": 0
+  },
+  "mZopJ0c9v-U": {
+   "item": "episodes/0014-yellowstone-erupts/shorts/short-01.json",
+   "history": [],
+   "title": "What If Yellowstone Erupted Tomorrow?",
+   "privacy": "private",
+   "published": "2026-11-27T08:04:16Z",
+   "views": 0,
+   "likes": 0,
+   "comments": 0
+  },
+  "2zxIux99HpI": {
+   "item": "episodes/0015-giant-insects/shorts/short-01.json",
+   "history": [],
+   "title": "What If Insects Were the Size of Dogs?",
+   "privacy": "private",
+   "published": "2026-11-27T08:05:27Z",
+   "views": 0,
+   "likes": 0,
+   "comments": 0
+  },
+  "XBDY3kzvd7o": {
+   "item": "episodes/0016-magnetic-field-gone/shorts/short-01.json",
+   "history": [],
+   "title": "What If Earth's Magnetic Field Disappeared?",
+   "privacy": "private",
+   "published": "2026-11-27T08:07:08Z",
+   "views": 0,
+   "likes": 0,
+   "comments": 0
   }
  },
  "channel": [],
@@ -157,6 +260,26 @@
   "NO_LINK_OTHER": {
    "views": 1,
    "minutes": 0
+  },
+  "SUBSCRIBER": {
+   "views": 2,
+   "minutes": 1
+  },
+  "YT_SEARCH": {
+   "views": 43,
+   "minutes": 9
+  },
+  "RELATED_VIDEO": {
+   "views": 1,
+   "minutes": 0
+  },
+  "YT_OTHER_PAGE": {
+   "views": 9,
+   "minutes": 1
+  },
+  "SHORTS": {
+   "views": 264,
+   "minutes": 106
   }
  },
  "channel_daily_28d": [
@@ -166,7 +289,14 @@
    0,
    0,
    0
+  ],
+  [
+   "2026-11-25",
+   319,
+   2,
+   1,
+   119
   ]
  ],
- "updated": "2026-11-26T20:29:50+00:00"
+ "updated": "2026-11-27T20:16:20+00:00"
 }

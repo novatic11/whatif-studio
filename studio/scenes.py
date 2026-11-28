@@ -47,15 +47,20 @@ def _camera(p, t):
 
 
 # ------------------------------------------------------------ body drawing
-def _draw_star(ctx, sx, sy, rpx, light, env, seed, t):
+def _draw_star(ctx, sx, sy, rpx, light, env, seed, t, cls="sun"):
+    """cls: sun (default, yellow-white) | red_dwarf (dim red M dwarf)."""
     if rpx < 0.5:
         return
-    draw.glow(ctx, sx, sy, rpx * 2.8, (1.0, 0.45, 0.10), 0.42 * min(light, 1.5))
+    red = cls == "red_dwarf"
+    draw.glow(ctx, sx, sy, rpx * 2.8, (0.95, 0.18, 0.06) if red else (1.0, 0.45, 0.10), 0.42 * min(light, 1.5))
     rq = max(2, int(rpx))
-    rgb, a = bodies.render_sphere("star", rq, rot=t * 0.02, emissive=True, seed=seed, light=light)
+    rgb, a = bodies.render_sphere("red_dwarf" if red else "star", rq, rot=t * 0.02, emissive=True, seed=seed, light=light)
     draw.paint_array(ctx, rgb, a, sx, sy, rpx / rq)
     ctx.set_operator(cairo.OPERATOR_ADD)
-    draw.glow(ctx, sx, sy, rpx * 1.28, (1.0, 0.70, 0.35), 0.30 * light, (0.70, 0.84, 1.0))
+    if red:
+        draw.glow(ctx, sx, sy, rpx * 1.28, (1.0, 0.35, 0.15), 0.25 * light)
+    else:
+        draw.glow(ctx, sx, sy, rpx * 1.28, (1.0, 0.70, 0.35), 0.30 * light, (0.70, 0.84, 1.0))
     ctx.set_operator(cairo.OPERATOR_OVER)
 
 
@@ -77,6 +82,7 @@ def _draw_planet(ctx, b, sx, sy, rpx, t, light_pos, light):
     rgb, a = bodies.render_sphere(b.get("planet", "earth"), rq, rot=b.get("rot0", 0.0) + t * b.get("spin", 0.05),
                                   light_dir=ld, light=light, seed=b.get("seed", 3), cloud_rot=t * 0.012,
                                   frozen=kf(b.get("frozen", 0.0), t),
+                                  atmosphere=(1.0, 0.85, 0.55) if b.get("planet") == "venus" else (0.35, 0.65, 1.0),
                                   atmo_strength=b.get("atmo", 0.9 if b.get("planet", "earth") == "earth" else 0.35))
     draw.paint_array(ctx, rgb, a, sx, sy, rpx / rq)
 
@@ -166,6 +172,7 @@ def _body_pos(b, t):
 def cosmos(ctx, t, dur, p, env):
     """Free camera over a 2D world of stars, planets and black holes.
     bodies: [{kind: star|planet|black_hole, x, y, r, ...}]
+    stars may set class: sun (default) | red_dwarf. planet kinds: earth|rocky|moon|gas|venus.
     planets may add rings: {inner, outer, squash, angle, alpha, grow, color, shadow} (see _draw_rings)."""
     cam = _camera(p, t)
     draw.background(ctx, env.pal)
@@ -198,7 +205,7 @@ def cosmos(ctx, t, dur, p, env):
                 u = window(t, at, cd)
                 if u < 1:
                     rr = r * (1 - in_expo(u) * 0.995)
-                    _draw_star(ctx, sx, sy, rr, kf(b.get("light", 1.0), t) * (1 + u * 0.8), env, b.get("seed", 5), t)
+                    _draw_star(ctx, sx, sy, rr, kf(b.get("light", 1.0), t) * (1 + u * 0.8), env, b.get("seed", 5), t, b.get("class", "sun"))
                 v = window(t, at + cd, col.get("grow", 2.5))
                 if t >= at + cd:
                     _draw_black_hole(ctx, sx, sy, col.get("bh_r", 40) * cam.zoom, t, disk=out_cubic(v), spin=1.0)
@@ -209,7 +216,7 @@ def cosmos(ctx, t, dur, p, env):
                         ctx.set_operator(cairo.OPERATOR_OVER)
                 light_pos = (sx, sy)
             else:
-                _draw_star(ctx, sx, sy, r, kf(b.get("light", 1.0), t), env, b.get("seed", 5), t)
+                _draw_star(ctx, sx, sy, r, kf(b.get("light", 1.0), t), env, b.get("seed", 5), t, b.get("class", "sun"))
                 light_pos = (sx, sy)
         elif kind == "black_hole":
             _draw_black_hole(ctx, sx, sy, r, t, disk=kf(b.get("disk", 1.0), t))

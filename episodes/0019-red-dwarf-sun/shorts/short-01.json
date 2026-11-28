@@ -1,0 +1,471 @@
+{
+ "title": "What If the Sun Were a Red Dwarf?",
+ "palette": "ember",
+ "music_mood": "awe",
+ "seed": 119,
+ "sources": [
+  {
+   "title": "NASA Science (Hubble): Mini-Flares Potentially Jeopardize Habitability of Planets Circling Red Dwarf Stars",
+   "url": "https://science.nasa.gov/missions/hubble/mini-flares-potentially-jeopardize-habitability-of-planets-circling-red-dwarf-stars"
+  },
+  {
+   "title": "NASA JPL: ESO Discovers Earth-Size Planet in Habitable Zone of Nearest Star",
+   "url": "https://www.jpl.nasa.gov/news/eso-discovers-earth-size-planet-in-habitable-zone-of-nearest-star/"
+  },
+  {
+   "title": "NASA Science: Earth-sized planets - the newest, weirdest generation",
+   "url": "https://science.nasa.gov/universe/exoplanets/earth-sized-planets-the-newest-weirdest-generation/"
+  },
+  {
+   "title": "NASA Astrobiology: An Earth-like Atmosphere May Not Survive Proxima b's Orbit",
+   "url": "https://astrobiology.nasa.gov/news/an-earth-like-atmosphere-may-not-survive-proxima-bs-orbit/"
+  },
+  {
+   "title": "Space.com: Red Dwarfs - The Most Common and Longest-Lived Stars",
+   "url": "https://www.space.com/23772-red-dwarf-stars.html"
+  },
+  {
+   "title": "Scientific American: A Star at the Edge of Eternity",
+   "url": "https://www.scientificamerican.com/article/a-star-at-the-edge-of-eternity/"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "hook",
+   "type": "cosmos",
+   "music_intensity": 0.6,
+   "narration": "Imagine waking up to a sunrise that never turns yellow. Overnight, our Sun has been swapped for a small, cool red dwarf.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -150,
+       0.85
+      ]
+     ],
+     [
+      7,
+      [
+       0,
+       -150,
+       1.0
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "star",
+      "class": "red_dwarf",
+      "x": 0,
+      "y": -330,
+      "r": 200,
+      "light": [
+       [
+        0,
+        1.4
+       ],
+       [
+        2.5,
+        1.0
+       ]
+      ]
+     },
+     {
+      "kind": "planet",
+      "planet": "earth",
+      "x": 260,
+      "y": 170,
+      "r": 95,
+      "light": 0.6,
+      "spin": 0.05
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": "@swapped",
+     "name": "drone_drop",
+     "gain": -6
+    }
+   ]
+  },
+  {
+   "id": "cta",
+   "type": "statement",
+   "music_intensity": 0.5,
+   "transition": "cut",
+   "narration": "Subscribe, then let's see if Earth survives.",
+   "params": {
+    "lines": [
+     "DOES EARTH",
+     "SURVIVE?"
+    ],
+    "accent_line": 1,
+    "backdrop": "grid"
+   }
+  },
+  {
+   "id": "common",
+   "type": "figures",
+   "music_intensity": 0.55,
+   "narration": "It's not exotic. Roughly three out of every four stars in our galaxy are red dwarfs.",
+   "params": {
+    "title": "STARS IN OUR GALAXY",
+    "grid": {
+     "shape": "sun",
+     "cols": 2,
+     "rows": 2,
+     "x": 540,
+     "y": 640,
+     "cell": 300,
+     "size": 220,
+     "at": 0.3,
+     "stagger": 0.2,
+     "color": "muted",
+     "hi": 3,
+     "hi_color": "warn",
+     "hi_at": "@three",
+     "rest": "dim"
+    }
+   },
+   "overlays": [
+    {
+     "at": "@red",
+     "dur": 2.4,
+     "text": "~3 IN 4",
+     "style": "stat",
+     "y": 1250,
+     "size": 110,
+     "color": "accent"
+    }
+   ]
+  },
+  {
+   "id": "cold",
+   "type": "cosmos",
+   "music_intensity": 0.6,
+   "narration": "But they're dim. Their habitable zones sit closer than Mercury is to our Sun, so left where it is, Earth would probably freeze.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -200,
+       1.0
+      ]
+     ],
+     [
+      8,
+      [
+       0,
+       -200,
+       0.7
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "star",
+      "class": "red_dwarf",
+      "x": -380,
+      "y": -420,
+      "r": 70
+     },
+     {
+      "kind": "planet",
+      "planet": "earth",
+      "x": 330,
+      "y": -20,
+      "r": 110,
+      "light": 0.35,
+      "frozen": [
+       [
+        0,
+        0
+       ],
+       [
+        4,
+        0.9
+       ]
+      ],
+      "spin": 0.04
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@freeze",
+     "dur": 2.2,
+     "text": "FROZEN",
+     "style": "label",
+     "y": 1300,
+     "size": 64,
+     "color": "cool"
+    }
+   ]
+  },
+  {
+   "id": "close",
+   "type": "cosmos",
+   "music_intensity": 0.65,
+   "transition": "dip",
+   "narration": "Pull a planet in close enough to stay warm, and a year shrinks to days. Proxima b, around our nearest star, circles it in about eleven.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -200,
+       0.9
+      ]
+     ],
+     [
+      8,
+      [
+       0,
+       -200,
+       1.0
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "star",
+      "class": "red_dwarf",
+      "x": 0,
+      "y": -200,
+      "r": 150
+     },
+     {
+      "kind": "planet",
+      "planet": "rocky",
+      "r": 55,
+      "seed": 7,
+      "orbit": {
+       "cx": 0,
+       "cy": -200,
+       "r": 330,
+       "period": 4,
+       "phase": 0
+      },
+      "ghost_orbit": true,
+      "label": "PROXIMA b",
+      "label_alpha": [
+       [
+        0,
+        0
+       ],
+       [
+        1,
+        1
+       ]
+      ]
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@eleven",
+     "dur": 2.4,
+     "text": "1 YEAR \u2248 11 DAYS",
+     "style": "label",
+     "y": 1300,
+     "size": 60,
+     "color": "accent"
+    }
+   ]
+  },
+  {
+   "id": "locked",
+   "type": "statement",
+   "music_intensity": 0.6,
+   "narration": "That close, a planet is probably tidally locked: one side in endless day, the other in frozen night. On the day side, the red star would never set.",
+   "params": {
+    "kicker": "TIDALLY LOCKED",
+    "lines": [
+     "ENDLESS DAY",
+     "ENDLESS NIGHT"
+    ],
+    "accent_line": 0,
+    "backdrop": "stars"
+   }
+  },
+  {
+   "id": "flares",
+   "type": "cosmos",
+   "music_intensity": 0.7,
+   "transition": "flash",
+   "narration": "And red dwarfs throw violent flares. Proxima b takes bursts of extreme ultraviolet hundreds of times stronger than anything Earth gets.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -200,
+       0.95
+      ]
+     ],
+     [
+      7,
+      [
+       0,
+       -200,
+       1.05
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "star",
+      "class": "red_dwarf",
+      "x": -150,
+      "y": -300,
+      "r": 190,
+      "light": [
+       [
+        0,
+        1.0
+       ],
+       [
+        1.6,
+        1.0
+       ],
+       [
+        2.0,
+        1.9
+       ],
+       [
+        3.2,
+        1.0
+       ]
+      ]
+     },
+     {
+      "kind": "planet",
+      "planet": "rocky",
+      "x": 280,
+      "y": 40,
+      "r": 70,
+      "seed": 7,
+      "label": "PROXIMA b"
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@hundreds",
+     "dur": 2.6,
+     "text": "100s \u00d7 EARTH'S UV",
+     "style": "label",
+     "y": 1300,
+     "size": 60,
+     "color": "accent"
+    }
+   ],
+   "sfx": [
+    {
+     "at": "@flares",
+     "name": "impact",
+     "gain": -6
+    }
+   ]
+  },
+  {
+   "id": "air",
+   "type": "statement",
+   "music_intensity": 0.7,
+   "narration": "Air stripped away? One study found an Earth-like atmosphere might not survive there.",
+   "params": {
+    "kicker": "STELLAR FLARES",
+    "lines": [
+     "AIR",
+     "STRIPPED?"
+    ],
+    "accent_line": 1,
+    "backdrop": "pulse"
+   }
+  },
+  {
+   "id": "end",
+   "type": "title_card",
+   "transition": "dip",
+   "music_intensity": 0.8,
+   "tail": 0.7,
+   "narration": "The strange upside? Our Sun gets about ten billion years. A red dwarf can keep shining for trillions.",
+   "params": {
+    "lines": [
+     "WHAT IF",
+     "THE SUN WERE",
+     "A RED DWARF?"
+    ],
+    "accent_line": 2,
+    "size": 88,
+    "backdrop": "none"
+   }
+  }
+ ],
+ "claims": [
+  {
+   "claim": "Roughly three-quarters of stars in our galaxy are red dwarfs",
+   "source": 0
+  },
+  {
+   "claim": "Red dwarfs are small, cool and dim; Proxima b in its star's habitable zone orbits closer than Mercury does to the Sun",
+   "source": 1
+  },
+  {
+   "claim": "Proxima b orbits in about 11 days",
+   "source": 1
+  },
+  {
+   "claim": "Planets in red-dwarf habitable zones are probably tidally locked, with one face always toward the star and the far side in frozen night",
+   "source": 2
+  },
+  {
+   "claim": "Red dwarfs flare; a study found an Earth-like atmosphere may not survive at Proxima b's orbit",
+   "source": 3
+  },
+  {
+   "claim": "Sun-like stars last about 10 billion years; red dwarfs take trillions of years to burn their fuel",
+   "source": 4
+  },
+  {
+   "claim": "The smallest red dwarfs will live for trillions of years",
+   "source": 5
+  },
+  {
+   "claim": "Left at 1 AU from a dim red dwarf, Earth would probably freeze (inference from habitable zone being inside Mercury's orbit, phrased as 'probably')",
+   "source": 1
+  },
+  {
+   "claim": "Proxima b receives extreme ultraviolet bursts hundreds of times stronger than Earth gets from the Sun",
+   "source": 3
+  }
+ ],
+ "meta": {
+  "title": "What If the Sun Were a Red Dwarf?",
+  "summary": "Most stars in our galaxy are red dwarfs. Swap one in for the Sun and Earth would freeze, unless it moved in close, where years last days and flares threaten the air.",
+  "tags": [
+   "what if",
+   "red dwarf",
+   "sun",
+   "proxima b",
+   "exoplanets",
+   "tidal locking",
+   "stars",
+   "space",
+   "science",
+   "shorts"
+  ],
+  "playlist": "What If: Space"
+ },
+ "format": "vertical",
+ "pace": "fast",
+ "status": "ready",
+ "slug": "0019-red-dwarf-sun-short-01"
+}

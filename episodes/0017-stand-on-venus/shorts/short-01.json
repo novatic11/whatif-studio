@@ -1,0 +1,404 @@
+{
+ "title": "What If You Stood on Venus?",
+ "palette": "ember",
+ "music_mood": "tense",
+ "seed": 117,
+ "sources": [
+  {
+   "title": "NASA Science: Venus Facts",
+   "url": "https://science.nasa.gov/venus/facts"
+  },
+  {
+   "title": "NASA NSSDCA: Venus Fact Sheet",
+   "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/venusfact.html"
+  },
+  {
+   "title": "Space.com: Venus facts - Everything you need to know about the 2nd planet from the sun",
+   "url": "https://www.space.com/44-venus-second-planet-from-the-sun-brightest-planet-in-solar-system"
+  },
+  {
+   "title": "NASA Solar System Exploration (archived): Venera 13 image page",
+   "url": "https://webarchive.library.unt.edu/eot2008/20080917233328/http:/solarsystem.nasa.gov/multimedia/display.cfm?IM_ID=3504"
+  },
+  {
+   "title": "NASA Space Place: All About Venus",
+   "url": "https://spaceplace.nasa.gov/all-about-venus/"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "hook",
+   "type": "cosmos",
+   "music_intensity": 0.6,
+   "narration": "Imagine stepping out of your spacecraft onto Venus, the bright, peaceful-looking planet right next door.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -150,
+       0.85
+      ]
+     ],
+     [
+      7,
+      [
+       0,
+       -150,
+       1.05
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "star",
+      "x": -620,
+      "y": -760,
+      "r": 110
+     },
+     {
+      "kind": "planet",
+      "planet": "venus",
+      "x": 0,
+      "y": -200,
+      "r": 330,
+      "atmo": 0.6,
+      "spin": 0.02,
+      "light_dir": [
+       -0.6,
+       -0.4,
+       0.6
+      ]
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": "@Venus",
+     "name": "drone_drop",
+     "gain": -6
+    }
+   ]
+  },
+  {
+   "id": "cta",
+   "type": "statement",
+   "music_intensity": 0.5,
+   "transition": "cut",
+   "narration": "Quick pause: comment how long you think you'd last.",
+   "params": {
+    "lines": [
+     "HOW LONG",
+     "WOULD YOU",
+     "LAST?"
+    ],
+    "accent_line": 2,
+    "backdrop": "grid"
+   }
+  },
+  {
+   "id": "heat",
+   "type": "statement",
+   "music_intensity": 0.6,
+   "transition": "flash",
+   "narration": "First, the heat. The ground sits at about four hundred sixty-five degrees Celsius, hot enough to melt lead.",
+   "params": {
+    "kicker": "SURFACE TEMPERATURE",
+    "lines": [
+     "~465 \u00b0C"
+    ],
+    "accent_line": 0,
+    "backdrop": "pulse"
+   },
+   "overlays": [
+    {
+     "at": "@lead",
+     "dur": 2.4,
+     "text": "LEAD MELTS",
+     "style": "label",
+     "y": 1250,
+     "size": 60,
+     "color": "accent"
+    }
+   ],
+   "sfx": [
+    {
+     "at": "@heat",
+     "name": "impact",
+     "gain": -6
+    }
+   ]
+  },
+  {
+   "id": "pressure",
+   "type": "compare",
+   "music_intensity": 0.6,
+   "narration": "Then the weight of the air. It presses down about ninety-two times harder than on Earth, like standing nearly a kilometer under the sea.",
+   "params": {
+    "title": "AIR PRESSURE",
+    "mode": "bars",
+    "items": [
+     {
+      "label": "EARTH",
+      "value": 1,
+      "display": "1 bar",
+      "color": "muted",
+      "at": "@weight"
+     },
+     {
+      "label": "VENUS",
+      "value": 92,
+      "display": "92 bar",
+      "color": "accent",
+      "at": "@ninetytwo"
+     }
+    ],
+    "source": "NASA"
+   }
+  },
+  {
+   "id": "clouds",
+   "type": "cosmos",
+   "music_intensity": 0.6,
+   "narration": "Far above you, thick clouds of sulfuric acid wrap the entire planet and trap the heat.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -220,
+       1.2
+      ]
+     ],
+     [
+      6,
+      [
+       0,
+       -220,
+       1.5
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "planet",
+      "planet": "venus",
+      "x": 0,
+      "y": -220,
+      "r": 330,
+      "atmo": 0.7,
+      "spin": 0.03,
+      "seed": 4,
+      "light_dir": [
+       -0.5,
+       -0.3,
+       0.7
+      ]
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@sulfuric",
+     "dur": 2.6,
+     "text": "SULFURIC ACID CLOUDS",
+     "style": "label",
+     "y": 260,
+     "size": 56,
+     "color": "accent"
+    }
+   ]
+  },
+  {
+   "id": "mercury",
+   "type": "cosmos",
+   "music_intensity": 0.6,
+   "narration": "Strangely, Venus is even hotter than Mercury, which sits much closer to the Sun. Its thick air works like a runaway greenhouse.",
+   "params": {
+    "camera": [
+     [
+      0,
+      [
+       0,
+       -250,
+       0.75
+      ]
+     ],
+     [
+      7,
+      [
+       0,
+       -250,
+       0.85
+      ]
+     ]
+    ],
+    "bodies": [
+     {
+      "kind": "star",
+      "x": -560,
+      "y": -250,
+      "r": 170
+     },
+     {
+      "kind": "planet",
+      "planet": "rocky",
+      "x": -200,
+      "y": -250,
+      "r": 45,
+      "seed": 9,
+      "label": "MERCURY"
+     },
+     {
+      "kind": "planet",
+      "planet": "venus",
+      "x": 330,
+      "y": -250,
+      "r": 110,
+      "atmo": 0.6,
+      "label": "VENUS"
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@greenhouse",
+     "dur": 2.6,
+     "text": "RUNAWAY GREENHOUSE",
+     "style": "label",
+     "y": 1300,
+     "size": 56,
+     "color": "accent"
+    }
+   ]
+  },
+  {
+   "id": "venera",
+   "type": "timeline",
+   "music_intensity": 0.65,
+   "narration": "We have tried this. In 1982, the Soviet Venera 13 lander was built to survive thirty-two minutes. It lasted one hundred twenty-seven, then went silent.",
+   "params": {
+    "title": "VENERA 13, 1982",
+    "events": [
+     {
+      "at": "@Venera",
+      "label": "Touchdown",
+      "when": "0 min",
+      "color": "cool"
+     },
+     {
+      "at": "@thirtytwo",
+      "label": "Design life",
+      "when": "32 min",
+      "color": "accent"
+     },
+     {
+      "at": "@silent",
+      "label": "Silent",
+      "when": "127 min",
+      "color": "warn"
+     }
+    ],
+    "span": [
+     "landing",
+     "silence"
+    ],
+    "spacing": 330,
+    "fit": true
+   }
+  },
+  {
+   "id": "day",
+   "type": "statement",
+   "music_intensity": 0.6,
+   "narration": "And don't wait for sunset. Venus spins so slowly that one day there lasts longer than its whole year.",
+   "params": {
+    "kicker": "ON VENUS",
+    "lines": [
+     "1 DAY >",
+     "1 YEAR"
+    ],
+    "accent_line": 0,
+    "backdrop": "stars"
+   }
+  },
+  {
+   "id": "end",
+   "type": "title_card",
+   "transition": "dip",
+   "music_intensity": 0.8,
+   "tail": 0.7,
+   "narration": "So the gentle evening star is the hottest planet in our solar system, and it crushes steel machines in hours.",
+   "params": {
+    "lines": [
+     "WHAT IF",
+     "YOU STOOD",
+     "ON VENUS?"
+    ],
+    "accent_line": 2,
+    "size": 92,
+    "backdrop": "none"
+   }
+  }
+ ],
+ "claims": [
+  {
+   "claim": "Venus is Earth's neighbor and the hottest planet in the solar system",
+   "source": 0
+  },
+  {
+   "claim": "Mean surface temperature about 464-465 C",
+   "source": 1
+  },
+  {
+   "claim": "Venus surface is hot enough to melt lead",
+   "source": 4
+  },
+  {
+   "claim": "Surface pressure is 92 bar, vs about 1 bar on Earth",
+   "source": 1
+  },
+  {
+   "claim": "The pressure is comparable to being about 1,000 m (3,300 ft) deep in the ocean",
+   "source": 2
+  },
+  {
+   "claim": "Thick sulfuric acid clouds cover the planet and the atmosphere traps heat",
+   "source": 0
+  },
+  {
+   "claim": "Venera 13 (1982) was planned to last 32 minutes and transmitted for 127 minutes",
+   "source": 3
+  },
+  {
+   "claim": "Venus' sidereal rotation (243 days) is longer than its orbital period (224.7 days)",
+   "source": 1
+  },
+  {
+   "claim": "Venus is hotter than Mercury even though Mercury is closer to the Sun; its thick atmosphere traps heat (runaway greenhouse effect)",
+   "source": 4
+  }
+ ],
+ "meta": {
+  "title": "What If You Stood on Venus?",
+  "summary": "Venus looks calm from Earth, but its surface is hot enough to melt lead under 92 times Earth's air pressure. Here's what you'd face, and how long the toughest lander lasted.",
+  "tags": [
+   "what if",
+   "venus",
+   "planets",
+   "venera 13",
+   "solar system",
+   "space",
+   "greenhouse effect",
+   "science",
+   "shorts"
+  ],
+  "playlist": "What If: Space"
+ },
+ "format": "vertical",
+ "pace": "fast",
+ "status": "ready",
+ "slug": "0017-stand-on-venus-short-01"
+}

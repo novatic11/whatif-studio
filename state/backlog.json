@@ -1,20 +1,5 @@
 [
  {
-  "idea": "What if the Sun were a red dwarf?",
-  "premise": "Swap the Sun for a small red star",
-  "angle": "Habitable zone shrinks, tidal locking, flares",
-  "theme": "space",
-  "scores": {
-   "curiosity": 4,
-   "payoff": 4,
-   "evidence": 4,
-   "visual_fit": 4,
-   "freshness": 5,
-   "advertiser_friendly": 5
-  },
-  "added": "2026-11-25"
- },
- {
   "idea": "What if Earth were twice as big?",
   "premise": "Double Earth's radius",
   "angle": "Gravity, atmosphere, escaping to space gets much harder",
@@ -150,20 +135,6 @@
   "added": "2026-11-27"
  },
  {
-  "idea": "What if you could see infrared?",
-  "premise": "Human eyes pick up heat light.",
-  "angle": "Warm bodies glow, the sky looks different; what snakes and mosquitoes sense.",
-  "scores": {
-   "curiosity": 4,
-   "payoff": 4,
-   "evidence": 4,
-   "visual_fit": 3,
-   "freshness": 5,
-   "advertiser_friendly": 5
-  },
-  "added": "2026-11-27"
- },
- {
   "idea": "What if Earth had two moons?",
   "premise": "A second moon joins ours.",
   "angle": "Tides, eclipses, orbital stability, and the hypothesis Earth once had a second moon.",
@@ -173,20 +144,6 @@
    "evidence": 3,
    "visual_fit": 4,
    "freshness": 4,
-   "advertiser_friendly": 5
-  },
-  "added": "2026-11-27"
- },
- {
-  "idea": "What if you stood on Venus?",
-  "premise": "Step onto Venus's surface.",
-  "angle": "90x pressure, 465 C, sulfuric clouds; how long Soviet landers survived.",
-  "scores": {
-   "curiosity": 5,
-   "payoff": 4,
-   "evidence": 5,
-   "visual_fit": 4,
-   "freshness": 5,
    "advertiser_friendly": 5
   },
   "added": "2026-11-27"
@@ -232,5 +189,50 @@
    "advertiser_friendly": 5
   },
   "added": "2026-11-27"
+ },
+ {
+  "idea": "What if you could hear like a bat?",
+  "premise": "Human hearing extended into ultrasound.",
+  "angle": "Echolocation, the ultrasonic world of insects and rodents; blind people who echolocate.",
+  "theme": "life",
+  "scores": {
+   "curiosity": 4,
+   "payoff": 4,
+   "evidence": 4,
+   "visual_fit": 3,
+   "freshness": 5,
+   "advertiser_friendly": 5
+  },
+  "added": "2026-11-28"
+ },
+ {
+  "idea": "What if Earth stopped tilting?",
+  "premise": "Axial tilt goes to zero.",
+  "angle": "No seasons, permanent climate bands; Milankovitch cycles and the Moon's stabilizing role.",
+  "theme": "earth",
+  "scores": {
+   "curiosity": 4,
+   "payoff": 4,
+   "evidence": 4,
+   "visual_fit": 4,
+   "freshness": 5,
+   "advertiser_friendly": 5
+  },
+  "added": "2026-11-28"
+ },
+ {
+  "idea": "What if you swallowed a tardigrade?",
+  "premise": "The toughest animal meets your stomach.",
+  "angle": "What tardigrades survive (vacuum, radiation, drying) and what they don't.",
+  "theme": "life",
+  "scores": {
+   "curiosity": 5,
+   "payoff": 4,
+   "evidence": 4,
+   "visual_fit": 3,
+   "freshness": 5,
+   "advertiser_friendly": 5
+  },
+  "added": "2026-11-28"
  }
 ]

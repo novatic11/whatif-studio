@@ -1,0 +1,280 @@
+{
+ "title": "What If You Could See Infrared?",
+ "palette": "violet",
+ "music_mood": "mystery",
+ "seed": 118,
+ "sources": [
+  {
+   "title": "NASA Solar System Exploration (archived): Infrared Waves",
+   "url": "https://webarchive.library.unt.edu/eot2008/20080916105314/http:/solarsystem.nasa.gov/scitech/display.cfm?ST_ID=326"
+  },
+  {
+   "title": "NASA Science: Infrared Waves",
+   "url": "https://science.nasa.gov/ems/07_infraredwaves"
+  },
+  {
+   "title": "Gracheva et al. (2010), Molecular basis of infrared detection by snakes, Nature",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/20228791/"
+  },
+  {
+   "title": "UC Santa Barbara / University of California: Mosquitoes sense infrared from body heat to help track humans down",
+   "url": "https://www.universityofcalifornia.edu/news/mosquitoes-sense-infrared-body-heat-help-track-humans-down"
+  },
+  {
+   "title": "Palczewska et al. (2014), Human infrared vision is triggered by two-photon chromophore isomerization, PNAS",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4273384"
+  },
+  {
+   "title": "NASA Science: Visible Light",
+   "url": "https://science.nasa.gov/ems/09_visiblelight"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "hook",
+   "type": "figures",
+   "music_intensity": 0.55,
+   "narration": "What if your eyes could see heat? Every person around you would glow, even in total darkness.",
+   "params": {
+    "backdrop": "none",
+    "figures": [
+     {
+      "shape": "person",
+      "x": 330,
+      "y": 640,
+      "size": 560,
+      "color": "muted",
+      "at": 0.2,
+      "to_color": "warn",
+      "tint_at": "@glow",
+      "tint_dur": 1.0,
+      "glow": 0.6
+     },
+     {
+      "shape": "person",
+      "x": 740,
+      "y": 660,
+      "size": 520,
+      "color": "muted",
+      "at": 0.5,
+      "to_color": "accent",
+      "tint_at": "@glow+0.3",
+      "tint_dur": 1.0,
+      "glow": 0.6,
+      "flip": true
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": "@glow",
+     "name": "shimmer",
+     "gain": -6
+    }
+   ]
+  },
+  {
+   "id": "cta",
+   "type": "statement",
+   "music_intensity": 0.5,
+   "transition": "cut",
+   "narration": "Tap like, then see what you'd notice first.",
+   "params": {
+    "lines": [
+     "SEEING",
+     "HEAT"
+    ],
+    "accent_line": 1,
+    "backdrop": "grid"
+   }
+  },
+  {
+   "id": "wave",
+   "type": "compare",
+   "music_intensity": 0.6,
+   "narration": "Your body shines brightest at about ten microns, more than ten times the wavelength of the reddest light your eyes catch now.",
+   "params": {
+    "title": "WAVELENGTH",
+    "mode": "bars",
+    "items": [
+     {
+      "label": "RED LIGHT",
+      "value": 0.7,
+      "display": "0.7 \u00b5m",
+      "color": "warn",
+      "at": "@reddest"
+     },
+     {
+      "label": "YOUR BODY HEAT",
+      "value": 10,
+      "display": "~10 \u00b5m",
+      "color": "accent",
+      "at": "@ten"
+     }
+    ],
+    "source": "NASA"
+   }
+  },
+  {
+   "id": "feel",
+   "type": "figures",
+   "music_intensity": 0.6,
+   "narration": "You already feel this light every day. The warmth from a campfire or a sun-baked sidewalk reaches your skin as infrared.",
+   "params": {
+    "kicker": "INVISIBLE, BUT FELT",
+    "figures": [
+     {
+      "shape": "sun",
+      "x": 540,
+      "y": 560,
+      "size": 360,
+      "color": "warn",
+      "at": 0.2,
+      "glow": 0.6
+     }
+    ]
+   }
+  },
+  {
+   "id": "snakes",
+   "type": "statement",
+   "music_intensity": 0.6,
+   "transition": "flash",
+   "narration": "Some animals already do this. Pit vipers, pythons and boas sense infrared through pit organs, using a heat-sensitive protein related to the one behind the sting of wasabi.",
+   "params": {
+    "kicker": "PIT VIPERS, PYTHONS, BOAS",
+    "lines": [
+     "HEAT",
+     "SENSING",
+     "PITS"
+    ],
+    "accent_line": 0,
+    "backdrop": "pulse"
+   }
+  },
+  {
+   "id": "mosquito",
+   "type": "figures",
+   "music_intensity": 0.6,
+   "narration": "And in 2024, scientists found mosquitoes use the infrared from our skin to help find us, from up to about seventy centimeters away.",
+   "params": {
+    "kicker": "NATURE, 2024",
+    "figures": [
+     {
+      "shape": "person",
+      "x": 540,
+      "y": 640,
+      "size": 560,
+      "color": "warn",
+      "at": 0.1,
+      "glow": 0.5
+     }
+    ]
+   },
+   "overlays": [
+    {
+     "at": "@mosquitoes",
+     "dur": 3.0,
+     "text": "MOSQUITOES SENSE THIS GLOW",
+     "style": "label",
+     "y": 1180,
+     "size": 44,
+     "color": "text"
+    },
+    {
+     "at": "@seventy",
+     "dur": 2.6,
+     "text": "~70 CM",
+     "style": "stat",
+     "y": 1320,
+     "size": 110,
+     "color": "accent"
+    }
+   ]
+  },
+  {
+   "id": "lab",
+   "type": "statement",
+   "music_intensity": 0.6,
+   "narration": "You can even catch a sliver yourself. In lab tests, people saw pulses of near-infrared laser light, when two photons struck the eye together.",
+   "params": {
+    "kicker": "PNAS, 2014",
+    "lines": [
+     "2 PHOTONS",
+     "= 1 FLASH"
+    ],
+    "accent_line": 0,
+    "backdrop": "stars"
+   }
+  },
+  {
+   "id": "end",
+   "type": "title_card",
+   "transition": "dip",
+   "music_intensity": 0.8,
+   "tail": 0.7,
+   "narration": "So in the dark, you'd stop seeing faces. You'd see warm shapes, a thermal image, the way a rattlesnake sees its next meal.",
+   "params": {
+    "lines": [
+     "WHAT IF",
+     "YOU SAW",
+     "HEAT?"
+    ],
+    "accent_line": 2,
+    "size": 92,
+    "backdrop": "none"
+   }
+  }
+ ],
+ "claims": [
+  {
+   "claim": "Humans at normal body temperature radiate most strongly in the infrared at about 10 microns",
+   "source": 0
+  },
+  {
+   "claim": "Warm objects such as people emit infrared regardless of visible light",
+   "source": 1
+  },
+  {
+   "claim": "Visible light ends around 700 nm (0.7 microns) at the red end",
+   "source": 5
+  },
+  {
+   "claim": "Pit-bearing snakes (vipers, pythons and boas) detect infrared via the pit organ using TRPA1, the most heat-sensitive vertebrate ion channel identified; they form a thermal image of prey; TRPA1 is the snake orthologue of the 'wasabi receptor'",
+   "source": 2
+  },
+  {
+   "claim": "Aedes aegypti mosquitoes use thermal infrared from skin-temperature sources, together with other cues, to find hosts at up to about 70 cm (2024 Nature study)",
+   "source": 3
+  },
+  {
+   "claim": "People perceived pulsed near-infrared laser light (~1000 nm) via two-photon isomerization of visual pigment",
+   "source": 4
+  },
+  {
+   "claim": "Humans feel infrared as heat, e.g. from a fire or a warm sidewalk",
+   "source": 1
+  }
+ ],
+ "meta": {
+  "title": "What If You Could See Infrared?",
+  "summary": "Your body glows brightest in infrared, at about ten microns. Snakes and mosquitoes already use that glow, and in the lab, people have glimpsed a sliver of infrared too.",
+  "tags": [
+   "what if",
+   "infrared",
+   "vision",
+   "thermal imaging",
+   "pit viper",
+   "mosquito",
+   "human body",
+   "light",
+   "science",
+   "shorts"
+  ],
+  "playlist": "What If: Humans"
+ },
+ "format": "vertical",
+ "pace": "fast",
+ "status": "ready",
+ "slug": "0018-see-infrared-short-01"
+}

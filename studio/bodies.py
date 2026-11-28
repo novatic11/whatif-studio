@@ -79,7 +79,13 @@ def planet_texture(kind="earth", seed=3):
         band = np.sin(p[..., 1] * 18 + turb * 2.2)
         rgb = _ramp(band, [(-1, (0.62, 0.45, 0.30)), (0, (0.86, 0.76, 0.60)), (1, (0.95, 0.90, 0.80))])
         return rgb, zeros, zeros, zeros
-    if kind == "star":
+    if kind == "venus":  # thick sulfuric cloud deck: soft, creamy, swirled bands
+        turb = _fbm(p, seed, octaves=6, base_freq=2.2)
+        band = np.sin(p[..., 1] * 7 + turb * 3.2 + np.abs(p[..., 1]) * 4)
+        rgb = _ramp(band + turb * 0.6, [(-1.6, (0.66, 0.52, 0.30)), (-0.4, (0.84, 0.70, 0.44)),
+                                        (0.6, (0.93, 0.84, 0.60)), (1.6, (0.98, 0.94, 0.80))])
+        return rgb, zeros, zeros, zeros
+    if kind in ("star", "red_dwarf"):
         g = _fbm(p, seed, octaves=5, base_freq=14.0, waves=32)
         g2 = _fbm(p, seed + 1, octaves=3, base_freq=3.0)
         v = 0.9 + 0.07 * g + 0.05 * g2
@@ -117,6 +123,10 @@ def render_sphere(kind, radius, rot=0.0, light_dir=(-0.8, -0.2, 0.55), light=1.0
     if emissive:
         limb = 0.35 + 0.65 * np.power(nz, 0.5)
         v = col[..., 0] * limb * light
+        if kind == "red_dwarf":  # cool M-dwarf: deep red to orange, never white-hot
+            rgb = _ramp(v, [(0.0, (0.20, 0.01, 0.0)), (0.45, (0.70, 0.10, 0.03)), (0.75, (0.92, 0.25, 0.08)),
+                            (0.95, (1.0, 0.45, 0.20)), (1.3, (1.0, 0.65, 0.40))])
+            return rgb, edge_alpha
         rgb = _ramp(v, [(0.0, (0.35, 0.05, 0.0)), (0.45, (0.95, 0.35, 0.05)), (0.7, (1.0, 0.62, 0.18)),
                         (0.88, (1.0, 0.86, 0.52)), (1.05, (1.0, 0.97, 0.88)), (1.6, (1, 1, 1))])
         return rgb, edge_alpha

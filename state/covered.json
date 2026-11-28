@@ -26,13 +26,13 @@
  {
   "slug": "0006-human-photosynthesis-short-01",
   "title": "What If Humans Could Photosynthesize?",
-  "premise": "Humans with photosynthetic skin: ~1 m² of sun at 4.6% max efficiency gives ~40 kcal/h, ~240 kcal a day vs 2,000 needed; sea slug Elysia chlorotica steals chloroplasts.",
+  "premise": "Humans with photosynthetic skin: ~1 m\u00b2 of sun at 4.6% max efficiency gives ~40 kcal/h, ~240 kcal a day vs 2,000 needed; sea slug Elysia chlorotica steals chloroplasts.",
   "date": "2026-11-25"
  },
  {
   "slug": "0007-never-slept-short-01",
   "title": "What If You Never Slept Again?",
-  "premise": "Never sleeping: 17-19 h awake ≈ 0.05% BAC on tests, 264-hour 1964 record, sleep widens brain spaces 60% to clear waste (mice), frigatebirds sleep in flight with half a brain.",
+  "premise": "Never sleeping: 17-19 h awake \u2248 0.05% BAC on tests, 264-hour 1964 record, sleep widens brain spaces 60% to clear waste (mice), frigatebirds sleep in flight with half a brain.",
   "date": "2026-11-25"
  },
  {
@@ -88,5 +88,23 @@
   "title": "What If Earth's Magnetic Field Disappeared?",
   "premise": "If Earth's magnetic field vanished, the air would still shield you, but the solar wind could slowly strip the atmosphere like Mars.",
   "date": "2026-11-27"
+ },
+ {
+  "slug": "0017-stand-on-venus-short-01",
+  "title": "What If You Stood on Venus?",
+  "premise": "Venus looks calm from Earth, but its surface is hot enough to melt lead under 92 times Earth's air pressure. Here's what you'd face, and how long the toughest lander lasted.",
+  "date": "2026-11-28"
+ },
+ {
+  "slug": "0018-see-infrared-short-01",
+  "title": "What If You Could See Infrared?",
+  "premise": "Your body glows brightest in infrared, at about ten microns. Snakes and mosquitoes already use that glow, and in the lab, people have glimpsed a sliver of infrared too.",
+  "date": "2026-11-28"
+ },
+ {
+  "slug": "0019-red-dwarf-sun-short-01",
+  "title": "What If the Sun Were a Red Dwarf?",
+  "premise": "Most stars in our galaxy are red dwarfs. Swap one in for the Sun and Earth would freeze, unless it moved in close, where years last days and flares threaten the air.",
+  "date": "2026-11-28"
  }
 ]

@@ -22,12 +22,22 @@
      "subscribersGained": 2,
      "likes": 7,
      "shares": 0
+    },
+    {
+     "date": "2026-11-28",
+     "views": 314,
+     "estimatedMinutesWatched": 118,
+     "averageViewDuration": 37,
+     "averageViewPercentage": 61.01,
+     "subscribersGained": 2,
+     "likes": 7,
+     "shares": 0
     }
    ],
    "title": "What If the Sun Became a Black Hole?",
    "privacy": "public",
    "published": "2026-11-25T18:00:34Z",
-   "views": 345,
+   "views": 358,
    "likes": 8,
    "comments": 0,
    "analytics": {
@@ -47,7 +57,7 @@
    "title": "What If the Moon Vanished Tonight?",
    "privacy": "public",
    "published": "2026-11-26T18:00:07Z",
-   "views": 86,
+   "views": 98,
    "likes": 10,
    "comments": 1
   },
@@ -57,7 +67,7 @@
    "title": "What If Earth Stopped Spinning?",
    "privacy": "public",
    "published": "2026-11-27T18:00:05Z",
-   "views": 97,
+   "views": 149,
    "likes": 3,
    "comments": 0
   },
@@ -65,9 +75,9 @@
    "item": "episodes/0004-betelgeuse-exploded/shorts/short-01.json",
    "history": [],
    "title": "What If Betelgeuse Exploded Tonight?",
-   "privacy": "private",
-   "published": "2026-11-25T09:56:47Z",
-   "views": 0,
+   "privacy": "public",
+   "published": "2026-11-28T18:00:04Z",
+   "views": 11,
    "likes": 0,
    "comments": 0
   },
@@ -83,12 +93,22 @@
      "subscribersGained": 0,
      "likes": 0,
      "shares": 0
+    },
+    {
+     "date": "2026-11-28",
+     "views": 4,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 7,
+     "averageViewPercentage": 11.52,
+     "subscribersGained": 0,
+     "likes": 0,
+     "shares": 0
     }
    ],
    "title": "What If Every Insect Vanished Overnight?",
    "privacy": "public",
    "published": "2026-11-26T01:00:14Z",
-   "views": 61,
+   "views": 67,
    "likes": 0,
    "comments": 0,
    "analytics": {
@@ -108,8 +128,8 @@
    "title": "What If Humans Could Photosynthesize?",
    "privacy": "public",
    "published": "2026-11-27T01:00:30Z",
-   "views": 1081,
-   "likes": 26,
+   "views": 1387,
+   "likes": 30,
    "comments": 2
   },
   "O_EF_40E3BQ": {
@@ -124,13 +144,23 @@
      "subscribersGained": 0,
      "likes": 0,
      "shares": 0
+    },
+    {
+     "date": "2026-11-28",
+     "views": 1,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 38,
+     "averageViewPercentage": 61.4,
+     "subscribersGained": 0,
+     "likes": 0,
+     "shares": 0
     }
    ],
    "title": "What If You Never Slept Again?",
-   "privacy": "private",
-   "published": "2026-11-25T17:14:53Z",
-   "views": 1,
-   "likes": 0,
+   "privacy": "public",
+   "published": "2026-11-28T01:00:06Z",
+   "views": 83,
+   "likes": 3,
    "comments": 0,
    "analytics": {
     "video": "O_EF_40E3BQ",
@@ -168,6 +198,16 @@
    "history": [
     {
      "date": "2026-11-27",
+     "views": 1,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 56,
+     "averageViewPercentage": 83.88,
+     "subscribersGained": 0,
+     "likes": 0,
+     "shares": 0
+    },
+    {
+     "date": "2026-11-28",
      "views": 1,
      "estimatedMinutesWatched": 0,
      "averageViewDuration": 56,
@@ -253,6 +293,26 @@
    "views": 0,
    "likes": 0,
    "comments": 0
+  },
+  "nfbUCWBqYdI": {
+   "item": "episodes/0018-see-infrared/shorts/short-01.json",
+   "history": [],
+   "title": "What If You Could See Infrared?",
+   "privacy": "private",
+   "published": "2026-11-28T08:13:31Z",
+   "views": 0,
+   "likes": 0,
+   "comments": 0
+  },
+  "GuCbrbWvTb0": {
+   "item": "episodes/0019-red-dwarf-sun/shorts/short-01.json",
+   "history": [],
+   "title": "What If the Sun Were a Red Dwarf?",
+   "privacy": "private",
+   "published": "2026-11-28T08:14:48Z",
+   "views": 0,
+   "likes": 0,
+   "comments": 0
   }
  },
  "channel": [],
@@ -298,5 +358,5 @@
    119
   ]
  ],
- "updated": "2026-11-27T20:16:20+00:00"
+ "updated": "2026-11-28T19:06:06+00:00"
 }

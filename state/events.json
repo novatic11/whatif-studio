@@ -183,5 +183,31 @@
  {
   "at": "2026-11-27T22:49:13+00:00",
   "msg": "Nothing ready to produce"
+ },
+ {
+  "at": "2026-11-28T08:12:36+00:00",
+  "msg": "QC failed (media)",
+  "item": "episodes/0017-stand-on-venus/shorts/short-01.json",
+  "failed": [
+   "black_frames"
+  ]
+ },
+ {
+  "at": "2026-11-28T08:13:34+00:00",
+  "msg": "Uploaded",
+  "item": "episodes/0018-see-infrared/shorts/short-01.json",
+  "video_id": "nfbUCWBqYdI",
+  "publish_at": "2026-12-03T18:00:00Z",
+  "mode": "scheduled_public",
+  "warnings": []
+ },
+ {
+  "at": "2026-11-28T08:14:50+00:00",
+  "msg": "Uploaded",
+  "item": "episodes/0019-red-dwarf-sun/shorts/short-01.json",
+  "video_id": "GuCbrbWvTb0",
+  "publish_at": "2026-12-04T01:00:00Z",
+  "mode": "scheduled_public",
+  "warnings": []
  }
 ]

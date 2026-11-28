@@ -1,1 +1,24 @@
-{}
+{
+ "episodes/0017-stand-on-venus/shorts/short-01.json": {
+  "hash": "031fa4d5ba5d09f6",
+  "stage": "media",
+  "failed": [
+   "black_frames"
+  ],
+  "details": {
+   "black_frames": {
+    "ok": false,
+    "value": [
+     [
+      16.766667,
+      17.533333
+     ],
+     [
+      37.666667,
+      40.4
+     ]
+    ]
+   }
+  }
+ }
+}

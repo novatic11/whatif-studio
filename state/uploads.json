@@ -223,5 +223,33 @@
   "uploaded_at": "2026-11-27T08:07:10+00:00",
   "plan_hash": "f17d9f0f63cbdb91",
   "warnings": []
+ },
+ "episodes/0018-see-infrared/shorts/short-01.json": {
+  "video_id": "nfbUCWBqYdI",
+  "title": "What If You Could See Infrared?",
+  "kind": "short",
+  "status": "uploaded",
+  "privacy": "private",
+  "publish_at": "2026-12-03T18:00:00Z",
+  "mode": "scheduled_public",
+  "playlist": "What If: Humans",
+  "duration": 60.9,
+  "uploaded_at": "2026-11-28T08:13:33+00:00",
+  "plan_hash": "436eabd174a4f392",
+  "warnings": []
+ },
+ "episodes/0019-red-dwarf-sun/shorts/short-01.json": {
+  "video_id": "GuCbrbWvTb0",
+  "title": "What If the Sun Were a Red Dwarf?",
+  "kind": "short",
+  "status": "uploaded",
+  "privacy": "private",
+  "publish_at": "2026-12-04T01:00:00Z",
+  "mode": "scheduled_public",
+  "playlist": "What If: Space",
+  "duration": 62.9,
+  "uploaded_at": "2026-11-28T08:14:50+00:00",
+  "plan_hash": "9ee0abd577358036",
+  "warnings": []
  }
 }
